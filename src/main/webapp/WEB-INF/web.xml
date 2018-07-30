@@ -108,14 +108,14 @@
 	<!-- **System Error Transition JSP -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/errorpage/404.jsp</location>
+		<location>/WEB-INF/jsp/login.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>405</error-code>
-		<location>/WEB-INF/errorpage/405.jsp</location>
+		<location>/WEB-INF/jsp/login.jsp</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/WEB-INF/errorpage/500.jsp</location>
+		<location>/WEB-INF/jsp/login.jsp</location>
 	</error-page>
 </web-app>
