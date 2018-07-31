@@ -21,12 +21,22 @@
 	function inputBlur(Obj) {
 		// Get input account
 		var accountVal = $("#account").val();
+		if (accountVal == "") {
+			return;
+		}
 		var accountDivEle = $(document.getElementById("div_account"));
 		// Get input password
 		var psdVal = $("#psd").val();
+		if (psdVal == "") {
+			return;
+		}
 		var psdDivEle = $(document.getElementById("div_psd"));
 		// define express
 		var express = /^[A-Z a-z 0-9]{0,20}$/;
+		if (accountVal == ""
+				|| psdVal == "") {
+			return;
+		}
 		if (Obj == 1) {
 			var rslt = express.test(accountVal);
 			// TODO
@@ -91,10 +101,10 @@
 				<!-- Company Resume Bar [Start] -->
 				<div class="panel-heading">
 					<a data-toggle="collapse" data-parent="#accordion"
-						href="#collapseOne">Company Resume</a>
+						href="#collapseOne">Free Project(Resume)</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
-					Company Resume Content</div>
+					Company Resume Content12222222222222222222</div>
 				<!-- Company Resume Bar [End] -->
 			</div>
 
