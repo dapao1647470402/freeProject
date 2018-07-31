@@ -9,7 +9,7 @@ import free.com.service.LoginService;
 
 @Controller
 @RequestMapping("login")
-public class LoginAction {
+public class LoginController {
 
 	@Resource
 	private LoginService service;
