@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Login Templet(bootstrap)</title>
+<title>Welcome to Free Project!</title>
 </head>
 
 <!-- include Js and Css and so on of BootStrap file [Start]-->
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/style/style.css">
 <!-- include Js and Css and so on of BootStrap file [End]-->
 
 <!-- Myself Define Js Section [Start]-->
