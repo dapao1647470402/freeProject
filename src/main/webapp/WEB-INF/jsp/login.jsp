@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,6 +19,17 @@
 
 <!-- Myself Define Js Section [Start]-->
 <script type="text/javascript">
+	var userId = "${userId}";
+	var loginStatus = "${loginStatus}";
+	if ((userId == null
+			|| userId == ""
+				|| userId == "null")
+				&& loginStatus != "init") {
+		window.location.href = "<%=request.getContextPath()%>/login/init"
+	} else if (userId != null && userId != "") {
+		window.location.href = "<%=request.getContextPath()%>/main/init"
+	}
+
 	function inputBlur(Obj) {
 		// Get input account
 		var accountVal = $("#account").val();
@@ -45,7 +57,7 @@
 			changeIptBoxColor(rslt, accountDivEle);
 			// change input account box background [End]
 			var account_result = rslt ? accountVal : '';
-			// display to input of content of account  box at the sreen 
+			// display to input of content of account  box at the sreen
 			$("#account").val(account_result);
 		} else {
 			var rslt = express.test(psdVal);
@@ -55,7 +67,7 @@
 			changeIptBoxColor(rslt, psdDivEle);
 			// change input password box background [End]
 			var psd_result = rslt ? psdVal : '';
-			// display to input of content of password  box at the sreen 
+			// display to input of content of password  box at the sreen
 			$("#psd").val(psd_result);
 		}
 	}
@@ -81,7 +93,7 @@
 	<div>
 		<!-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)-->
 		<!-- Company Show Of Content [Start]-->
-		<div class="col-lg-3 col-md-3 col-sm-3">
+		<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:20px">
 			<div class="panel panel-group panel-primary ">
 				<!-- Advice Bar [Start] -->
 				<div class="panel-heading">Advice</div>
@@ -104,7 +116,8 @@
 						href="#collapseOne">Free Project(Resume)</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
-					Company Resume Content12222222222222222222</div>
+					${projectResume}
+				</div>
 				<!-- Company Resume Bar [End] -->
 			</div>
 
@@ -112,9 +125,9 @@
 		<!-- Company Show Of Content [End]-->
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 		<!-- Image Area [Start] -->
-		<div class="col-lg-4 col-md-4 col-sm-4">
+		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:20px">
 			<div class="panel panel-primary">The Picture Show Area</div>
-			<img alt="" src="" height="400px">
+			<img alt="" src="<%=request.getContextPath() %>/image/test1.jpg" height="350" class="col-lg-12 col-md-12 col-sm-12"/>
 
 		</div>
 		<!-- Image Area [End] -->
