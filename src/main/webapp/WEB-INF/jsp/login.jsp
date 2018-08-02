@@ -136,10 +136,10 @@
 		<!-- Company Show Of Content [End]-->
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 		<!-- Image Area [Start] -->
-		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 20px">
+		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 20px;border-color:black;border-weight:">
 			<div class="panel panel-primary">The Picture Show Area</div>
 
-			<div id="pictureShowArea" class="carousel slide">
+			<div id="pictureShowArea" class="carousel slide" style="border-color: #575f5b;border-style: outset;border-style: solid dotted;border-width: thick;dashed double;">
 				<!-- 轮播（Carousel）指标 -->
 				<ol class="carousel-indicators">
 					<li data-target="#pictureShowArea" data-slide-to="0" class="active"></li>
