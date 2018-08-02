@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +9,18 @@
 </head>
 
 <!-- include Js and Css and so on of BootStrap file [Start]-->
-<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/style/style.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/style/style.css">
 <!-- include Js and Css and so on of BootStrap file [End]-->
 
 <!-- Myself Define Js Section [Start]-->
@@ -29,6 +35,13 @@
 	} else if (userId != null && userId != "") {
 		window.location.href = "<%=request.getContextPath()%>/main/init"
 	}
+
+	// pictureShowArea paly configure
+	$(function(){
+		$('#pictureShowArea').carousel({
+		    interval: 2000
+		})
+	});
 
 	function inputBlur(Obj) {
 		// Get input account
@@ -45,8 +58,7 @@
 		var psdDivEle = $(document.getElementById("div_psd"));
 		// define express
 		var express = /^[A-Z a-z 0-9]{0,20}$/;
-		if (accountVal == ""
-				|| psdVal == "") {
+		if (accountVal == "" || psdVal == "") {
 			return;
 		}
 		if (Obj == 1) {
@@ -93,7 +105,7 @@
 	<div>
 		<!-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)-->
 		<!-- Company Show Of Content [Start]-->
-		<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top:20px">
+		<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 20px">
 			<div class="panel panel-group panel-primary ">
 				<!-- Advice Bar [Start] -->
 				<div class="panel-heading">Advice</div>
@@ -116,8 +128,7 @@
 						href="#collapseOne">Free Project(Resume)</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
-					${projectResume}
-				</div>
+					${projectResume}</div>
 				<!-- Company Resume Bar [End] -->
 			</div>
 
@@ -125,9 +136,45 @@
 		<!-- Company Show Of Content [End]-->
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 		<!-- Image Area [Start] -->
-		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top:20px">
+		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 20px">
 			<div class="panel panel-primary">The Picture Show Area</div>
-			<img alt="" src="<%=request.getContextPath() %>/image/test1.jpg" height="350" class="col-lg-12 col-md-12 col-sm-12"/>
+
+			<div id="pictureShowArea" class="carousel slide">
+				<!-- 轮播（Carousel）指标 -->
+				<ol class="carousel-indicators">
+					<li data-target="#pictureShowArea" data-slide-to="0" class="active"></li>
+					<li data-target="#pictureShowArea" data-slide-to="1"></li>
+					<li data-target="#pictureShowArea" data-slide-to="2"></li>
+				</ol>
+				<!-- 轮播（Carousel）项目 -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img alt="" src="<%=request.getContextPath()%>/image/1.jpg"
+							height="350" class="col-lg-12 col-md-12 col-sm-12" />
+						<div class="carousel-caption">标题 1</div>
+					</div>
+					<div class="item">
+						<img alt="" src="<%=request.getContextPath()%>/image/2.jpg"
+							height="350" class="col-lg-12 col-md-12 col-sm-12" />
+						<div class="carousel-caption">标题 2</div>
+					</div>
+					<div class="item">
+						<img alt="" src="<%=request.getContextPath()%>/image/3.jpg"
+							height="350" class="col-lg-12 col-md-12 col-sm-12" />
+						<div class="carousel-caption">标题 3</div>
+					</div>
+				</div>
+				<!-- 轮播（Carousel）导航 -->
+				<a class="left carousel-control" href="#pictureShowArea" role="button"
+					data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#pictureShowArea" role="button"
+					data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
 
 		</div>
 		<!-- Image Area [End] -->
