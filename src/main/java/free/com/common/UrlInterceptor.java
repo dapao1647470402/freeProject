@@ -18,13 +18,14 @@ public class UrlInterceptor implements HandlerInterceptor{
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		log.info("******Current Action:Check URL******");
+		request.getRequestURI();
+		log.info("******Current Action:Check URL "+ request.getRequestURI() + "******");
 		HttpSession session = request.getSession(false);
 		if (session == null
-				|| !StringUtils.isEmpty(String.valueOf(session.getAttribute(CommonConstants.USER)))
+				|| StringUtils.isEmpty(String.valueOf(session.getAttribute(CommonConstants.USER)))
 				|| StringUtils.equals(CommonConstants.STR_NULL, String.valueOf(session.getAttribute(CommonConstants.USER)))) {
 			log.info("******Current Action:Please again login******");
-			response.sendRedirect("login/init");
+			request.getRequestDispatcher("login/init").forward(request, response);
 			return false;
 		}
 		log.info("******Current Action:No error^-^ Account:" + session.getAttribute(CommonConstants.USER) + "******");
