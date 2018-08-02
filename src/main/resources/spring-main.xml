@@ -24,7 +24,7 @@
 			<!-- 进行拦截：/**表示拦截所有controller -->
 			<mvc:mapping path="/**" />
 			<!-- 不进行拦截 -->
-			<mvc:exclude-mapping path="/register/init" />
+			<mvc:exclude-mapping path="/login/init" />
 
 			<bean class="free.com.common.UrlInterceptor" />
 		</mvc:interceptor>
