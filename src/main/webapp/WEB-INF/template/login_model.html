@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Templet(bootstrap) </title>
+</head>
+
+<!-- Myself Define Js Section [Start]-->
+<script type="text/javascript">
+function inputBlur(Obj){
+	// Get input account
+	var accountVal = $("#account").val();
+	var accountDivEle = $(document.getElementById("div_account"));
+	// Get input password
+	var psdVal = $("#psd").val();
+	var psdDivEle = $(document.getElementById("div_psd"));
+	// define express
+	var express = /^[A-Z a-z 0-9]{0,20}$/;
+	if (Obj == 1) {
+		var rslt = express.test(accountVal);
+		// TODO
+		//rslt = accountVal == null || accountVal == '' ? false : true;
+		// change input account box background [Start]
+		changeIptBoxColor(rslt,accountDivEle);
+		// change input account box background [End]
+		var account_result = rslt ? accountVal : '';
+		// display to input of content of account  box at the sreen 
+		$("#account").val(account_result);
+	} else {
+		var rslt = express.test(psdVal);
+		// TODO
+		//rslt = psdVal == null || psdVal == '' ? false : true;
+		// change input password box background [Start]
+		changeIptBoxColor(rslt,psdDivEle);
+		// change input password box background [End]
+		var psd_result = rslt ? psdVal : '';
+		// display to input of content of password  box at the sreen 
+		$("#psd").val(psd_result);
+	}
+}
+
+/**
+ * Change Input Box Background
+ * Param Flag (Result Mark)
+ * Param DivElement (Current Input Box Element)
+ */
+ function changeIptBoxColor(Flag,DivElement){
+	 if (Flag) {
+			DivElement.removeClass(" has-error");
+			DivElement.addClass(" has-success");
+		} else {
+			DivElement.removeClass(" has-success");
+			DivElement.addClass(" has-error");
+		}
+}
+</script>
+<!-- Myself Define Js Section [End]-->
+
+<body>
+	<div>
+	<!-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)-->
+		<!-- Company Show Of Content [Start]-->
+		<div class="col-lg-3 col-md-3 col-sm-3">
+			<div class="panel panel-group panel-primary ">
+				<!-- Advice Bar [Start] -->
+				<div class="panel-heading">Advice</div>
+				<ul class="list-group">
+					<li class="list-group-item"><a href="#">Advice Content One</a></li>
+					<li class="list-group-item"><a href="#">Advice Content Two</a></li>
+					<li class="list-group-item"><a href="#">Advice Content Three</a></li>
+					<li class="list-group-item"><a href="#">Advice Content Four</a></li>
+					<li class="list-group-item"><a href="#">Advice Content Five</a></li>
+				</ul>
+				<!-- Advice Bar [End] -->
+			</div>
+			<div class="panel panel-group panel-info">
+				<!-- Company Resume Bar [Start] -->
+				<div class="panel-heading">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Company Resume</a>
+				</div>
+				<div id="collapseOne" class="panel-body panel-collapse collapse">
+					Company Resume Content
+				</div>
+				<!-- Company Resume Bar [End] -->
+			</div>
+			
+		</div>
+		<!-- Company Show Of Content [End]-->
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+		<!-- Image Area [Start] -->
+		<div class="col-lg-4 col-md-4 col-sm-4">
+		<div class="panel panel-primary">
+		The Picture Show Area
+		</div>
+		<img alt="" src="" height="400px">
+		
+		</div>
+		<!-- Image Area [End] -->
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+		</div>
+		<!-- HTML Right Layout [Start] -->
+		<div class="col-lg-3 col-md-3 col-sm-3 ">
+		<!-- Templet Area [Start] -->
+			<div class="dropdown dropdown-info" style="float:right">
+				<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
+					Templet Url
+					<span class="caret"></span>
+				</button>
+				<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background:yellow;">
+					<li><a data-target="#" href="./login_model.html">Login</a></li>
+					<li class="divider"></li>
+					<li><a data-target="#" href="./search_model.html">Search</a></li>
+					<li class="divider"></li>
+					<li><a data-target="#" href="./registered_model.html">Registered</a></li>
+				</ul>
+			</div>
+			<!-- Templet Area [End] -->
+			<div style="padding-top:100px;padding-right:0px;">
+				<!-- From [Start]-->
+				<form class="bs-example bs-example-form form-group" action="" role="form">
+					<!-- Login Mark Start-->
+					<div style="padding:0px 0px 10px 80px;">
+						<h2><strong>Login</strong></h2>
+					</div>
+					<!-- Login Mark End-->
+					<!-- Input Account [Start]-->
+					<div class="input-group row input-group-lg from-group" id="div_account">
+						<span class="input-group-addon" style="width:115px;">Account</span>
+						<input type="text" class="form-control" onblur="inputBlur(1)" id="account">
+					</div>
+					<!-- Input Account [End]-->
+					<br/>
+					<!-- Input Password [Start] -->
+					<div class="input-group row input-group-lg" id="div_psd">
+						<span class="input-group-addon" style="width:115px;">Password</span>
+						<input type="password" class="form-control" onblur="inputBlur(2)" id="psd">
+					</div>
+					<!-- Input Password [End] -->
+					<br/>
+									<!-- Login Button [Start] -->
+					<div class="btn-group btn-group-lg row">
+						<button type="submit" class="btn btn-primary" data-toggle="submit">Login</button>
+					<!-- Login Button [End] -->
+					<!-- Reset Button [Start] -->
+						<button type="reset" class="btn btn-default" data-toggle="reset">Reset</button>
+					</div>
+					<!-- Reset Button [End] -->
+				</form>
+				<!-- From [End] -->
+			</div>
+		</div>
+		<!-- HTML Right Layout [End] -->
+	</div>
+</body>
+</html>
