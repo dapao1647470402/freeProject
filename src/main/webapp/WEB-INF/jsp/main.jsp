@@ -44,7 +44,7 @@
 </head>
 <body class="padding:50px;50px;50px;50px;">
 	<div class="col-lg-1">
-		<c:import url="<%=request.getContextPath() %>/"/>
+		<c:import url="../template/menu.jsp"/>
 	</div>
 	<!-- Page Content Area[Start] -->
 	<div class="col-lg-11">
