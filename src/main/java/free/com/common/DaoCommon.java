@@ -1,11 +1,16 @@
 package free.com.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DaoCommon {
+
+	private static final Map<String, Object> resultMap = new HashMap<String, Object>();
 
 	public static Session sqlSession;
 
@@ -41,5 +46,9 @@ public class DaoCommon {
 		log.info("******Current Action:" + "Close SqlSession******");
 		sqlSession.close();
 		log.info("******Current SqlSession Status:" + sqlSession + "******");
+	}
+
+	public static final Map<String, Object> getMap() {
+		return resultMap;
 	}
 }

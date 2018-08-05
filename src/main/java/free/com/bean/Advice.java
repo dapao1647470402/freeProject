@@ -3,10 +3,21 @@ package free.com.bean;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity(name = "t_advice")
 public class Advice {
 	public Advice() {
 	}
+
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private String id;
 
 	@Column(name = "advice_content")
 	private String adviceContent;
@@ -168,6 +179,21 @@ public class Advice {
 	 */
 	public void setLockVersion(String lockVersion) {
 		this.lockVersion = lockVersion;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

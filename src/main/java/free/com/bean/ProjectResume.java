@@ -3,10 +3,21 @@ package free.com.bean;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity(name = "t_project_resume")
 public class ProjectResume {
 	public ProjectResume() {
 	}
+
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	private String id;
 
 	@Column(name = "resume_content")
 	private String resumeContent;
@@ -34,6 +45,21 @@ public class ProjectResume {
 
 	@Column(name = "lock_version")
 	private String lockVersion;
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the resumeContent
