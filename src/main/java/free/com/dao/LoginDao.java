@@ -17,11 +17,11 @@ public class LoginDao {
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> init() {
 		List<Advice> adviceResult = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_ADVICE")
-				.addEntity(Advice.class).list();
+				.addEntity(Advice.class).setMaxResults(2).list();
 		List<Image> imageResult = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_IMAGE").addEntity(Image.class)
 				.list();
 		List<ProjectResume> pjResume = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_PROJECT_RESUME")
-				.addEntity(ProjectResume.class).list();
+				.addEntity(ProjectResume.class).setMaxResults(1).list();
 		Map<String, Object> map = DaoCommon.getMap();
 		map.put("adviceResult", adviceResult);
 		map.put("imageResult", imageResult);
