@@ -1,3 +1,9 @@
 a {
 	color: #48494a;
 }
+
+.content-bottom-area {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
