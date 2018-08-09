@@ -1,9 +1,9 @@
 package free.com.service;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import free.com.dao.LoginDao;
@@ -11,13 +11,11 @@ import free.com.dao.LoginDao;
 @Service
 public class LoginService {
 
-	@Autowired
+	@Resource(name = "loginDao")
 	private LoginDao dao;
 
 	public Map<String, Object> init() {
-		Map<String, Object> initMap = new HashMap<String, Object>();
-		dao.init();
-		return initMap;
+		return dao.init();
 	}
 
 }

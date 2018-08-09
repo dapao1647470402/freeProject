@@ -12,16 +12,14 @@ public class CommonConstants {
 
 	public static final String LOGIN_STATUS = "loginStatus";
 
-
-
 	private CommonConstants() {
 
 	}
 
 	public static final class loginStatus {
 		private loginStatus() {
-			// TODO 自動生成されたコンストラクター・スタブ
 		}
+
 		public static final String INIT = "init";
 		public static final String LOGIN = "login";
 		public static final String LOGOUT = "logout";

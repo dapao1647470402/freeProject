@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -110,14 +111,10 @@
 				<!-- Advice Bar [Start] -->
 				<div class="panel-heading">Advice</div>
 				<ul class="list-group">
-					<li class="list-group-item"><a href="#">Advice Content One</a></li>
-					<li class="list-group-item"><a href="#">Advice Content Two</a></li>
-					<li class="list-group-item"><a href="#">Advice Content
-							Three</a></li>
-					<li class="list-group-item"><a href="#">Advice Content
-							Four</a></li>
-					<li class="list-group-item"><a href="#">Advice Content
-							Five</a></li>
+				<c:forEach items="${initContent.adviceResult}" var="advice" varStatus="advIndex">
+					<li class="list-group-item"><a href="${advice.adviceUrl}">${advice.adviceContent}</a></li>
+				</c:forEach>
+					
 				</ul>
 				<!-- Advice Bar [End] -->
 			</div>
@@ -128,7 +125,7 @@
 						href="#collapseOne">Free Project(Resume)</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
-					${projectResume}</div>
+					${initContent.pjResume.get(0).resumeContent}</div>
 				<!-- Company Resume Bar [End] -->
 			</div>
 
@@ -138,31 +135,41 @@
 		<!-- Image Area [Start] -->
 		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 20px;border-color:black;border-weight:">
 			<div class="panel panel-primary">The Picture Show Area</div>
-
 			<div id="pictureShowArea" class="carousel slide" style="border-color: #575f5b;border-style: outset;border-style: solid dotted;border-width: thick;dashed double;">
 				<!-- 轮播（Carousel）指标 -->
 				<ol class="carousel-indicators">
-					<li data-target="#pictureShowArea" data-slide-to="0" class="active"></li>
-					<li data-target="#pictureShowArea" data-slide-to="1"></li>
-					<li data-target="#pictureShowArea" data-slide-to="2"></li>
+				<c:forEach items="${initContent.imageResult}" varStatus="imageIndex">
+					<c:choose>
+						<c:when test="${imageIndex.index == 1}">
+							<li data-target="#pictureShowArea" data-slide-to="${imageIndex.index}" class="active"></li>
+						</c:when>
+						<c:otherwise>
+							<li data-target="#pictureShowArea" data-slide-to="${imageIndex.index}"></li>
+						</c:otherwise>
+					</c:choose>
+					
+				</c:forEach>
 				</ol>
 				<!-- 轮播（Carousel）项目 -->
 				<div class="carousel-inner">
-					<div class="item active">
-						<img alt="" src="<%=request.getContextPath()%>/image/1.jpg"
-							height="350" class="col-lg-12 col-md-12 col-sm-12" />
-						<div class="carousel-caption">标题 1</div>
-					</div>
-					<div class="item">
-						<img alt="" src="<%=request.getContextPath()%>/image/2.jpg"
-							height="350" class="col-lg-12 col-md-12 col-sm-12" />
-						<div class="carousel-caption">标题 2</div>
-					</div>
-					<div class="item">
-						<img alt="" src="<%=request.getContextPath()%>/image/3.jpg"
-							height="350" class="col-lg-12 col-md-12 col-sm-12" />
-						<div class="carousel-caption">标题 3</div>
-					</div>
+					<c:forEach items="${initContent.imageResult}" var="image" varStatus="imageIndex">
+						<c:choose>
+							<c:when test="${imageIndex.index == 0}">
+								<div class="item active">
+									<img alt="" src="${image.imgLocationAft}"
+										height="350" class="col-lg-12 col-md-12 col-sm-12" />
+									<div class="carousel-caption"></div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="item">
+									<img alt="" src="${image.imgLocationAft}"
+										height="350" class="col-lg-12 col-md-12 col-sm-12" />
+									<div class="carousel-caption"></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
 				</div>
 				<!-- 轮播（Carousel）导航 -->
 				<a class="left carousel-control" href="#pictureShowArea" role="button"

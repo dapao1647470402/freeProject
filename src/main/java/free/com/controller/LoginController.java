@@ -1,5 +1,7 @@
 package free.com.controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -19,9 +21,10 @@ public class LoginController {
 
 	@RequestMapping("init")
 	public String init(Model model) {
-		service.init();
+		Map<String, Object> initInfo = service.init();
 		model.addAttribute(CommonConstants.LOGIN_STATUS, CommonConstants.loginStatus.INIT);
-		model.addAttribute("projectResume", "............................");
+		initInfo.get("adviceResult");
+		model.addAttribute("initContent", initInfo);
 		return "login";
 	}
 
