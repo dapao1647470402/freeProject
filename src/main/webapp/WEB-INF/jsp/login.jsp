@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page isELIgnored="false"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +9,8 @@
 <title>Welcome to Free Project!</title>
 </head>
 
-<!-- include Js and Css and so on of BootStrap file [Start]-->
+<!-- include Js and Css and so on of BootStrap file [Start]-->  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript"
@@ -38,9 +39,9 @@
 	}
 
 	// pictureShowArea paly configure
-	$(function(){
+	$(function() {
 		$('#pictureShowArea').carousel({
-		    interval: 2000
+			interval : 2000
 		})
 	});
 
@@ -111,10 +112,11 @@
 				<!-- Advice Bar [Start] -->
 				<div class="panel-heading">Advice</div>
 				<ul class="list-group">
-				<c:forEach items="${initContent.adviceResult}" var="advice" varStatus="advIndex">
-					<li class="list-group-item"><a href="${advice.adviceUrl}">${advice.adviceContent}</a></li>
-				</c:forEach>
-					
+					<c:forEach items="${initContent.adviceResult}" var="advice"
+						varStatus="advIndex">
+						<li class="list-group-item"><a href="${advice.adviceUrl}">${advice.adviceContent}</a></li>
+					</c:forEach>
+
 				</ul>
 				<!-- Advice Bar [End] -->
 			</div>
@@ -133,38 +135,44 @@
 		<!-- Company Show Of Content [End]-->
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 		<!-- Image Area [Start] -->
-		<div class="col-lg-4 col-md-4 col-sm-4" style="padding-top: 20px;border-color:black;border-weight:">
+		<div class="col-lg-4 col-md-4 col-sm-4"
+			style="padding-top: 20px; border-color: black; border-weight:">
 			<div class="panel panel-primary">The Picture Show Area</div>
-			<div id="pictureShowArea" class="carousel slide" style="border-color: #575f5b;border-style: outset;border-style: solid dotted;border-width: thick;dashed double;">
+			<div id="pictureShowArea" class="carousel slide"
+				style="border-color: #575f5b; border-style: outset; border-style: solid dotted; border-width: thick;dashed double;">
 				<!-- 轮播（Carousel）指标 -->
 				<ol class="carousel-indicators">
-				<c:forEach items="${initContent.imageResult}" varStatus="imageIndex">
-					<c:choose>
-						<c:when test="${imageIndex.index == 1}">
-							<li data-target="#pictureShowArea" data-slide-to="${imageIndex.index}" class="active"></li>
-						</c:when>
-						<c:otherwise>
-							<li data-target="#pictureShowArea" data-slide-to="${imageIndex.index}"></li>
-						</c:otherwise>
-					</c:choose>
-					
-				</c:forEach>
+					<c:forEach items="${initContent.imageResult}"
+						varStatus="imageIndex">
+						<c:choose>
+							<c:when test="${imageIndex.index == 1}">
+								<li data-target="#pictureShowArea"
+									data-slide-to="${imageIndex.index}" class="active"></li>
+							</c:when>
+							<c:otherwise>
+								<li data-target="#pictureShowArea"
+									data-slide-to="${imageIndex.index}"></li>
+							</c:otherwise>
+						</c:choose>
+
+					</c:forEach>
 				</ol>
 				<!-- 轮播（Carousel）项目 -->
 				<div class="carousel-inner">
-					<c:forEach items="${initContent.imageResult}" var="image" varStatus="imageIndex">
+					<c:forEach items="${initContent.imageResult}" var="image"
+						varStatus="imageIndex">
 						<c:choose>
 							<c:when test="${imageIndex.index == 0}">
 								<div class="item active">
-									<img alt="" src="${image.imgLocationAft}"
-										height="350" class="col-lg-12 col-md-12 col-sm-12" />
+									<img alt="" src="${image.imgLocationAft}" height="500"
+										class="col-lg-12 col-md-12 col-sm-12" />
 									<div class="carousel-caption"></div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="item">
-									<img alt="" src="${image.imgLocationAft}"
-										height="350" class="col-lg-12 col-md-12 col-sm-12" />
+									<img alt="" src="${image.imgLocationAft}" height="400"
+										class="col-lg-12 col-md-12 col-sm-12" />
 									<div class="carousel-caption"></div>
 								</div>
 							</c:otherwise>
@@ -172,12 +180,12 @@
 					</c:forEach>
 				</div>
 				<!-- 轮播（Carousel）导航 -->
-				<a class="left carousel-control" href="#pictureShowArea" role="button"
-					data-slide="prev"> <span
+				<a class="left carousel-control" href="#pictureShowArea"
+					role="button" data-slide="prev"> <span
 					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					<span class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#pictureShowArea" role="button"
-					data-slide="next"> <span
+				</a> <a class="right carousel-control" href="#pictureShowArea"
+					role="button" data-slide="next"> <span
 					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					<span class="sr-only">Next</span>
 				</a>
@@ -205,8 +213,16 @@
 			</div>
 			<!-- Templet Area [End] -->
 			<div style="padding-top: 100px; padding-right: 0px;">
+				<div class="alert alert-warning alert-dismissable"
+					style="background-color: #ffd6009c;display:<c:if test="${loginFailure != 0 }">none</c:if>">
+					<span class="label label-warning" >Please check to your
+						account or password!
+						<span aria-hidden="true" data-dismiss="alert">&times;</span>
+					</span>
+				</div>
 				<!-- From [Start]-->
-				<form class="bs-example bs-example-form form-group" action=""
+				<form class="bs-example bs-example-form form-group"
+					action="<%=request.getContextPath()%>/login/login" method="post"
 					role="form">
 					<!-- Login Mark Start-->
 					<div style="padding: 0px 0px 10px 80px;">
@@ -220,7 +236,7 @@
 						id="div_account">
 						<span class="input-group-addon" style="width: 115px;">Account</span>
 						<input type="text" class="form-control" onblur="inputBlur(1)"
-							id="account">
+							id="account" name="account">
 					</div>
 					<!-- Input Account [End]-->
 					<br />
@@ -228,7 +244,7 @@
 					<div class="input-group row input-group-lg" id="div_psd">
 						<span class="input-group-addon" style="width: 115px;">Password</span>
 						<input type="password" class="form-control" onblur="inputBlur(2)"
-							id="psd">
+							id="psd" name="password">
 					</div>
 					<!-- Input Password [End] -->
 					<br />
