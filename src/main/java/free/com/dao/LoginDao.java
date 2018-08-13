@@ -3,6 +3,7 @@ package free.com.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 
 import free.com.bean.Advice;
@@ -29,8 +30,12 @@ public class LoginDao {
 		return map;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<User> login(User user) {
-		return DaoCommon.sqlSession.createSQLQuery("select * form t_user").list();
+		SQLQuery sql = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_USER WHERE ACCOUNT = ? AND PSD = ?");
+		sql.setString(0, user.getAccount());
+		sql.setString(1, user.getPassword());
+		return sql.addEntity(User.class).list();
 	}
 
 }
