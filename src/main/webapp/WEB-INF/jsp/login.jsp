@@ -200,15 +200,13 @@
 			<div class="dropdown dropdown-info" style="float: right">
 				<button type="button" class="btn btn-info" data-toggle="dropdown"
 					value="">
-					Templet Url <span class="caret"></span>
+					More<span class="caret"></span>
 				</button>
 				<ul id="dropdown-selected" class="dropdown-menu" role="menu"
 					aria-labelledby="dLabel" style="background: yellow;">
-					<li><a data-target="#" href="./login_model.html">Login</a></li>
+					<li><a data-target="#" href="<%=request.getContextPath()%>/login/init">Login</a></li>
 					<li class="divider"></li>
-					<li><a data-target="#" href="./search_model.html">Search</a></li>
-					<li class="divider"></li>
-					<li><a data-target="#" href="./registered_model.html">Registered</a></li>
+					<li><a data-target="#" href="<%=request.getContextPath()%>/register/init">Registered</a></li>
 				</ul>
 			</div>
 			<!-- Templet Area [End] -->

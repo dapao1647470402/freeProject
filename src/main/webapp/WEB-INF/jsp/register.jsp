@@ -284,14 +284,13 @@
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<div class="dropdown dropdown-info">
 			<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
-				Templet Url
+				More
 				<span class="caret"></span>
 			</button>
 			<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background:yellow;">
-				<li><a data-target="#" href="<%=request.getContextPath() %>>/login/init">Login</a></li>
+				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">Login</a></li>
 				<li class="divider"></li>
-				<li class="divider"></li>
-				<li><a data-target="#" href="<%=request.getContextPath() %>>/register/init">Registered</a></li>
+				<li><a data-target="#" href="<%=request.getContextPath() %>/register/init">Registered</a></li>
 			</ul>
 		</div>
 	</div>
