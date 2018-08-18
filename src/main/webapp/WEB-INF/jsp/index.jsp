@@ -1,14 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
 <meta charset="UTF-8">
 <title>Search Templet (Bootstrap)</title>
-<script type="text/javascript" src="./bootstrap-js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="./bootstrap-js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="./bootstrap-js/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./bootstrap-js/bootstrap-datetimepicker.min.css">
-<script type="text/javascript" src="./bootstrap-js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- JSP Configure[Start] -->
+<%@ page isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- JSP Configure[End] -->
+
+<!-- Myself define Css[Start] -->
+<style type="text/css">
+.dropdown-menu {
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #000;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(68, 45, 45, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(243, 16, 16, 0.175);
+	width: auto;
+}
+</style>
+<!-- Myself define Css[End] -->
+
 <!-- Myself define JS [Start] -->
 <script type="text/javascript">
 	/**
@@ -196,10 +223,8 @@
 	}
 </script>
 <!-- Myself define JS [End] -->
-</head>
-<body>
-	<div style="padding: 30px;">
-		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+	<div style="padding: 10px;">
+		
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 			<!-- Search condition area [Start] -->
 			<div>
@@ -316,18 +341,7 @@
 			</div>
 		</div>
 		<!-- Search result area [End] -->
-		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-			<!-- Templet Url [Start] -->
-			<div class="dropdown dropdown-info">
-				<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
-					网站建设意见收集 <span class="caret"></span>
-				</button>
-				<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background: yellow;">
-					<li><a data-target="#" href="./login_model.html">Join</a></li>
-				</ul>
-			</div>
-			<!-- Templet Url [End] -->
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-right:20px">
+			<c:import url="../template/commonAction.jsp"/>
 		</div>
 	</div>
-</body>
-</html>
