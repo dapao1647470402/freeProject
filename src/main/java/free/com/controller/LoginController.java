@@ -1,5 +1,7 @@
 package free.com.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +37,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("login")
-	public String login(HttpSession session, User user, RedirectAttributes redirectModel) {
+	public String login(HttpSession session, User user, RedirectAttributes redirectModel, Model model) {
 		if (StringUtils.isEmpty(user.getAccount()) || StringUtils.isEmpty(user.getPassword())) {
 			LoggerCommon.printLog("Please Again Login causer By Not input Account Or Password",
 					SystemEnum.LOG_LEVEL_DEBUG);
@@ -50,7 +52,12 @@ public class LoginController {
 			redirectModel.addFlashAttribute("loginFailure", CommonConstants.FAILURE);
 			return "redirect:/login/init";
 		} else {
-			session.setAttribute(CommonConstants.USER, userInfo.get(0).getUserId());
+			if (StringUtils.isEmpty(session.getAttribute(CommonConstants.USER))
+					&& StringUtils.isEmpty(session.getAttribute(CommonConstants.LOGIN_TIME))) {
+				session.setAttribute(CommonConstants.USER, userInfo.get(0).getUserId());
+				session.setAttribute(CommonConstants.LOGIN_TIME,
+						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss:sss").format(new Date()));
+			}
 			return "forward:/main/init";
 		}
 		return null;
