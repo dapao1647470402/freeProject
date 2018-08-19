@@ -35,6 +35,10 @@
 	window.STRING_SUCCESS = "success";
 	window.STRING_FAULT = "fault";
 	window.currentPageId = "";
+	window.SYSTIME = "";
+	window.LOGIN_TIME = new Date();
+	window.LOGOUT_TIME = "";
+	window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
 	
 	/**
 	 * Login After Join default join to Page[20180818 Cao]
@@ -42,6 +46,7 @@
 	 $(function(){
 		 $('.underNavBar').load('<%=request.getContextPath()%>/index/init');
 		 window.currentPageId = 'index';
+		 $("[data-toggle='tooltip']").tooltip();
 	});
 
 	/**
@@ -56,6 +61,34 @@
 			console.log(pageId);
 			window.currentPageId = pageId;
 			$('.underNavBar').load('<%=request.getContextPath()%>/'+ pageId + '/init');
+		}
+	}
+	
+	/**
+	 * get time of System 
+	 * param : docId (current document elements)
+	 * param : format (date format)
+	 */
+	 function getSysTime(docId, format) {
+		window.SYSTIME = new Date();
+		var date = window.SYSTIME;
+		var y = date.getFullYear();     //获取年份  
+		var m =date.getMonth()+1;   //获取月份  返回0-11  
+		var d = date.getDate(); // 获取日  
+		var w = date.getDay();   //获取星期几  返回0-6   (0=星期天) 
+		var ww = ' 星期'+'日一二三四五六'.charAt(new Date().getDay()) ;//星期几
+		var h = date.getHours();  //时
+		var minute = date.getMinutes()  //分
+		var s = date.getSeconds(); //秒
+		var sss = date.getMilliseconds() ; //毫秒
+		if (docId && !format) {
+			$(docId).html(y + "年" + m + "月" + d + "日" + ww + h + "：" + minute + ":" + s + ":" + sss);
+		} else if (docId && format){
+			if (format == (window.DATE_FROMAT_YYYYMMDDHHMMSS) ) {
+				$(docId).html(y + "/" + m + "/" + d + ww + h + ":" + minute + ":" + s + ":" + sss);
+			} else {
+				
+			}
 		}
 	}
 </script>
@@ -163,7 +196,8 @@
 		<!-- Bottom Button Area[Start] -->
 		<div class="content-bottom-area">
 			<div style="padding-right: 10px; padding-bottom: 5px;">
-				<button id="backBtn" class="btn btn-primary" type="button">Back</button>
+				<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+					title="点击返回" >Back</button>
 			</div>
 		</div>
 	<!-- Bottom Button Area[End] -->
