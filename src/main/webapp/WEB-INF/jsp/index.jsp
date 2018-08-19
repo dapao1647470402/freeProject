@@ -37,7 +37,7 @@
 									$("#loginDurationFormat").html("minute-seconds");
 									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (minDefference * 60)) + "%");
 								} else if (hourDefference > 0) {
-									$("#loginDuration").html(hourDefference + "h-" + parseInt(minDefference - (hourDefference * 60)) + "min-" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "s");
+									$("#loginDuration").html(hourDefference + "h" + parseInt(minDefference - (hourDefference * 60)) + "min-" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "s");
 									$("#loginDurationFormat").html("hour-minute-seconds");
 									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "%");
 								} else {
@@ -46,8 +46,8 @@
 									$("#loginDurationForProgress").attr("style", "width:" + secondDefference + "%");
 								}
 								// if dyration is 3
-								if (parseInt(hourDefference) == 3) {
-									$("loginDurationWarn").attr("style", "display");
+								if (parseInt(hourDefference) >= 3) {
+									$("#loginDurationWarn").attr("style", "display");
 								}
 							}
 									,1);
