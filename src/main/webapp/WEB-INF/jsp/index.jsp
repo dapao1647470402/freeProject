@@ -22,9 +22,33 @@
 									"getSysTime('#sysTime',window.DATE_FROMAT_YYYYMMDDHHMMSS)",
 									1);
 							getTimeDifferenceByIndexInterval = setInterval(function(){
-								var minDefference = parseInt(window.SYSTIME - window.LOGIN_TIME)/1000;
-								$("#loginDurationForProgress").attr("style", "width:" + minDefference + "%")
+								// second
+								var secondDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000);
 								console.log(minDefference);
+								// minute
+								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000/60);
+								// hour
+								var hourDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/ 1000 / 60 / 60);
+								
+								// TODO var duration = parseInt((minDefference / 180)*100);
+								
+								if (hourDefference == 0 && minDefference > 0) {
+									$("#loginDuration").html(minDefference + "min-" + parseInt(secondDefference - (minDefference * 60)) + "s");
+									$("#loginDurationFormat").html("minute-seconds");
+									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (minDefference * 60)) + "%");
+								} else if (hourDefference > 0) {
+									$("#loginDuration").html(hourDefference + "h-" + parseInt(minDefference - (hourDefference * 60)) + "min-" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "s");
+									$("#loginDurationFormat").html("hour-minute-seconds");
+									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "%");
+								} else {
+									$("#loginDuration").html(secondDefference + "s");
+									$("#loginDurationFormat").html("seconds");
+									$("#loginDurationForProgress").attr("style", "width:" + secondDefference + "%");
+								}
+								// if dyration is 3
+								if (parseInt(hourDefference) == 3) {
+									$("loginDurationWarn").attr("style", "display");
+								}
 							}
 									,1);
 						});
@@ -77,7 +101,7 @@
 				欢迎登陆Free Project！ <small>这是一个放飞自由的地方。</small>
 			</h3>
 			<p>
-				<a class="btn btn-primary btn-lg" role="button"> 学习更多</a>
+				<a class="btn btn-primary btn-lg" role="button"> 更多功能敬请期待!</a>
 			</p>
 		</div>
 		<!-- index welcome information [End] -->
@@ -119,10 +143,23 @@
 							</h4>
 						</div>
 						<div class="modal-body well">
-							<label></label>
+							<div class="alert alert-warning alert-dismissable" style="display:none" id="loginDurationWarn">
+								<span class="label label-warning">警告</span>
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								上网时间过长会危害您的身体,请注意休息.
+							</div>
+							<h4>
+								科学上网时间 <span class="label label-default">3小时</span>
+							</h4>
+							<h4>
+								<small>登录时间:</small><span class="label label-primary"><%=session.getAttribute("loginTime")%></span>
+							</h4>
+							<h4>
+								<small>上网时长:</small><span class="label label-info" id="loginDuration"></span><small id="loginDurationFormat"></small>
+							</h4>
 							<div class="progress progress-striped">
-								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" id="loginDurationForProgress"
-									aria-valuemax="100">
+								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+									id="loginDurationForProgress" aria-valuemax="180">
 									<span class="sr-only">90% 完成（成功）</span>
 								</div>
 							</div>

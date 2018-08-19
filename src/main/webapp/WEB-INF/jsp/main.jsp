@@ -36,7 +36,7 @@
 	window.STRING_FAULT = "fault";
 	window.currentPageId = "";
 	window.SYSTIME = "";
-	window.LOGIN_TIME = new Date();
+	window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 	window.LOGOUT_TIME = "";
 	window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
 	
@@ -47,8 +47,14 @@
 		 $('.underNavBar').load('<%=request.getContextPath()%>/index/init');
 		 window.currentPageId = 'index';
 		 $("[data-toggle='tooltip']").tooltip();
+		 setSearchDisabled();
+		 $("#search").attr("disabled", "true");
 	});
-
+	
+	function setSearchDisabled() {
+		
+	}
+	
 	/**
 	 * pageId : current page Id
 	 * actionId : current action Id 
@@ -74,12 +80,27 @@
 		var date = window.SYSTIME;
 		var y = date.getFullYear();     //获取年份  
 		var m =date.getMonth()+1;   //获取月份  返回0-11  
+		if (m < 10) {
+			m = "0" + m;
+		}
 		var d = date.getDate(); // 获取日  
+		if (d < 10) {
+			d = "0" + d;
+		}
 		var w = date.getDay();   //获取星期几  返回0-6   (0=星期天) 
 		var ww = ' 星期'+'日一二三四五六'.charAt(new Date().getDay()) ;//星期几
 		var h = date.getHours();  //时
+		if (h < 10) {
+			h = "0" + h;
+		}
 		var minute = date.getMinutes()  //分
+		if (minute < 10) {
+			minute = "0" + minute;
+		}
 		var s = date.getSeconds(); //秒
+		if (s < 10) {
+			s = "0" + s;
+		}
 		var sss = date.getMilliseconds() ; //毫秒
 		if (docId && !format) {
 			$(docId).html(y + "年" + m + "月" + d + "日" + ww + h + "：" + minute + ":" + s + ":" + sss);
@@ -183,6 +204,7 @@
 			</div>
 			</nav>
 			<!-- Navigation Bar Area [End] -->
+		</div>
 	</div>
 	<!-- Page Header Area[End] -->
 	
