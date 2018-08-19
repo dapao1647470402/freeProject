@@ -26,24 +26,22 @@
 								var secondDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000);
 								console.log(minDefference);
 								// minute
-								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000/60);
+								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/ 1000 / 60);
 								// hour
 								var hourDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/ 1000 / 60 / 60);
-								
-								// TODO var duration = parseInt((minDefference / 180)*100);
+								// progress
+								var duration = parseInt((minDefference*100 / 180));
+								$("#loginDurationForProgress").attr("style", "width:" + duration + "%");
 								
 								if (hourDefference == 0 && minDefference > 0) {
 									$("#loginDuration").html(minDefference + "min-" + parseInt(secondDefference - (minDefference * 60)) + "s");
 									$("#loginDurationFormat").html("minute-seconds");
-									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (minDefference * 60)) + "%");
 								} else if (hourDefference > 0) {
-									$("#loginDuration").html(hourDefference + "h" + parseInt(minDefference - (hourDefference * 60)) + "min-" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "s");
+									$("#loginDuration").html(hourDefference + "h-" + parseInt(minDefference - (hourDefference * 60)) + "min-" + parseInt(secondDefference - (minDefference * 60)) + "s");
 									$("#loginDurationFormat").html("hour-minute-seconds");
-									$("#loginDurationForProgress").attr("style", "width:" + parseInt(secondDefference - (hourDefference * 60 * 60)) + "%");
 								} else {
 									$("#loginDuration").html(secondDefference + "s");
 									$("#loginDurationFormat").html("seconds");
-									$("#loginDurationForProgress").attr("style", "width:" + secondDefference + "%");
 								}
 								// if dyration is 3
 								if (parseInt(hourDefference) >= 3) {
