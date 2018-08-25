@@ -2,6 +2,7 @@
 <script type="text/javascript">
 </script>
 <!-- Define Myself JS [End] -->
+
 <!-- Define Style Css [Start]-->
 <style type="text/css">
 .dropdown-menu {
@@ -60,8 +61,8 @@
 	</button>
 	<div style="height:10px"></div>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		<li role="presentation" class="dropdown-header">资讯版块</li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="transitionHtml('news-001')">灵魂鸡汤</a></li>
+		<li role="presentation" class="dropdown-header">社交娱乐</li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="transitionHtml('sys0501')">(集"资"广"议")</a></li>
 		<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="transitionHtml('news-002')">游戏</a></li>
 		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">头条娱乐</a></li>
 		<li role="presentation" class="divider"></li>

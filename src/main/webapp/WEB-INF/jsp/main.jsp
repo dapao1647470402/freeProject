@@ -62,7 +62,7 @@
 	 */
 	function transitionHtml(pageId, actionId) {
 		if (actionId) {
-			$('.underNavBar').load('<%=request.getContextPath()%>/'+ pageId + '/' + actionId);
+			$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId);
 		} else {
 			console.log(pageId);
 			window.currentPageId = pageId;
@@ -172,7 +172,7 @@
 	<div>
 		<!-- import common Menu[Start] -->
 		<div class="col-lg-1" style="background: #fd9e10bf;">
-			<c:import url="../template/menu.jsp" />
+			<c:import url="template/menu.jsp" />
 		</div>
 		<!-- import common Menu[End] -->
 		<div class="col-lg-11" style="background: #fd9e10bf;">

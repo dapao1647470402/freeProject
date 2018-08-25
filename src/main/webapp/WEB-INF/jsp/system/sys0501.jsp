@@ -7,6 +7,7 @@
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- JSP Configure[End] -->
 
 <!-- Myself define Css[Start] -->
@@ -315,21 +316,35 @@
 					<table class="table table-condensed table-hover table-bordered">
 						<thead>
 							<tr>
-								<th>Title One</th>
-								<th>Title Two</th>
-								<th>Title Three</th>
-								<th>Title Four</th>
-								<th>Title Five</th>
+								<th>No.</th>
+								<th>账户名</th>
+								<th>角色</th>
+								<th>权限</th>
+								<th>注册时间</th>
+							</tr>
+							<tr>
+								<th colspan="2">画面权限</th>
+								<th colspan="3">子画面权限</th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${ sys0501From }" var="list" varStatus="listIndex">
 							<tr class="success">
-								<td>Content One</td>
-								<td>Content Two</td>
-								<td>Content Three</td>
-								<td>Content Four</td>
-								<td>Content Five</td>
+								<td>${ listIndex.index + 1 }</td>
+								<td>${ list.userAccount }</td>
+								<td>${ list.roleName }</td>
+								<td>${ list.authorityName }</td>
+								<td>
+								<fmt:formatDate value="${ list.userInsertDate }" timeStyle="yyyy/MM/dd"/>
+								</td>
 							</tr>
+							<c:forEach items="${ list.multipleData }" var="multipleData" varStatus="multiple">
+								<tr>	
+									<td colspan="2" rowspan="${fn:length(list.multipleData) }" align="center">${ multipleData.menuGroupName }</td>
+									<td colspan="3">${ multipleData.menuName }</td>
+								</tr>
+							</c:forEach>
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>

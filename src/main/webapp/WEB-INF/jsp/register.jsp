@@ -31,6 +31,7 @@
 	 */
 	window.errorMark = false;
 	window.errorStyle = "display:;padding:5px 15px 5px 15px;";
+	window.successStyle = "display:none";
 	window.EMPTY = "";
 
 	$(function(){
@@ -49,6 +50,51 @@
 			clearBtn:true,//清除按钮
 			forceParse: 0
 		});
+		document.getElementById("accountName").focus();
+
+		$("#accountName").bind("blur", function() {
+			accountNameCheck();
+		});
+		$("#accountNumber").bind("blur", function() {
+			accountNumberCheck();
+		});
+		$("#accountPassword").bind("blur", function() {
+			accountPasswordCheck();
+		});
+		$("#accountPassword2").bind("blur", function() {
+			accountPassword2Check();
+		});
+		var timeJq = $("#modifyPsdTime");
+		$("#modifyPsdTime").bind("keyup", function() {
+			var timeBackUp = timeJq.val().replace(/[^0-9]/g, window.EMPTY).trim();
+			timeJq.val(timeBackUp);
+			$("#errorByModifyPsdTime").attr("style", window.successStyle);
+		});
+		$("#modifyPsdTime").bind("focus", function() {
+			var timeBackUp = timeJq.val().replace(/[^0-9]/g, window.EMPTY).trim();
+			timeJq.val(timeBackUp);
+			$("#errorByModifyPsdTime").attr("style", window.successStyle);
+		});
+		$("#modifyPsdTime").bind("blur", function() {
+			var year = window.EMPTY;
+			if (timeJq.val() == window.EMPTY) {
+				return;
+			}
+			if (timeJq.val().length != 14 ) {
+				$("#errorByModifyPsdTime").attr("style", window.errorStyle);
+				$("#errorByModifyPsdTime").html("Please input to right update to password Time.");
+				$("#errorByModifyPsdTime").attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
+				timeJq.val(window.EMPTY);
+				window.errorMark = true;
+			} else {
+				window.errorMark = false;
+				$("#errorByModifyPsdTime").attr("style", window.successStyle);
+				var timeBackUp = timeJq.val().substring(0, 4) + "-" + timeJq.val().substring(4, 6) + "-" + timeJq.val().substring(6, 8) + " "
+					+ timeJq.val().substring(8, 10) + ":" + timeJq.val().substring(10, 12) + ":" + timeJq.val().substring(12, 14);
+				timeJq.val(timeBackUp);
+			}
+		});
+
 	});
 	/**
 	 * Diaolog display
@@ -89,10 +135,17 @@
 		var accountNameJq = $("#accountName").val();
 		var accountNameErrorJq = $("#errorByAccountName");
 		if (accountNameJq == null
-				|| accountNameJq == "") {
+				|| accountNameJq == window.EMPTY) {
 			accountNameErrorJq.attr("style", window.errorStyle);
 			accountNameErrorJq.html("Account name is required.");
 			window.errorMark = true;
+		} else if (!/^[A-Za-z0-9]{1,20}$/.test(accountNameJq)) {
+			accountNameErrorJq.attr("style", window.errorStyle);
+			accountNameErrorJq.html("Account name format is [A-Z a-z 0-9].");
+			window.errorMark = true;
+		} else {
+			window.errorMark = false;
+			accountNameErrorJq.attr("style", window.successStyle);
 		}
 	}
 
@@ -101,10 +154,17 @@
 		var accountNumberJq = $("#accountNumber").val();
 		var accountNunberErrorJq = $("#errorByAccountNumber");
 		if (accountNumberJq == null
-				|| accountNumberJq == "") {
+				|| accountNumberJq == window.EMPTY) {
 			accountNunberErrorJq.attr("style", window.errorStyle);
 			accountNunberErrorJq.html("Account number is required.");
 			window.errorMark = true;
+		} else if (/[^A-Za-z0-9\.\@]{1,15}$/.test(accountNumberJq)) {
+			accountNunberErrorJq.attr("style", window.errorStyle);
+			accountNunberErrorJq.html("Account number format is ./A-Z/a-z/1-9/ .");
+			window.errorMark = true;
+		} else {
+			window.errorMark = false;
+			accountNunberErrorJq.attr("style", window.successStyle);
 		}
 	}
 
@@ -113,22 +173,41 @@
 		var accountPasswordJq = $("#accountPassword").val();
 		var accountPasswordErrorJq = $("#errorByAccountPassword");
 		if (accountPasswordJq == null
-				|| accountPasswordJq == "") {
+				|| accountPasswordJq == window.EMPTY) {
 			accountPasswordErrorJq.attr("style", window.errorStyle);
 			accountPasswordErrorJq.html("Account Password is required.");
 			window.errorMark = true;
+		} else if (/[^A-Za-z0-9\.\@]{1,20}$/.test(accountPasswordJq)) {
+			accountPasswordErrorJq.attr("style", window.errorStyle);
+			accountPasswordErrorJq.html("Account name format is ./A-Z/a-z/1-9/ .");
+			window.errorMark = true;
+		} else {
+			window.errorMark = false;
+			accountPasswordErrorJq.attr("style", window.successStyle);
 		}
 	}
 
 	function accountPassword2Check() {
 		// Account Password2
-		var accountNumber2Jq = $("#accountPassword2").val();
-		var accountNunber2ErrorJq = $("#errorByAccountPassword2");
-		if (accountNumber2Jq == null
-				|| accountNumber2Jq == "") {
-			accountNunber2ErrorJq.attr("style", window.errorStyle);
-			accountNunber2ErrorJq.html("Please agin input password.");
+		var accountPassword2Jq = $("#accountPassword2").val();
+		var accountPassword2ErrorJq = $("#errorByAccountPassword2");
+		if (accountPassword2Jq == null
+				|| accountPassword2Jq == window.EMPTY) {
+			accountPassword2ErrorJq.attr("style", window.errorStyle);
+			accountPassword2ErrorJq.html("Please agin input password.");
 			window.errorMark = true;
+		} else if (/[^A-Za-z0-9\.\@]{1,20}$/.test(accountPassword2Jq)) {
+			accountPassword2ErrorJq.attr("style", window.errorStyle);
+			accountPassword2ErrorJq.html("Account name format is ./A-Z/a-z/1-9/ .");
+			window.errorMark = true;
+		} else if ($("#accountPassword").val() != accountPassword2Jq) {
+			accountPassword2ErrorJq.attr("style", window.errorStyle);
+			accountPassword2ErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
+			accountPassword2ErrorJq.html("confirm to whether input the same password .");
+			window.errorMark = true;
+		} else {
+			window.errorMark = false;
+			accountPassword2ErrorJq.attr("style", window.successStyle);
 		}
 	}
 
@@ -137,30 +216,36 @@
 		var modifyPsdTimeJq = $("#modifyPsdTime").val();
 		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime");
 		if (modifyPsdTimeJq == null
-				|| modifyPsdTimeJq == "") {
+				|| modifyPsdTimeJq == window.EMPTY) {
 			modifyPsdTimeErrorJq.attr("style", window.errorStyle);
 			modifyPsdTimeErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
 			modifyPsdTimeErrorJq.html("Please input next of modify to password time.");
 			window.errorMark = true;
+		} else {
+			window.errorMark = false;
+			modifyPsdTimeErrorJq.attr("style", window.successStyle);
 		}
 	}
 
+	/**
+	 * Clear Button Action
+	 */
 	function clearAction(obj){
 		// Account Name
 		var accountNameJq = $("#accountName").val(window.EMPTY);
-		var accountNameErrorJq = $("#errorByAccountName").attr("style", "display:none");
+		var accountNameErrorJq = $("#errorByAccountName").attr("style", window.successStyle);
 		// Account Number
 		var accountNumberJq = $("#accountNumber").val(window.EMPTY);
-		var accountNunberErrorJq = $("#errorByAccountNumber").attr("style", "display:none");
+		var accountNunberErrorJq = $("#errorByAccountNumber").attr("style", window.successStyle);
 		// Account Password
 		var accountPasswordJq = $("#accountPassword").val(window.EMPTY);
-		var accountPasswordErrorJq = $("#errorByAccountPassword").attr("style", "display:none");
+		var accountPasswordErrorJq = $("#errorByAccountPassword").attr("style", window.successStyle);
 		// Account Password2
 		$("#accountPassword2").val(window.EMPTY);
-		$("#errorByAccountPassword2").attr("style", "display:none");
+		$("#errorByAccountPassword2").attr("style", window.successStyle);
 		// Modefy Password Time
 		var modifyPsdTimeJq = $("#modifyPsdTime").val(window.EMPTY);
-		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime").attr("style", "display:none");
+		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime").attr("style", window.successStyle);
 	}
 </script>
 <!-- Myself define JS [End] -->
@@ -204,7 +289,7 @@
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Name:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountName" id="accountName" required="required" >
+					<input type="text" class="form-control" name="accountName" id="accountName" required="required" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountName" style="display:none"></div>
 			</div>
@@ -214,7 +299,7 @@
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Number:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountNumber" id="accountNumber">
+					<input type="text" class="form-control" name="accountNumber" id="accountNumber" maxlength="10">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountNumber" style="display:none"></div>
 			</div>
@@ -224,7 +309,7 @@
 			<div class="panel panel-danger panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Password:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountPassword" id="accountPassword">
+					<input type="text" class="form-control" name="accountPassword" id="accountPassword" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword" style="display:none"></div>
 			</div>
@@ -234,7 +319,7 @@
 			<div class="panel panel-warning panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;font-size: 14px;font-family:SimHei;"><label for="name">Please confirm your password:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountPassword2" id="accountPassword2">
+					<input type="text" class="form-control" name="accountPassword2" id="accountPassword2" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword2" style="display:none"></div>
 			</div>
@@ -284,11 +369,12 @@
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<div class="dropdown dropdown-info">
 			<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
-				More
+				Templet Url
 				<span class="caret"></span>
 			</button>
 			<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background:yellow;">
 				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">Login</a></li>
+				<li class="divider"></li>
 				<li class="divider"></li>
 				<li><a data-target="#" href="<%=request.getContextPath() %>/register/init">Registered</a></li>
 			</ul>

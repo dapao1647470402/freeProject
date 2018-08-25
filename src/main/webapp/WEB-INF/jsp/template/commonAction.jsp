@@ -6,9 +6,15 @@
 </style>
 <!-- Myself define Css[End] -->
 
+<!-- Myself define Js [Start] -->
+<script type="text/javascript">
+</script>
+<!-- Myself define Js [End] -->
+
 <!-- Template Url [Start] -->
 <div class="dropdown dropdown-info">
-	<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
+	<button type="button" class="btn btn-info" data-toggle="dropdown"
+			data-placement="right" title="请点击了解更多功能" data-animation="true">
 		Action <span class="caret"></span>
 	</button>
 	<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background: #1d2744;">
