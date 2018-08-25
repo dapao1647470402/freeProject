@@ -18,10 +18,10 @@ public class LoggerCommon {
 	public static final void printLog(String logInfo, SystemEnum... extra) {
 		if (extra != null && extra.length > 0) {
 			if (SystemEnum.LOG_LEVEL_DEBUG == extra[0]) {
-				log.debug(logInfo);
+				log.debug("☆☆☆☆☆" + logInfo + "☆☆☆☆☆");
 			}
 		} else {
-			log.info(logInfo);
+			log.info("■△◎◎" + logInfo + "◎◎△■");
 		}
 	}
 
