@@ -11,4 +11,6 @@ UPD_DATE DATETIME COMMENT 'Update Time',
 UPD_USER_ID VARCHAR(20) COMMENT 'Update User',
 UPD_PROGRAM VARCHAR(20) COMMENT 'Update Program',
 LOCK_VERSION BIGINT COMMENT 'Update Version'
-) COMMENT = 'project Resume or Business Resume';
+) CHARACTER SET UTF8 COMMENT = 'project Resume or Business Resume';
+
+INSERT INTO `freePj`.`t_project_resume` (`ID`, `RESUME_CONTENT`, `RESUME_URL`, `DIVIDE`, `INS_DATE`, `INS_USER_ID`, `INS_PROGRAM`, `UPD_DATE`, `UPD_USER_ID`, `UPD_PROGRAM`, `LOCK_VERSION`) VALUES ('1', '这是一个为各路程序爱好者实验的项目!', 'Wait', '32', '2018-08-21 21:35:24', NULL, NULL, NULL, NULL, NULL, NULL);
