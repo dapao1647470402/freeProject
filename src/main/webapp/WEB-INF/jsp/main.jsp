@@ -39,30 +39,83 @@
 	window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 	window.LOGOUT_TIME = "";
 	window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
+	window.CURRENT_ACTION_ID = "";
 	
 	/**
-	 * Login After Join default join to Page[20180818 Cao]
+	 * function : Login After Join to default Page
+	 * [20180818 Cao]
 	 */
 	 $(function(){
 		 $('.underNavBar').load('<%=request.getContextPath()%>/index/init');
 		 window.currentPageId = 'index';
 		 $("[data-toggle='tooltip']").tooltip();
 		 setSearchDisabled();
-		 $("#search").attr("disabled", "true");
+		 setUpdateDisabled();
+		 setRegisteredDisabled();
 	});
 	
+	/**
+	 * fuction : set to Search Button Disabled
+	 * [20180826 Cao]
+	 */
 	function setSearchDisabled() {
-		
+		$("#search").attr("style", "display:none");
 	}
 	
 	/**
+	 * fuction : set to Search Button Enabled
+	 * [20180826 Cao]
+	 */
+	function setSearchEnabled() {
+		$("#search").attr("style", "display");
+	}
+	
+	/**
+	 * fuction : set to Update Button Disabled
+	 * [20180826 Cao]
+	 */
+	function setUpdateDisabled() {
+		$("#update").attr("style", "display:none");
+	}
+	
+	/**
+	 * fuction : set to Update Button Enabled
+	 * [20180826 Cao]
+	 */
+	function setUpdateEnabled() {
+		$("#update").attr("style", "display");
+	}
+	
+	/**
+	 * fuction : set to Registered Button Disabled
+	 * [20180826 Cao]
+	 */
+	function setRegisteredDisabled() {
+		$("#registered").attr("style", "display:none");
+	}
+	
+	/**
+	 * fuction : set to Registered Button Enabled
+	 * [20180826 Cao]
+	 */
+	function setRegisteredEnabled() {
+		$("#registered").attr("style", "display");
+	}
+	
+	/**
+	 * function : jump to difference page
 	 * pageId : current page Id
 	 * actionId : current action Id 
 	 * [20180818 Cao]
 	 */
 	function transitionHtml(pageId, actionId) {
+		window.CURRENT_ACTION_ID = "#" + actionId;
+		if (!confirmTransitionHtml()) {
+			 return;
+		 }
 		if (actionId) {
 			$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId);
+			setActionMode(actionId);
 		} else {
 			console.log(pageId);
 			window.currentPageId = pageId;
@@ -71,9 +124,41 @@
 	}
 	
 	/**
-	 * get time of System 
+	 * function : set to action mode at the page 
+	 * clickElement : current button name of element
+	 * [20180826 Cao]
+	 */
+	function setActionMode(clickElement) {
+		if (!clickElement) {
+			return;
+		}
+		if (clickElement == "search") {
+			$("#actionMode").html("查询");
+		} else if (clickElement == "update") {
+			$("#actionMode").html("更新");
+		} else {
+			$("#actionMode").html("注册");
+		}
+	}
+	
+	/**
+	 * function : cofrim to do TransitionHtml
+	 * param : flag (cofrim condition)
+	 * [20180826 Cao]
+	 */
+	function confirmTransitionHtml(flag) {
+		if (!flag) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * function : get time of System 
 	 * param : docId (current document elements)
 	 * param : format (date format)
+	 * [20180826 Cao]
 	 */
 	 function getSysTime(docId, format) {
 		window.SYSTIME = new Date();
@@ -140,7 +225,7 @@
 	
 	.scrollbar {
 		width: 90%;
-		height: 550px;
+		height: 520px;
 		margin: 0 auto;
 	}
 	
@@ -162,7 +247,7 @@
 	}
 	.nav>li>a:focus, .nav>li>a:hover {
 		text-decoration: none;
-		background-color: #05c5f1d4;
+		background-color: #82878ed9;
 	}
 </style>
 </head>
@@ -188,16 +273,16 @@
 				<div class="collapse navbar-collapse" id="link-under-html">
 					<ul class="nav nav-justified">
 						<li class="active"><a onclick="transitionHtml(null,'search')" href="javascript:void(0)" id="search">
-							<label for="name" style="color: #e4ff00">Search</label>
-							<label style="color: #09f7d6b3">(检索)</label>
+							<label for="name" style="color: #e4ff00">查询模式</label>
+							<label style="color: #09f7d6b3">(Search)</label>
 						</a></li>
 						<li><a onclick="transitionHtml(null,'update')" href="#" id="update">
-							<label for="name" style="color: #e4ff00">Update</label>
-							<label style="color: #bc09f7b0">(更新)</label>
+							<label for="name" style="color: #e4ff00">更新模式</label>
+							<label style="color: #bc09f7b0">(Update)</label>
 						</a></li>
-						<li><a onclick="transitionHtml(null,'registered')" href="#">
-							<label for="name" style="color: #e4ff00">Registered</label>
-							<label style="color: #ff9900b3">(注册)</label>
+						<li><a onclick="transitionHtml(null,'registered')" href="#" id="registered">
+							<label for="name" style="color: #e4ff00">注册模式</label>
+							<label style="color: #ff9900b3">(Registered)</label>
 						</a></li>
 					</ul>
 				</div>
@@ -210,19 +295,29 @@
 	
 	<!-- Content Area[Start] -->
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-	<div class="col-lg-11">
+	<div class="col-lg-10">
 		<!-- Show Select to Html [Start] -->
 		<div class="underNavBar content content-1 scrollbar"></div>
 		<!-- Show Select to Html [End] -->
-
-		<!-- Bottom Button Area[Start] -->
-		<div class="content-right-area">
-			<div style="padding-right: 10px; padding-bottom: 5px;">
-				<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
-					title="点击返回" >Back</button>
-			</div>
+	</div>
+	
+	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+		<!-- Right Content Top Area[Start] -->
+		<div style="padding-top:1px;">
+			<span class="badge">
+			当前动作模式
+			</span>
 		</div>
-	<!-- Bottom Button Area[End] -->
+		<div style="padding-top:5px;padding-left:15px" data-toggle="tooltip" data-placement="bottom" title="请点击不同按钮来体验不一样的功能吧!">
+			<span class="label label-success" id="actionMode">初始化</span>
+		</div>
+		<!-- Right Content Top Area[End] -->
+		<!-- Bottom Button Area[Start] -->
+		<div style="padding-left: 15px; padding-bottom: 5px;position: fixed;bottom: 0px">
+			<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+				title="点击返回" >Back</button>
+		</div>
+		<!-- Bottom Button Area[End] -->
 	</div>
 	<!-- Content Area[End] -->
 	<!-- Page Content Area[End] -->

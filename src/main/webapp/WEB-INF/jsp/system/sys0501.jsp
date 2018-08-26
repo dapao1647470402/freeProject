@@ -187,6 +187,11 @@
 
 			forceParse : 0
 		});
+		
+		// All button enable
+		setSearchEnabled();
+		setUpdateEnabled();
+		setRegisteredEnabled();
 	});
 
 	/**
@@ -221,6 +226,15 @@
 
 	function switchPageBtn(positionNum, currentPageNum) {
 		switchNumsChangeColor(positionNum);
+	}
+	
+	/**
+	 * Method Rewrite
+	 * [2018/08/26 Cao]
+	 */
+	function confirmTransitionHtml(flag) {
+		console.log(window.CURRENT_ACTION_ID);
+		return false;
 	}
 </script>
 <!-- Myself define JS [End] -->
@@ -323,8 +337,8 @@
 								<th>注册时间</th>
 							</tr>
 							<tr>
-								<th colspan="2">画面权限</th>
-								<th colspan="3">子画面权限</th>
+								<th colspan="2">画面(拥有权)</th>
+								<th colspan="3">子画面(拥有权)</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -340,7 +354,7 @@
 							</tr>
 							<c:forEach items="${ list.multipleData }" var="multipleData" varStatus="multiple">
 								<tr>	
-									<td colspan="2" rowspan="${fn:length(list.multipleData) }" align="center">${ multipleData.menuGroupName }</td>
+									<td colspan="2"  align="center">${ multipleData.menuGroupName }</td>
 									<td colspan="3">${ multipleData.menuName }</td>
 								</tr>
 							</c:forEach>
