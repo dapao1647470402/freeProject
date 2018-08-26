@@ -216,7 +216,7 @@
 		<!-- Show Select to Html [End] -->
 
 		<!-- Bottom Button Area[Start] -->
-		<div class="content-bottom-area">
+		<div class="content-right-area">
 			<div style="padding-right: 10px; padding-bottom: 5px;">
 				<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
 					title="点击返回" >Back</button>
