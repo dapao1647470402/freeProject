@@ -1,5 +1,50 @@
 <!-- Define Myself JS [Start] -->
 <script type="text/javascript">
+	/**
+	  * 加载菜单	
+	 */
+	$(function() {
+		$.ajax({
+			url : "<%=request.getContextPath()%>/meun/init",
+			type : "post",
+			data : "",
+			cache : false,
+			// 设置 processData 选项为 false，防止自动转换数据格式。
+			processData: false,
+			// 同步加载数据。发送请求时锁住浏览器。需要锁定用户交互操作时使用同步方式。
+			async : false,
+			// 预期服务器返回的数据类型
+			dataType : "json",
+			success : function(msg){
+				setMenuContent(msg);
+			}
+		});
+	});
+	/**
+	  * 设置菜单内容	
+	 */
+	 function setMenuContent(msg) {
+		var htmlContent = window.EMPTY;
+		if (msg && msg.length > 0) {
+			for (var i = 0; i < msg.length; i++) {
+				htmlContent = window.EMPTY;
+				var MH = msg[i]["meun_header"];
+				if (MH) {
+					$("#menu").append("<li role='presentation' class='dropdown-header'>"+ MH +"</li>");
+				} else {
+					var MD = msg[i]["meun_detail"];
+					if (MD) {
+						var MDNO = msg[i]["meun_detail_no"];
+						var MD_NO = 'transitionHtml("'+MDNO+'")';
+						$("#menu").append("<li role='presentation'><a role='menuitem' tabindex='-1' href='#' onclick='" + MD_NO + "'>" + MD + "</a></li>");
+					} else {
+						$("#menu").append("<li role='presentation' class='divider'></li>");
+					}
+				}
+			}
+		}
+		
+	}
 </script>
 <!-- Define Myself JS [End] -->
 
@@ -52,23 +97,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <div class="dropdown " style="width: 100%;">
+	<!-- 菜单上部图片 -->
 	<div style="padding-top:1px">
-		<img alt="" src="<%=request.getContextPath() %>/image/1.jpg" width="100" height="22">
+		<a href="./login_model.html">
+			<img alt="" src="<%=request.getContextPath() %>/image/1.jpg" width="100" height="22">
+		</a>
 	</div>
+	<!-- 菜单按钮 -->
 	<button type="button" class="btn dropdown-toggle btn-primary" id="dropdownMenu1" data-toggle="dropdown"
 		style="width: 100px;margin-top:3px;">
 		<span class="create">Meun</span>
 	</button>
 	<div style="height:10px"></div>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		<li role="presentation" class="dropdown-header">社交娱乐</li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="transitionHtml('sys0501')">(集"资"广"议")</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="transitionHtml('news-002')">游戏</a></li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">头条娱乐</a></li>
-		<li role="presentation" class="divider"></li>
-		<li role="presentation" class="dropdown-header">下拉菜单标题</li>
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">分离的链接</a></li>
-		
-	</ul>
+	<!-- 菜单 -->
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="menu"></ul>
 </div>
 
