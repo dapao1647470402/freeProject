@@ -1,13 +1,14 @@
 package free.com.utils;
 
 public class CommonConstants {
-	/**  */
+	/** Login Use Only */
 	public static final String USER = "userId";
 
 	public static final String LOGIN_TIME = "loginTime";
 
 	public static final String STR_NULL = "null";
-
+	
+	/** Mark */
 	public static final String SUCCESS = "1";
 
 	public static final String FAILURE = "0";
@@ -18,6 +19,11 @@ public class CommonConstants {
 
 	public static final int MAX_COUNT = 500;
 
+	/** Menu Use Only */
+	public static final String MH = "meun_header";
+	public static final String MD = "meun_detail";
+	public static final String MD_NO = "meun_detail_no";
+	
 	private CommonConstants() {
 
 	}
