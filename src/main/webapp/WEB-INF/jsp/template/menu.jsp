@@ -30,6 +30,9 @@
 				htmlContent = window.EMPTY;
 				var MH = msg[i]["meun_header"];
 				if (MH) {
+					if (i > 0) {
+						$("#menu").append("<li role='presentation' class='divider'></li>");
+					}
 					$("#menu").append("<li role='presentation' class='dropdown-header'>"+ MH +"</li>");
 				} else {
 					var MD = msg[i]["meun_detail"];
@@ -37,8 +40,6 @@
 						var MDNO = msg[i]["meun_detail_no"];
 						var MD_NO = 'transitionHtml("'+MDNO+'")';
 						$("#menu").append("<li role='presentation'><a role='menuitem' tabindex='-1' href='#' onclick='" + MD_NO + "'>" + MD + "</a></li>");
-					} else {
-						$("#menu").append("<li role='presentation' class='divider'></li>");
 					}
 				}
 			}
