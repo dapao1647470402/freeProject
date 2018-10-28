@@ -48,11 +48,18 @@
 	 $(function(){
 		 $('.underNavBar').load('<%=request.getContextPath()%>/index/init');
 		 window.currentPageId = 'index';
-		 $("[data-toggle='tooltip']").tooltip();
+		 enableTooltip();
 		 setSearchDisabled();
 		 setUpdateDisabled();
 		 setRegisteredDisabled();
 	});
+	
+	/**
+	 * 启用提示框
+	 */
+	function enableTooltip(){
+		$("[data-toggle='tooltip']").tooltip();
+	}
 	
 	/**
 	 * fuction : set to Search Button Disabled
@@ -114,7 +121,8 @@
 			 return;
 		 }
 		if (actionId) {
-			$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId);
+			var formData = $("#commonForm").serialize();
+			$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId,{'formData' : formData});
 			setActionMode(actionId);
 		} else {
 			console.log(pageId);
@@ -197,6 +205,16 @@
 			}
 		}
 	}
+	 
+	 function bootstrapDateChange(currentElement, obj){
+		 var dates = $('input[name='+ obj +']');
+		 if (dates.length > 1) {
+			 return false;
+		 }else {
+			 $(dates[0]).val(Date.parse(new Date($(currentElement).val()))); 
+			 return true;
+		 }
+	 }
 </script>
 <style type="text/css">
 	.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover,

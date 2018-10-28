@@ -165,6 +165,8 @@
 	 * auto-create button of division page
 	 */
 	$(function() {
+		// enable tooltip
+		enableTooltip();
 		// define display switch of numbers
 		var switchNums = 5;
 		// define total page numbers
@@ -184,7 +186,6 @@
 			startView : 2,
 			minView : 2, //Number, String. 默认值：0, 'hour'，日期时间选择器所能够提供的最精确的时间选择视图。
 			clearBtn : true,//清除按钮
-
 			forceParse : 0
 		});
 		
@@ -234,7 +235,7 @@
 	 */
 	function confirmTransitionHtml(flag) {
 		console.log(window.CURRENT_ACTION_ID);
-		return false;
+		return true;
 	}
 </script>
 <!-- Myself define JS [End] -->
@@ -245,74 +246,81 @@
 			<div>
 				<!-- Change background of panel (Area-[Panel Start]) -->
 				<div class="panel panel-primary" style="border-color: black;">
-					<div class="panel-heading" style="background: #784214">Search Area</div>
+					<div class="panel-heading" style="background: #784214">Search Condition Area</div>
 					<!-- Change background of panel (Area-[Panel Body Start]) -->
 					<div class="panel-body">
-						<label for="name">Search Condition</label>
 						<!-- Search Area for Form [Start] -->
-						<form action="" role="form" class="form-horizontal">
+						<form action="" role="form" class="form-horizontal" id="commonForm" method="post">
+							<div class="form-group">
+								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
+									<label for="name">账&nbsp;户&nbsp;名&nbsp;</label>
+									<span class="label label-default">(Account Name)</span>
+								</div>
+								<div class="col-lg-4 col-md-3 col-sm-4 col-xs-7">
+									<input type="text" class="form-control" data-toggle="tooltip" title="请输入相似的账户名" data-placement="bottom" name="accountName">
+								</div>
+							</div>
+						
+						
 							<div class="form-group">
 								<!-- Date format of Search Condition Area [Start]-->
 								<div>
-									<div class="col-lg-1 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
-										<label for="name">Date Example:</label>
+									<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
+										<label for="name" class="font-16">注册时间</label>
+										<span class="label label-default">(Register Time)</span>
 									</div>
-									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-7">
-										<input name="entryDate" placeholder="Date Example" id="blrz-entry-date-start"
-											class="form-control bootstrap-date" type="text">
+									<div class="col-lg-4 col-md-3 col-sm-4 col-xs-7">
+										<input placeholder="点击输入注册时间" id=""registerTime""
+											class="form-control bootstrap-date" type="text" onchange="bootstrapDateChange(this,'registerTime')">
+										<input name="registerTime" type="hidden">
 									</div>
 									<!-- Date format of Search Condition Area [End]-->
 								</div>
 							</div>
 
 							<!-- Model of select box Version one [Start]-->
-							<div class="form-group">
-								<label for="name" class="checkbox col-lg-1 col-md-1 col-sm-2 col-xs-4"> CheckBox Example</label>
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<input type="checkbox" class="checkbox">
-								</div>
-							</div>
 
 							<div class="form-group">
-								<label class="col-lg-1 col-md-1 col-sm-2 col-xs-4" for="name">Select Ver2.0</label>
-								<div class="col-lg-2 col-md-3 col-sm-4 col-xs-8">
-									<select class="form-control">
-										<option>Select One</option>
-										<option>Select Two</option>
-										<option>Select Three</option>
-										<option>Select Four</option>
+								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4 ">
+									<label class="font-16" for="name">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色
+									<span class="label label-default">(Role)</span>
+									</label>
+								</div>
+								<div class="col-lg-4 col-md-3 col-sm-4 col-xs-8">
+									<select class="form-control" name="roleId">
+										<option></option>
+										<c:forEach items="${roleList }" var="role">
+											<option value="${role.roleId }">${role.roleName }</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-1 col-md-1 col-sm-2" for="name">Select Ver3.0</label>
-								<div class="col-lg-2 col-md-4 col-sm-5 col-xs-10">
+								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4 ">
+									<label for="name">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限
+									<span class="label label-default">(Authority)</span>
+									</label>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-5 col-xs-10">
 									<select class="form-control" multiple="multiple">
-										<option>Select One</option>
-										<option>Select Two</option>
-										<option>Select Three</option>
-										<option>Select Four</option>
+										<c:forEach items="${authorityList }" var="authority">
+											<option value="${authority.authorityId }">${authority.authorityName }</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
 							<!-- Model of select box Version one [End]-->
 
-							<!-- Model of Textarea [Start]-->
-							<div class="form-group">
-								<div class="col-lg-1 col-md-1 col-sm-2">
-									<label for="name">Textarea Example:</label>
-								</div>
-								<div class=" col-lg-2 col-md-4 col-sm-5 col-xs-10">
-									<textarea class="textarea"></textarea>
-								</div>
-							</div>
-							<!-- Model of Textarea [End]-->
-
 							<!-- Help Text [Start] -->
 							<div class="form-group">
-								<label for="name" class="col-lg-1">HelpText Example:</label> <span class="help-block col-lg-2">There is
+								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4 ">
+									<label for="name">Help Document:</label> 
+								</div>
+								<div class="col-lg-9 col-md-4 col-sm-5 col-xs-10">
+									<span class="help-block">There is
 									writing to help text of area.</span>
+								</div>
 							</div>
 							<!-- Help Text [End] -->
 						</form>

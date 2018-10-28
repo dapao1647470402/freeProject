@@ -165,14 +165,14 @@
 							<c:when test="${imageIndex.index == 0}">
 								<div class="item active">
 									<img alt="" src="${image.imgLocationAft}" height="500"
-										class="col-lg-12 col-md-12 col-sm-12" />
+										class="col-lg-12 col-md-12 col-sm-12 img-rounded" />
 									<div class="carousel-caption"></div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="item">
 									<img alt="" src="${image.imgLocationAft}" height="400"
-										class="col-lg-12 col-md-12 col-sm-12" />
+										class="col-lg-12 col-md-12 col-sm-12 img-rounded" />
 									<div class="carousel-caption"></div>
 								</div>
 							</c:otherwise>
