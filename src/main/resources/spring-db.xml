@@ -46,6 +46,10 @@
 	<bean id="daoAsceptBean" class="free.com.common.DaoCommon">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<!-- Table Common Only -->
+	<bean id="tableCommon" class="free.com.common.TableCommon">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	<aop:config>
 		<aop:pointcut expression="execution(* free.com.dao.*.*(..))" id="daoPointCut"/>
 		<aop:aspect id="daoAspect" ref="daoAsceptBean">
