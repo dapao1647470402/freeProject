@@ -176,19 +176,7 @@
 		/**
 		 * Common: Date component
 		 */
-		$(".bootstrap-date").datetimepicker({//选择年月日
-			format : 'yyyy-mm-dd hh:mm:ss',
-			language : 'zh-CN',
-			weekStart : 1,
-			todayBtn : 1,//显示‘今日’按钮
-			autoclose : 1,
-			todayHighlight : 1,
-			startView : 2,
-			minView : 2, //Number, String. 默认值：0, 'hour'，日期时间选择器所能够提供的最精确的时间选择视图。
-			clearBtn : true,//清除按钮
-			forceParse : 0
-		});
-		
+		loadDateComponent();
 		// All button enable
 		setSearchEnabled();
 		setUpdateEnabled();
@@ -257,7 +245,7 @@
 									<span class="label label-default">(Account Name)</span>
 								</div>
 								<div class="col-lg-4 col-md-3 col-sm-4 col-xs-7">
-									<input type="text" class="form-control" data-toggle="tooltip" title="请输入相似的账户名" data-placement="bottom" name="accountName">
+									<input type="text" class="form-control" data-toggle="tooltip" title="请输入相似的账户名" data-placement="bottom" name="accountName" value="${sys0501SearchDto.accountName }">
 								</div>
 							</div>
 						
@@ -271,9 +259,11 @@
 									</div>
 									<div class="col-lg-4 col-md-3 col-sm-4 col-xs-7">
 										<input placeholder="点击输入注册时间" id=""registerTime""
-											class="form-control bootstrap-date" type="text" onchange="bootstrapDateChange(this,'registerTime')">
-										<input name="registerTime" type="hidden">
+											class="form-control bootstrap-date" type="text" onchange="bootstrapDateChange(this,'registerTime')"
+											 value="<fmt:formatDate value="${sys0501SearchDto.registerTime }" pattern="yyyy-MM-dd HH:mm:ss"/>">
+										<input name="registerTime" type="hidden" value="${sys0501SearchDto.registerTimeTimestamp }">
 									</div>
+									
 									<!-- Date format of Search Condition Area [End]-->
 								</div>
 							</div>
@@ -290,7 +280,14 @@
 									<select class="form-control" name="roleId">
 										<option></option>
 										<c:forEach items="${roleList }" var="role">
-											<option value="${role.roleId }">${role.roleName }</option>
+											<c:choose>
+												<c:when test="${role.roleId == sys0501SearchDto.roleId}">
+													<option value="${role.roleId }" selected="selected">${role.roleName }</option>
+												</c:when>
+												<c:otherwise>
+													<option value="${role.roleId }">${role.roleName }</option>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</select>
 								</div>
@@ -303,9 +300,27 @@
 									</label>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-5 col-xs-10">
-									<select class="form-control" multiple="multiple">
+									<select class="form-control" multiple="multiple" name="authorityId">
 										<c:forEach items="${authorityList }" var="authority">
-											<option value="${authority.authorityId }">${authority.authorityName }</option>
+										<c:set var="printAuthorityFlag" value="1"/>
+											<c:choose>
+												<c:when test="${sys0501SearchDto.authorityId != null}">
+													<c:forEach items="${sys0501SearchDto.authorityId }" var="authorityBySearch" varStatus="authorityBySearchIndex">
+														<c:choose>
+															<c:when test="${authority.authorityId == authorityBySearch}">
+																<option value="${authority.authorityId }" selected="selected">${authority.authorityName }</option>
+																<c:set var="printAuthorityFlag" value="0"/>
+															</c:when>
+														</c:choose>
+													</c:forEach>
+													<c:if test="${ printAuthorityFlag eq '1' }">
+														<option value="${authority.authorityId }">${authority.authorityName }</option>
+													</c:if>
+												</c:when>
+												<c:otherwise>
+													<option value="${authority.authorityId }">${authority.authorityName }</option>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 									</select>
 								</div>
