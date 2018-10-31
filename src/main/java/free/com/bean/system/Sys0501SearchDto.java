@@ -1,9 +1,11 @@
 package free.com.bean.system;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class Sys0501SearchDto implements Serializable{
+public class Sys0501SearchDto implements Serializable {
 	/**
 	 * 
 	 */
@@ -14,7 +16,9 @@ public class Sys0501SearchDto implements Serializable{
 
 	private String accountName;
 	private Date registerTime;
+	private long registerTimeTimestamp;
 	private String roleId;
+	private List<Integer> authorityId = new ArrayList<Integer>();
 
 	/**
 	 * @return the accountName
@@ -58,5 +62,32 @@ public class Sys0501SearchDto implements Serializable{
 		this.roleId = roleId;
 	}
 
+	/**
+	 * @return the authorityId
+	 */
+	public List<Integer> getAuthorityId() {
+		return authorityId;
+	}
+
+	/**
+	 * @param authorityId the authorityId to set
+	 */
+	public void setAuthorityId(List<Integer> authorityId) {
+		this.authorityId = authorityId;
+	}
+
+	/**
+	 * @return the registerTimeTimestamp
+	 */
+	public long getRegisterTimeTimestamp() {
+		return registerTimeTimestamp;
+	}
+
+	/**
+	 * @param registerTimeTimestamp the registerTimeTimestamp to set
+	 */
+	public void setRegisterTimeTimestamp(long registerTimeTimestamp) {
+		this.registerTimeTimestamp = registerTimeTimestamp;
+	}
 
 }

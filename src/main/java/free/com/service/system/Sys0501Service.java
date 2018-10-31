@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import free.com.bean.system.Sys0501From;
 import free.com.bean.system.Sys0501ResultDto;
+import free.com.bean.system.Sys0501SearchDto;
 import free.com.dao.system.Sys0501Dao;
 
 @Service
@@ -22,8 +23,13 @@ public class Sys0501Service {
 
 	public List<Sys0501From> init() {
 		List<Sys0501From> fromList = new ArrayList<Sys0501From>();
-		Sys0501From from = new Sys0501From();
 		List<Sys0501ResultDto> resultList = dao.init();
+		setResultData(resultList, fromList);
+		return fromList;
+	}
+
+	private void setResultData(List<Sys0501ResultDto> resultList, List<Sys0501From> fromList) {
+		Sys0501From from = new Sys0501From();
 		Iterator<Sys0501ResultDto> valIterator = resultList.iterator();
 		Set<Object> setFlag = new HashSet<Object>();
 		int setFlagSize = setFlag.size();
@@ -46,7 +52,7 @@ public class Sys0501Service {
 				from = new Sys0501From();
 			}
 		}
-		return fromList;
+		
 	}
 
 	private List<Sys0501ResultDto> dataRepeatSet(String userId, List<Sys0501ResultDto> resultList) {
@@ -73,4 +79,11 @@ public class Sys0501Service {
 		return flag > 1;
 	}
 
+	public List<Sys0501From> search(Sys0501SearchDto searchDto){
+		List<Sys0501ResultDto> resultList = dao.search(searchDto);
+		List<Sys0501From> fromList = new ArrayList<Sys0501From>();
+		setResultData(resultList, fromList);
+		return fromList;
+	} 
+	
 }

@@ -46,7 +46,14 @@ public class Sys0501Controller {
 
 	@RequestMapping("search")
 	public String search(HttpServletRequest request, HttpServletResponse response, Model model) {
-		Sys0501SearchDto form = CommonUtil.getForm(Sys0501SearchDto.class, request);
+		Sys0501SearchDto searchDto = CommonUtil.getBean(Sys0501SearchDto.class, request);
+		List<Sys0501From> result = service.search(searchDto);
+		model.addAttribute("sys0501From", result);
+		model.addAttribute("sys0501SearchDto", searchDto);
+		List<Role> roleTable = TableCommon.getRoleTable();
+		model.addAttribute("roleList", roleTable);
+		List<Authority> authorityTable = TableCommon.getAuthorityTable();
+		model.addAttribute("authorityList", authorityTable);
 		return CommonConstants.FOLDER_SYS + "sys0501";
 	}
 	
