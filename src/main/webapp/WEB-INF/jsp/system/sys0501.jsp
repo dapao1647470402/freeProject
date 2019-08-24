@@ -336,7 +336,7 @@
 							<!-- Help Text [End] -->
 							<!-- Clear Button [Start] -->
 								<div style="float:right;padding-right:20px">
-									<input type="reset" class="btn btn-default" value="Reset">
+									<input type="button" onclick="ClearForm('commonForm')" class="btn btn-default" value="清空输入条件">
 								</div>
 								<!-- Clear Button [End] -->
 						</form>

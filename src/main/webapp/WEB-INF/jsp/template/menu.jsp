@@ -107,7 +107,7 @@
 	<!-- 菜单按钮 -->
 	<button type="button" class="btn dropdown-toggle btn-primary" id="dropdownMenu1" data-toggle="dropdown"
 		style="width: 100px;margin-top:3px;">
-		<span class="create">Meun</span>
+		<span class="create">Menu</span>
 	</button>
 	<div style="height:10px"></div>
 	<!-- 菜单 -->
