@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Sys0501SearchDto implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

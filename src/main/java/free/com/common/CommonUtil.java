@@ -39,12 +39,15 @@ public class CommonUtil {
 				String attributeName = field.getName();
 				String attributeType = field.getType().getSimpleName();
 				Object attributeData = formMap.get(attributeName);
-				if (attributeData != null && StringUtils.equals("String", attributeData.getClass().getSimpleName())) {
+				if (!free.com.utils.StringUtils.isEmpty(attributeData)
+						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())
+						&& StringUtils.equals("String", attributeData.getClass().getSimpleName())) {
 					if (StringUtils.equals("String", attributeType)) {
 						field.set(newInstance, attributeData);
 					} else if (StringUtils.equals("Integer", attributeType)) {
 						field.set(newInstance, Integer.parseInt(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("Date", attributeType)) {
+					} else if (StringUtils.equals("Date", attributeType)
+							&& !StringUtils.equals("0", String.valueOf(attributeData).trim())) {
 						Long longTime = new Long(String.valueOf(attributeData));
 						Date date = new Date(longTime);
 						field.set(newInstance, date);
@@ -54,15 +57,25 @@ public class CommonUtil {
 						field.set(newInstance, Float.parseFloat(String.valueOf(attributeData)));
 					} else if (StringUtils.equals("Short", attributeType)) {
 						field.set(newInstance, Short.parseShort(String.valueOf(attributeData)));
+					} else if (StringUtils.equals("List", attributeType)) {
+						List<String> list = new ArrayList<String>();
+						list.add(attributeData.toString());
+						field.set(newInstance, list);
 					}
 				} else if (attributeData != null
 						&& StringUtils.equals("ArrayList", attributeData.getClass().getSimpleName())) {
 					if (StringUtils.equals("List", attributeType)) {
 						field.set(newInstance, attributeData);
 					}
-				} else if (StringUtils.endsWith(attributeName, "Timestamp")) {
+				} else if (StringUtils.endsWith(attributeName, "Timestamp")
+						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())) {
 					String timestamp = attributeName.replace("Timestamp", StringUtils.EMPTY);
-					field.set(newInstance, Long.parseLong(String.valueOf(formMap.get(timestamp))));
+					// 20190824 Mr.cao 非空判断追加 Start
+					if (formMap.get(timestamp) != null
+							&& !free.com.utils.StringUtils.isEmpty(formMap.get(timestamp))) {
+						field.set(newInstance, Long.parseLong(String.valueOf(formMap.get(timestamp))));
+					}
+					// 20190824 Mr.cao 非空判断追加 End
 				}
 			}
 		} catch (Exception e) {
@@ -75,7 +88,7 @@ public class CommonUtil {
 
 	/**
 	 * 将页面的数据(String形式,格式:name=data&name=data)转换为Map
-	 * 
+	 *
 	 * @param formMap   一个空的Map对象
 	 * @param parameter 页面的数据(String形式)
 	 */

@@ -302,25 +302,18 @@
 								<div class="col-lg-4 col-md-4 col-sm-5 col-xs-10">
 									<select class="form-control" multiple="multiple" name="authorityId">
 										<c:forEach items="${authorityList }" var="authority">
-										<c:set var="printAuthorityFlag" value="1"/>
-											<c:choose>
-												<c:when test="${sys0501SearchDto.authorityId != null}">
-													<c:forEach items="${sys0501SearchDto.authorityId }" var="authorityBySearch" varStatus="authorityBySearchIndex">
-														<c:choose>
-															<c:when test="${authority.authorityId == authorityBySearch}">
-																<option value="${authority.authorityId }" selected="selected">${authority.authorityName }</option>
-																<c:set var="printAuthorityFlag" value="0"/>
-															</c:when>
-														</c:choose>
-													</c:forEach>
-													<c:if test="${ printAuthorityFlag eq '1' }">
-														<option value="${authority.authorityId }">${authority.authorityName }</option>
-													</c:if>
-												</c:when>
-												<c:otherwise>
+												<c:set var="author_cycle_flag" value="1"/>
+												<c:forEach items="${ sys0501SearchDto.authorityId }" var="dto_authority">
+													<c:choose>
+														<c:when test="${authority.authorityId == dto_authority and author_cycle_flag == '1'}">
+															<option value="${authority.authorityId}" selected="selected">${authority.authorityName }</option>
+															<c:set var="author_cycle_flag" value="0"/>
+														</c:when>
+													</c:choose>
+												</c:forEach>
+												<c:if test="${ author_cycle_flag == '1' }">
 													<option value="${authority.authorityId }">${authority.authorityName }</option>
-												</c:otherwise>
-											</c:choose>
+												</c:if>>
 										</c:forEach>
 									</select>
 								</div>
@@ -333,11 +326,19 @@
 									<label for="name">Help Document:</label> 
 								</div>
 								<div class="col-lg-9 col-md-4 col-sm-5 col-xs-10">
-									<span class="help-block">There is
-									writing to help text of area.</span>
+									<span class="help-block">
+									注册时间为小于等于输入时间。<BR/>
+									角色依次为管理员=开发者>体验者<BR/>
+									可以多个权限一起检索。
+									</span>
 								</div>
 							</div>
 							<!-- Help Text [End] -->
+							<!-- Clear Button [Start] -->
+								<div style="float:right;padding-right:20px">
+									<input type="reset" class="btn btn-default" value="Reset">
+								</div>
+								<!-- Clear Button [End] -->
 						</form>
 						<!-- Search Area for Form [End] -->
 					</div>

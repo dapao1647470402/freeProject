@@ -1,7 +1,5 @@
 package free.com.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +10,6 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.CharSequenceUtils;
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -52,6 +49,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		return cs == null || cs.length() == 0;
 	}
 
+	public static boolean isEmpty(final Object cs) {
+		return cs == null || String.valueOf(cs).length() == 0;
+	}
 	/**
 	 * <p>
 	 * Checks if a String is not empty ("") and not null.
@@ -1580,14 +1580,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		do {
 			if (lastIndex) {
 				index = StringUtils.lastIndexOf(str, searchStr, index - 1); // step
-																			// backwards
-																			// thru
-																			// string
+				// backwards
+				// thru
+				// string
 			} else {
 				index = StringUtils.indexOf(str, searchStr, index + 1); // step
-																		// forwards
-																		// through
-																		// string
+				// forwards
+				// through
+				// string
 			}
 			if (index < 0) {
 				return index;
@@ -4908,8 +4908,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
 		// two or more elements
 		final StringBuilder buf = new StringBuilder(256); // Java default is 16,
-															// probably too
-															// small
+		// probably too
+		// small
 		if (first != null) {
 			buf.append(first);
 		}
@@ -4962,8 +4962,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
 		// two or more elements
 		final StringBuilder buf = new StringBuilder(256); // Java default is 16,
-															// probably too
-															// small
+		// probably too
+		// small
 		if (first != null) {
 			buf.append(first);
 		}
@@ -7373,7 +7373,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		}
 
 		final int newCodePoints[] = new int[strLen]; // cannot be longer than
-														// the char array
+		// the char array
 		int outOffset = 0;
 		newCodePoints[outOffset++] = newCodePoint; // copy the first codepoint
 		for (int inOffset = Character.charCount(firstCodepoint); inOffset < strLen;) {
@@ -7425,7 +7425,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		}
 
 		final int newCodePoints[] = new int[strLen]; // cannot be longer than
-														// the char array
+		// the char array
 		int outOffset = 0;
 		newCodePoints[outOffset++] = newCodePoint; // copy the first codepoint
 		for (int inOffset = Character.charCount(firstCodepoint); inOffset < strLen;) {
@@ -7478,7 +7478,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
 		final int strLen = str.length();
 		final int newCodePoints[] = new int[strLen]; // cannot be longer than
-														// the char array
+		// the char array
 		int outOffset = 0;
 		for (int i = 0; i < strLen;) {
 			final int oldCodepoint = str.codePointAt(i);

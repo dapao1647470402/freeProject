@@ -118,7 +118,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.42</version>
+			<version>8.0.11</version>
 		</dependency>
 		<!-- C3P0 依赖 -->
 		<dependency>
@@ -222,7 +222,7 @@
 					<scanIntervalSeconds>2</scanIntervalSeconds>
 					<!-- 设置工程访问路径 -->
 					<webApp>
-						<contextPath>/free</contextPath><!-- 包含服务器访问路径+工程(名)访问路径 -->
+						<contextPath>/free.com</contextPath><!-- 包含服务器访问路径+工程(名)访问路径 -->
 					</webApp>
 				</configuration>
 			</plugin>
