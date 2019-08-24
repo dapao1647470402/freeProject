@@ -250,7 +250,7 @@
 	
 	.content {
 		width: 90%;
-		height: 90%;
+		height: 95%;
 		overflow: auto;
 		margin: 5px;
 		border: none;
@@ -258,7 +258,7 @@
 	
 	.scrollbar {
 		width: 90%;
-		height: 520px;
+		height: 620px;
 		margin: 0 auto;
 	}
 	
