@@ -71,8 +71,7 @@ public class CommonUtil {
 						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())) {
 					String timestamp = attributeName.replace("Timestamp", StringUtils.EMPTY);
 					// 20190824 Mr.cao 非空判断追加 Start
-					if (formMap.get(timestamp) != null
-							&& !free.com.utils.StringUtils.isEmpty(formMap.get(timestamp))) {
+					if (formMap.get(timestamp) != null && !free.com.utils.StringUtils.isEmpty(formMap.get(timestamp))) {
 						field.set(newInstance, Long.parseLong(String.valueOf(formMap.get(timestamp))));
 					}
 					// 20190824 Mr.cao 非空判断追加 End
@@ -120,4 +119,24 @@ public class CommonUtil {
 			}
 		}
 	}
+
+	/**
+	 * 获取时间戳
+	 *
+	 * @return
+	 */
+	public static String getTimestamp() {
+		long time = new Date().getTime();
+		return String.valueOf(time);
+	}
+
+	/**
+	 * 获取时间
+	 *
+	 * @return
+	 */
+	public static Date getSysDate() {
+		return new Date();
+	}
+
 }

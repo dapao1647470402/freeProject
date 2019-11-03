@@ -38,7 +38,7 @@ public class LoginController {
 
 	@RequestMapping("login")
 	public String login(HttpSession session, User user, RedirectAttributes redirectModel, Model model) {
-		if (StringUtils.isEmpty(user.getAccount()) || StringUtils.isEmpty(user.getPassword())) {
+		if (StringUtils.isEmpty(user.getAccountId()) || StringUtils.isEmpty(user.getPassword())) {
 			LoggerCommon.printLog("Please Again Login causer By Not input Account Or Password",
 					SystemEnum.LOG_LEVEL_DEBUG);
 			redirectModel.addFlashAttribute("loginFailure", CommonConstants.FAILURE);

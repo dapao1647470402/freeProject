@@ -108,15 +108,15 @@
 			// add dialog content
 			var accountNmConfirm = "<div class='well'>"
 			+ "<ul class='list-group'>"
-			+ "<li class='list-group-item'>Account Name: "+$("#accountName").val()+"</li>"
-			+ "<li class='list-group-item'>Account Number: "+$("#accountNumber").val()+"</li>"
-			+ "<li class='list-group-item'>Account Password: "+$("#accountPassword").val()+"</li>"
-			+ "<li class='list-group-item'>Update Password Time: "+$("#modifyPsdTime").val()+"</li>"
+			+ "<li class='list-group-item'>用户名: "+$("#accountName").val()+"</li>"
+			+ "<li class='list-group-item'>用户ID: "+$("#accountNumber").val()+"</li>"
+			+ "<li class='list-group-item'>密码: "+$("#accountPassword").val()+"</li>"
+			+ "<li class='list-group-item'>更改密码时间: "+$("#modifyPsdTime").val()+"</li>"
 			+ "</ul>"
 			+ "</div>";
 			$("#confirmInfoBodyId").html(accountNmConfirm);
 			// display dialog
-			$('#confireInfomodal').modal('show')
+			$('#confirmInfomodal').modal('show')
 		}
 	}
 	/**
@@ -137,12 +137,12 @@
 		if (accountNameJq == null
 				|| accountNameJq == window.EMPTY) {
 			accountNameErrorJq.attr("style", window.errorStyle);
-			accountNameErrorJq.html("Account name is required.");
+			accountNameErrorJq.html("请创建一个炫酷的用户名吧。");
 			window.errorMark = true;
-		} else if (!/^[A-Za-z0-9]{1,20}$/.test(accountNameJq)) {
+		/* } else if (!/^[A-Za-z0-9]{1,20}$/.test(accountNameJq)) {
 			accountNameErrorJq.attr("style", window.errorStyle);
 			accountNameErrorJq.html("Account name format is [A-Z a-z 0-9].");
-			window.errorMark = true;
+			window.errorMark = true; */
 		} else {
 			window.errorMark = false;
 			accountNameErrorJq.attr("style", window.successStyle);
@@ -156,11 +156,11 @@
 		if (accountNumberJq == null
 				|| accountNumberJq == window.EMPTY) {
 			accountNunberErrorJq.attr("style", window.errorStyle);
-			accountNunberErrorJq.html("Account number is required.");
+			accountNunberErrorJq.html("请添加一个唯一的用户ID吧。");
 			window.errorMark = true;
 		} else if (/[^A-Za-z0-9\.\@]{1,15}$/.test(accountNumberJq)) {
 			accountNunberErrorJq.attr("style", window.errorStyle);
-			accountNunberErrorJq.html("Account number format is ./A-Z/a-z/1-9/ .");
+			accountNunberErrorJq.html("用户ID格式(字母无大小写区分):数字/数字+字母/字母");
 			window.errorMark = true;
 		} else {
 			window.errorMark = false;
@@ -175,7 +175,7 @@
 		if (accountPasswordJq == null
 				|| accountPasswordJq == window.EMPTY) {
 			accountPasswordErrorJq.attr("style", window.errorStyle);
-			accountPasswordErrorJq.html("Account Password is required.");
+			accountPasswordErrorJq.html("为了保证账号安全,请输入密码。");
 			window.errorMark = true;
 		} else if (/[^A-Za-z0-9\.\@]{1,20}$/.test(accountPasswordJq)) {
 			accountPasswordErrorJq.attr("style", window.errorStyle);
@@ -194,7 +194,7 @@
 		if (accountPassword2Jq == null
 				|| accountPassword2Jq == window.EMPTY) {
 			accountPassword2ErrorJq.attr("style", window.errorStyle);
-			accountPassword2ErrorJq.html("Please agin input password.");
+			accountPassword2ErrorJq.html("请再次输入密码。");
 			window.errorMark = true;
 		} else if (/[^A-Za-z0-9\.\@]{1,20}$/.test(accountPassword2Jq)) {
 			accountPassword2ErrorJq.attr("style", window.errorStyle);
@@ -203,7 +203,7 @@
 		} else if ($("#accountPassword").val() != accountPassword2Jq) {
 			accountPassword2ErrorJq.attr("style", window.errorStyle);
 			accountPassword2ErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
-			accountPassword2ErrorJq.html("confirm to whether input the same password .");
+			accountPassword2ErrorJq.html("两次输入密码不一致。");
 			window.errorMark = true;
 		} else {
 			window.errorMark = false;
@@ -219,7 +219,7 @@
 				|| modifyPsdTimeJq == window.EMPTY) {
 			modifyPsdTimeErrorJq.attr("style", window.errorStyle);
 			modifyPsdTimeErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
-			modifyPsdTimeErrorJq.html("Please input next of modify to password time.");
+			modifyPsdTimeErrorJq.html("请输入下次更改密码的时间。");
 			window.errorMark = true;
 		} else {
 			window.errorMark = false;
@@ -247,6 +247,7 @@
 		var modifyPsdTimeJq = $("#modifyPsdTime").val(window.EMPTY);
 		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime").attr("style", window.successStyle);
 	}
+	
 </script>
 <!-- Myself define JS [End] -->
 </head>
@@ -283,11 +284,11 @@
 			</div>
 		</div>
 		<!-- Carousel component [End]-->
-		<form action="" role="form" class="">
+		<form action="<%=request.getContextPath()%>/register/doRegister" role="form" class="" method="post">
 
 			<!-- Input Templet [Start] -->
 			<div class="panel panel-info panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Name:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户名:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
 					<input type="text" class="form-control" name="accountName" id="accountName" required="required" maxlength="20">
 				</div>
@@ -297,9 +298,9 @@
 
 			<!-- Input Templet [Start] -->
 			<div class="panel panel-info panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Number:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户ID:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountNumber" id="accountNumber" maxlength="10">
+					<input type="text" class="form-control" name="accountId" id="accountNumber" maxlength="10">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountNumber" style="display:none"></div>
 			</div>
@@ -307,9 +308,9 @@
 
 			<!-- Input Templet [Start] -->
 			<div class="panel panel-danger panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">Account Password:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountPassword" id="accountPassword" maxlength="20">
+					<input type="text" class="form-control" name="password" id="accountPassword" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword" style="display:none"></div>
 			</div>
@@ -317,7 +318,7 @@
 
 			<!-- Input Templet [Start] -->
 			<div class="panel panel-warning panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;font-size: 14px;font-family:SimHei;"><label for="name">Please confirm your password:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">请再次输入密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
 					<input type="text" class="form-control" name="accountPassword2" id="accountPassword2" maxlength="20">
 				</div>
@@ -327,11 +328,11 @@
 
 			<!-- Date Templet Of Div [Start] -->
 			<div class=" panel panel-success panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right"><label for="name">Update Password Time:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right"><label for="name">更改密码时间:</label></div>
 				<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
 					<div class="input-group date bootstrap-date-input form-group">
 						<span class="input-group-addon trigger-date-icon"><i class="glyphicon glyphicon-calendar"></i></span>
-						<input type="text" class="form-control risk-form-control-regular" id="modifyPsdTime" data-bv-notempty-message="请输入触发时间！">
+						<input type="text" class="form-control risk-form-control-regular" name="updatePsdTime" id="modifyPsdTime" data-bv-notempty-message="请输入触发时间！">
 					</div>
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByModifyPsdTime" style="display:none"></div>
@@ -345,19 +346,19 @@
 			</div>
 			<!-- Button modal Templet [End]-->
 			<!-- Modal Box [Start] -->
-			<div class="modal fade" id="confireInfomodal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="confirmInfomodal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">Please Confirm input to information</h4>
+							<h4 class="modal-title" id="myModalLabel">请确认您的注册信息:</h4>
 						</div>
 						<div class="modal-body" id="confirmInfoBodyId">
 
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary">提交更改</button>
+							<button type="submit" class="btn btn-primary">提交更改</button>
 					</div>
 					</div>
 				</div>

@@ -7,7 +7,10 @@ public class CommonConstants {
 	public static final String LOGIN_TIME = "loginTime";
 
 	public static final String STR_NULL = "null";
-	
+
+	/** Create User Of Prefix */
+	public static final String CREATE_USER_PREFIX = "U";
+
 	/** Mark */
 	public static final String SUCCESS = "1";
 
@@ -23,9 +26,9 @@ public class CommonConstants {
 	public static final String MH = "meun_header";
 	public static final String MD = "meun_detail";
 	public static final String MD_NO = "meun_detail_no";
-	
+
 	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy/MM/dd HH:mm:ss";
-	
+
 	private CommonConstants() {
 
 	}

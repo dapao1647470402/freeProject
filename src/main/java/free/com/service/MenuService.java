@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import free.com.bean.Menu;
+import free.com.bean.User;
 import free.com.dao.MenuDao;
 import free.com.utils.CommonConstants;
 
@@ -21,8 +22,8 @@ public class MenuService {
 
 	@Resource(name = "meunDao")
 	private MenuDao dao;
-	
-	public List<Map<String, Object>> init() {
+
+	public List<Map<String, Object>> init(User user) {
 		List<Menu> preMenuList = dao.init();
 		return againSetMenu(preMenuList);
 	}
@@ -53,5 +54,5 @@ public class MenuService {
 		}
 		return aftMeunList;
 	}
-	
+
 }

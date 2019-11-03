@@ -234,7 +234,7 @@
 						id="div_account">
 						<span class="input-group-addon" style="width: 115px;">Account</span>
 						<input type="text" class="form-control" onblur="inputBlur(1)"
-							id="account" name="account">
+							id="account" name="accountId">
 					</div>
 					<!-- Input Account [End]-->
 					<br />

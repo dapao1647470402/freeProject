@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "t_user")
@@ -17,15 +15,32 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private String userId;
 
-	@Column(name = "account")
-	private String account;
+	@Column(name = "account_name")
+	private String accountName;
+
+	@Column(name = "account_id")
+	private String accountId;
 
 	@Column(name = "psd")
 	private String password;
+
+	@Column(name = "user_role")
+	private String userRole;
+
+	@Column(name = "user_authority")
+	private String userAuthority;
+
+	@Column(name = "menu_group_authority")
+	private String menuGroupAuthority;
+
+	@Column(name = "menu_sub_max_authority")
+	private String menuSubMaxAuthority;
+
+	@Column(name = "upd_psd_time")
+	private String updatePsdTime;
 
 	@Column(name = "ins_date")
 	private Date insDate;
@@ -53,8 +68,14 @@ public class User implements Serializable {
 
 	/**
 	 * @param userId
-	 * @param account
+	 * @param accountName
+	 * @param accountId
 	 * @param password
+	 * @param userRole
+	 * @param userAuthority
+	 * @param menuGroupAuthority
+	 * @param menuSubMaxAuthority
+	 * @param updatePsdTime
 	 * @param insDate
 	 * @param insUserId
 	 * @param insProgram
@@ -63,11 +84,19 @@ public class User implements Serializable {
 	 * @param updProgram
 	 * @param lockVersion
 	 */
-	public User(String userId, String account, String password, Date insDate, String insUserId, String insProgram,
-			Date updDate, String updUserId, String updProgram, String lockVersion) {
+	public User(String userId, String accountName, String accountId, String password, String userRole,
+			String userAuthority, String menuGroupAuthority, String menuSubMaxAuthority, String updatePsdTime,
+			Date insDate, String insUserId, String insProgram, Date updDate, String updUserId, String updProgram,
+			String lockVersion) {
 		this.userId = userId;
-		this.account = account;
+		this.accountName = accountName;
+		this.accountId = accountId;
 		this.password = password;
+		this.userRole = userRole;
+		this.userAuthority = userAuthority;
+		this.menuGroupAuthority = menuGroupAuthority;
+		this.menuSubMaxAuthority = menuSubMaxAuthority;
+		this.updatePsdTime = updatePsdTime;
 		this.insDate = insDate;
 		this.insUserId = insUserId;
 		this.insProgram = insProgram;
@@ -85,26 +114,38 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param userId
-	 *            the userId to set
+	 * @param userId the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
 	/**
-	 * @return the account
+	 * @return the accountName
 	 */
-	public String getAccount() {
-		return account;
+	public String getAccountName() {
+		return accountName;
 	}
 
 	/**
-	 * @param account
-	 *            the account to set
+	 * @param accountName the accountName to set
 	 */
-	public void setAccount(String account) {
-		this.account = account;
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+
+	/**
+	 * @return the accountId
+	 */
+	public String getAccountId() {
+		return accountId;
+	}
+
+	/**
+	 * @param accountId the accountId to set
+	 */
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
 	/**
@@ -115,11 +156,80 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the userRole
+	 */
+	public String getUserRole() {
+		return userRole;
+	}
+
+	/**
+	 * @param userRole the userRole to set
+	 */
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
+
+	/**
+	 * @return the userAuthority
+	 */
+	public String getUserAuthority() {
+		return userAuthority;
+	}
+
+	/**
+	 * @param userAuthority the userAuthority to set
+	 */
+	public void setUserAuthority(String userAuthority) {
+		this.userAuthority = userAuthority;
+	}
+
+	/**
+	 * @return the menuGroupAuthority
+	 */
+	public String getMenuGroupAuthority() {
+		return menuGroupAuthority;
+	}
+
+	/**
+	 * @param menuGroupAuthority the menuGroupAuthority to set
+	 */
+	public void setMenuGroupAuthority(String menuGroupAuthority) {
+		this.menuGroupAuthority = menuGroupAuthority;
+	}
+
+	/**
+	 * @return the menuSubMaxAuthority
+	 */
+	public String getMenuSubMaxAuthority() {
+		return menuSubMaxAuthority;
+	}
+
+	/**
+	 * @param menuSubMaxAuthority the menuSubMaxAuthority to set
+	 */
+	public void setMenuSubMaxAuthority(String menuSubMaxAuthority) {
+		this.menuSubMaxAuthority = menuSubMaxAuthority;
+	}
+
+	/**
+	 * @return the updatePsdTime
+	 */
+	public String getUpdatePsdTime() {
+		return updatePsdTime;
+	}
+
+	/**
+	 * @param updatePsdTime the updatePsdTime to set
+	 */
+	public void setUpdatePsdTime(String updatePsdTime) {
+		this.updatePsdTime = updatePsdTime;
 	}
 
 	/**
@@ -130,8 +240,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param insDate
-	 *            the insDate to set
+	 * @param insDate the insDate to set
 	 */
 	public void setInsDate(Date insDate) {
 		this.insDate = insDate;
@@ -145,8 +254,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param insUserId
-	 *            the insUserId to set
+	 * @param insUserId the insUserId to set
 	 */
 	public void setInsUserId(String insUserId) {
 		this.insUserId = insUserId;
@@ -160,8 +268,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param insProgram
-	 *            the insProgram to set
+	 * @param insProgram the insProgram to set
 	 */
 	public void setInsProgram(String insProgram) {
 		this.insProgram = insProgram;
@@ -175,8 +282,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param updDate
-	 *            the updDate to set
+	 * @param updDate the updDate to set
 	 */
 	public void setUpdDate(Date updDate) {
 		this.updDate = updDate;
@@ -190,8 +296,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param updUserId
-	 *            the updUserId to set
+	 * @param updUserId the updUserId to set
 	 */
 	public void setUpdUserId(String updUserId) {
 		this.updUserId = updUserId;
@@ -205,8 +310,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param updProgram
-	 *            the updProgram to set
+	 * @param updProgram the updProgram to set
 	 */
 	public void setUpdProgram(String updProgram) {
 		this.updProgram = updProgram;
@@ -220,8 +324,7 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @param lockVersion
-	 *            the lockVersion to set
+	 * @param lockVersion the lockVersion to set
 	 */
 	public void setLockVersion(String lockVersion) {
 		this.lockVersion = lockVersion;

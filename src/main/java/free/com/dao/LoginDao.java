@@ -32,8 +32,8 @@ public class LoginDao {
 
 	@SuppressWarnings("unchecked")
 	public List<User> login(User user) {
-		SQLQuery sql = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_USER WHERE ACCOUNT = ? AND PSD = ?");
-		sql.setString(0, user.getAccount());
+		SQLQuery sql = DaoCommon.sqlSession.createSQLQuery("SELECT * FROM T_USER WHERE ACCOUNT_ID = ? AND PSD = ?");
+		sql.setString(0, user.getAccountId());
 		sql.setString(1, user.getPassword());
 		return sql.addEntity(User.class).list();
 	}
