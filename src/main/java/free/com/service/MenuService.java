@@ -24,7 +24,7 @@ public class MenuService {
 	private MenuDao dao;
 
 	public List<Map<String, Object>> init(User user) {
-		List<Menu> preMenuList = dao.init();
+		List<Menu> preMenuList = dao.init(user);
 		return againSetMenu(preMenuList);
 	}
 

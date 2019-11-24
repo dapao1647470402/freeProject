@@ -2,7 +2,9 @@ package free.com.utils;
 
 public class CommonConstants {
 	/** Login Use Only */
-	public static final String USER = "userId";
+	public static final String USER = "user";
+
+	public static final String USER_ID = "userId";
 
 	public static final String LOGIN_TIME = "loginTime";
 

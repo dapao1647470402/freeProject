@@ -18,7 +18,7 @@ public class Sys0501Dao {
 		SQLQuery sql = SqlCommon.sqlSession
 				.createSQLQuery("SELECT "
 						+ "t1.USER_ID AS userId "
-						+ ",t1.ACCOUNT AS userAccount "
+						+ ",t1.ACCOUNT_NAME AS userAccount "
 						+ ",t2.ROLE_NAME AS roleName"
 						+ ",t3.AUTHORITY_NAME AS authorityName"
 						+ ",t1.INS_DATE AS userInsertDate "
@@ -41,23 +41,23 @@ public class Sys0501Dao {
 
 	public List<Sys0501ResultDto> search(Sys0501SearchDto searchDto){
 		StringBuilder hql = new StringBuilder("SELECT "
-						+ "t1.USER_ID AS userId "
-						+ ",t1.ACCOUNT AS userAccount "
-						+ ",t2.ROLE_NAME AS roleName"
-						+ ",t3.AUTHORITY_NAME AS authorityName"
-						+ ",t1.INS_DATE AS userInsertDate "
-						+ ",t4.MENU_GROUP_NAME AS menuGroupName "
-						+ ",t4.MENU_NAME AS menuName "
-						+ " FROM "
-						+ " t_user t1 "
-						+ "INNER JOIN t_role t2 "
-						+ "ON t1.USER_ROLE = t2.ROLE_ID "
-						+ "INNER JOIN t_authority t3 "
-						+ "ON t1.USER_AUTHORITY = t3.AUTHORITY_ID "
-						+ "LEFT JOIN t_menu t4 "
-						+ "ON t1.MENU_GROUP_AUTHORITY >= t4.MENU_GROUP_AUTHORITY "
-						+ "AND t1.MENU_SUB_MAX_AUTHORITY >= t4.MENU_AUTHORITY "
-						+ "WHERE 1 = 1 ");
+				+ "t1.USER_ID AS userId "
+				+ ",t1.ACCOUNT AS userAccount "
+				+ ",t2.ROLE_NAME AS roleName"
+				+ ",t3.AUTHORITY_NAME AS authorityName"
+				+ ",t1.INS_DATE AS userInsertDate "
+				+ ",t4.MENU_GROUP_NAME AS menuGroupName "
+				+ ",t4.MENU_NAME AS menuName "
+				+ " FROM "
+				+ " t_user t1 "
+				+ "INNER JOIN t_role t2 "
+				+ "ON t1.USER_ROLE = t2.ROLE_ID "
+				+ "INNER JOIN t_authority t3 "
+				+ "ON t1.USER_AUTHORITY = t3.AUTHORITY_ID "
+				+ "LEFT JOIN t_menu t4 "
+				+ "ON t1.MENU_GROUP_AUTHORITY >= t4.MENU_GROUP_AUTHORITY "
+				+ "AND t1.MENU_SUB_MAX_AUTHORITY >= t4.MENU_AUTHORITY "
+				+ "WHERE 1 = 1 ");
 		if (StringUtils.isNotEmpty(searchDto.getAccountName())) {
 			hql.append("AND t1.ACCOUNT LIKE CONCAT(:accountName, '%') ");
 		}
@@ -90,5 +90,5 @@ public class Sys0501Dao {
 		List<Sys0501ResultDto> list = sql.list();
 		return list;
 	}
-	
+
 }

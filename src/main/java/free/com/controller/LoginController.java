@@ -52,9 +52,10 @@ public class LoginController {
 			redirectModel.addFlashAttribute("loginFailure", CommonConstants.FAILURE);
 			return "redirect:/login/init";
 		} else {
-			if (StringUtils.isEmpty(session.getAttribute(CommonConstants.USER))
+			if (StringUtils.isEmpty(session.getAttribute(CommonConstants.USER_ID))
 					&& StringUtils.isEmpty(session.getAttribute(CommonConstants.LOGIN_TIME))) {
-				session.setAttribute(CommonConstants.USER, userInfo.get(0).getUserId());
+				session.setAttribute(CommonConstants.USER_ID, userInfo.get(0).getUserId());
+				session.setAttribute(CommonConstants.USER, userInfo.get(0));
 				session.setAttribute(CommonConstants.LOGIN_TIME,
 						new SimpleDateFormat("yyyy/MM/dd HH:mm:ss:sss").format(new Date()));
 			}
@@ -67,6 +68,7 @@ public class LoginController {
 	public String logOut(HttpSession session) {
 		// remove user information in the session
 		session.removeAttribute(CommonConstants.USER);
+		session.removeAttribute(CommonConstants.USER_ID);
 		// session disabled
 		session.invalidate();
 		LoggerCommon.printLog("LogOut Success", SystemEnum.LOG_LEVEL_DEBUG);

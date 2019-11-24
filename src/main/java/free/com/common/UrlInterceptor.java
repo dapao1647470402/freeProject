@@ -16,27 +16,30 @@ public class UrlInterceptor implements HandlerInterceptor{
 
 	private Logger log = LoggerFactory.getLogger(UrlInterceptor.class);
 
+	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		request.getRequestURI();
 		log.info("******Current Action:Check URL "+ request.getRequestURI() + "******");
 		HttpSession session = request.getSession(false);
 		if (session == null
-				|| StringUtils.isEmpty(String.valueOf(session.getAttribute(CommonConstants.USER)))
-				|| StringUtils.equals(CommonConstants.STR_NULL, String.valueOf(session.getAttribute(CommonConstants.USER)))) {
+				|| StringUtils.isEmpty(String.valueOf(session.getAttribute(CommonConstants.USER_ID)))
+				|| StringUtils.equals(CommonConstants.STR_NULL, String.valueOf(session.getAttribute(CommonConstants.USER_ID)))) {
 			log.info("******Current Action:Please again login******");
 			request.getRequestDispatcher("login/init").forward(request, response);
 			return false;
 		}
-		log.info("******Current Action:No error^-^ Account:" + session.getAttribute(CommonConstants.USER) + "******");
+		log.info("******Current Action:No error^-^ Account:" + session.getAttribute(CommonConstants.USER_ID) + "******");
 		return true;
 	}
 
+	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		log.info("******Current Action:postHandle******");
 	}
 
+	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		log.info("******Current Action:afterCompletion******");
