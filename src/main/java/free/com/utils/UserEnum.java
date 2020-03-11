@@ -3,6 +3,7 @@ package free.com.utils;
 public enum UserEnum {
 
 	USER_PREFIX_U("U"),
+
 	ADMIN("admin"),
 	ME("me"),
 	USER_ROLE_DEFAULT("0"),
