@@ -55,17 +55,23 @@
 		setUpdateDisabled();
 		setRegisteredEnabled("提交意见");
 	});
-
 </script>
 <!-- Myself define JS [End] -->
 <div style="padding: 10px;">
-
+	<c:if test="${submitMark == 1 }">
+		<div class="alert alert-success">
+			您已成功完成提交。
+			<button type="button" class="close" data-dismiss="alert"
+				aria-hidden="true">&times;</button>
+		</div>
+	</c:if>
 	<!-- 意见收集[Start] -->
 	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 		<form role="form" id="commonForm" method="post">
 			<div class="form-group">
-				<label for="name">意见收集处</label> 
-				<textarea class="form-control" rows="5" placeholder="请输入您需要解决的问题" name="opinionText"></textarea>
+				<label for="name">意见收集处</label>
+				<textarea class="form-control" rows="5" placeholder="请输入您需要解决的问题"
+					name="opinionText"></textarea>
 				<p class="help-block">感谢您提出的意见，我们将会对其进行分析并修正。</p>
 			</div>
 		</form>

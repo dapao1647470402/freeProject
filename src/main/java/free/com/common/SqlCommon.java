@@ -60,6 +60,9 @@ public class SqlCommon {
 
 	@After("point()")
 	private void joinDbAfter() {
+		log.info("******Current Action:" + "execute Committing******");
+		sqlSession.beginTransaction().commit();
+		log.info("******Current SqlSession Status:" + "Commited******");
 		log.info("******Current Action:" + "Close SqlSession******");
 		sqlSession.close();
 		log.info("******Current SqlSession Status:" + sqlSession + "******");
