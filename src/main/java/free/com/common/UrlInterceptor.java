@@ -14,7 +14,7 @@ import free.com.utils.CommonConstants;
 
 public class UrlInterceptor implements HandlerInterceptor{
 
-	private Logger log = LoggerFactory.getLogger(UrlInterceptor.class);
+	private Logger log = LoggerFactory.getLogger( UrlInterceptor.class);
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
