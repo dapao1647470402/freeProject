@@ -37,6 +37,7 @@
 	$(function(){
 		/**
 		 * Common: Date component
+		 * 时间控件
 		 */
 		$(".bootstrap-date-input").datetimepicker({//选择年月日
 			format: 'yyyy-mm-dd hh:mm:ss',
@@ -300,7 +301,7 @@
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户ID:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountId" id="accountNumber" maxlength="10">
+					<input type="text" class="form-control" name="accountId" id="accountNumber" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountNumber" style="display:none"></div>
 			</div>

@@ -12,7 +12,7 @@ import free.com.bean.system.Sys0501SearchDto;
 import free.com.common.SqlCommon;
 
 @Repository
-public class Sys0501Dao {
+public class Sys0302Dao {
 
 	public List<Sys0501ResultDto> init() {
 		SQLQuery sql = SqlCommon.sqlSession

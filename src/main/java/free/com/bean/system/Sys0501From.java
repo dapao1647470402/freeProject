@@ -10,6 +10,7 @@ public class Sys0501From {
 
 	private String userId;
 	private String userAccount;
+	private String userAccountId;
 	private String roleName;
 	private String authorityName;
 	private Date userInsertDate;
@@ -24,8 +25,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param menuGroupName
-	 *            the menuGroupName to set
+	 * @param menuGroupName the menuGroupName to set
 	 */
 	public void setMenuGroupName(String menuGroupName) {
 		this.menuGroupName = menuGroupName;
@@ -39,8 +39,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param userId
-	 *            the userId to set
+	 * @param userId the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -54,8 +53,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param userAccount
-	 *            the userAccount to set
+	 * @param userAccount the userAccount to set
 	 */
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
@@ -69,8 +67,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param roleName
-	 *            the roleName to set
+	 * @param roleName the roleName to set
 	 */
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
@@ -84,8 +81,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param authorityName
-	 *            the authorityName to set
+	 * @param authorityName the authorityName to set
 	 */
 	public void setAuthorityName(String authorityName) {
 		this.authorityName = authorityName;
@@ -99,8 +95,7 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param userInsertDate
-	 *            the userInsertDate to set
+	 * @param userInsertDate the userInsertDate to set
 	 */
 	public void setUserInsertDate(Date userInsertDate) {
 		this.userInsertDate = userInsertDate;
@@ -114,11 +109,24 @@ public class Sys0501From {
 	}
 
 	/**
-	 * @param multipleData
-	 *            the multipleData to set
+	 * @param multipleData the multipleData to set
 	 */
 	public void setMultipleData(List<Sys0501ResultDto> multipleData) {
 		this.multipleData = multipleData;
+	}
+
+	/**
+	 * @return the userAccountId
+	 */
+	public String getUserAccountId() {
+		return userAccountId;
+	}
+
+	/**
+	 * @param userAccountId the userAccountId to set
+	 */
+	public void setUserAccountId(String userAccountId) {
+		this.userAccountId = userAccountId;
 	}
 
 }

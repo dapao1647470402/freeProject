@@ -179,8 +179,8 @@
 		loadDateComponent();
 		// All button enable
 		setSearchEnabled();
-		setUpdateEnabled();
-		setRegisteredEnabled();
+		setUpdateDisabled();
+		setRegisteredDisabled();
 	});
 
 	/**
@@ -355,7 +355,7 @@
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>账户名</th>
+								<th>用户名(ID)</th>
 								<th>角色</th>
 								<th>权限</th>
 								<th>注册时间</th>
@@ -369,7 +369,10 @@
 						<c:forEach items="${ sys0501From }" var="list" varStatus="listIndex">
 							<tr class="success">
 								<td>${ listIndex.index + 1 }</td>
-								<td>${ list.userAccount }</td>
+								<td>
+									<a href="javascript:void(0)">${ list.userAccount }</a>
+									<span class="label label-default">${ list.userAccountId }</span>
+								</td>
 								<td>${ list.roleName }</td>
 								<td>${ list.authorityName }</td>
 								<td>
@@ -377,7 +380,7 @@
 								</td>
 							</tr>
 							<c:forEach items="${ list.multipleData }" var="multipleData" varStatus="multiple">
-								<tr>	
+								<tr>
 									<td colspan="2"  align="center">${ multipleData.menuGroupName }</td>
 									<td colspan="3">${ multipleData.menuName }</td>
 								</tr>

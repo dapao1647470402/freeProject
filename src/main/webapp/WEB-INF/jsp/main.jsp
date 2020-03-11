@@ -55,10 +55,10 @@
  	 }
  	if (actionId) {
  		var formData = $("#commonForm").serialize();
+ 		console.log(formData);
  		$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId,{'formData' : formData});
  		setActionMode(actionId);
  	} else {
- 		console.log(pageId);
  		window.currentPageId = pageId;
  		$('.underNavBar').load('<%=request.getContextPath()%>/'+ pageId + '/init');
  	}
@@ -73,12 +73,15 @@
 	<!-- Page Header Area[Start] -->
 	<div>
 		<!-- import common Menu[Start] -->
+		<!-- 加载网站的菜单部[Start] -->
 		<div class="col-lg-1" style="background: #fd9e10bf;">
 			<c:import url="template/menu.jsp" />
 		</div>
+		<!-- 加载网站的菜单部[End] -->
 		<!-- import common Menu[End] -->
 		<div class="col-lg-11" style="background: #fd9e10bf;">
 			<!-- Navigation Bar Area [Start] -->
+			<!-- 加载网站的导航部(local:mian.jsp / js:transitionHtml)[Start] -->
 			<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -90,36 +93,40 @@
 				<div class="collapse navbar-collapse" id="link-under-html">
 					<ul class="nav nav-justified">
 						<li class="active"><a onclick="transitionHtml(null,'search')" href="javascript:void(0)" id="search">
-							<label for="name" style="color: #e4ff00">查询模式</label>
+							<label for="name" style="color: #e4ff00" id="commonSearchLab">查询模式</label>
 							<label style="color: #09f7d6b3">(Search)</label>
 						</a></li>
 						<li><a onclick="transitionHtml(null,'update')" href="#" id="update">
-							<label for="name" style="color: #e4ff00">更新模式</label>
+							<label for="name" style="color: #e4ff00" id="commonUpdLab">更新模式</label>
 							<label style="color: #bc09f7b0">(Update)</label>
 						</a></li>
 						<li><a onclick="transitionHtml(null,'registered')" href="#" id="registered">
-							<label for="name" style="color: #e4ff00">注册模式</label>
+							<label for="name" style="color: #e4ff00" id="commonRegLab">注册模式</label>
 							<label style="color: #ff9900b3">(Registered)</label>
 						</a></li>
 					</ul>
 				</div>
 			</div>
 			</nav>
+			<!-- 加载网站的导航部(local:mian.jsp / js:transitionHtml)[End] -->
 			<!-- Navigation Bar Area [End] -->
 		</div>
 	</div>
 	<!-- Page Header Area[End] -->
 	
 	<!-- Content Area[Start] -->
+	<!-- 此处加载各位开发者的JSP[Start] -->
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 	<div class="col-lg-10">
 		<!-- Show Select to Html [Start] -->
 		<div class="underNavBar content content-1 scrollbar"></div>
 		<!-- Show Select to Html [End] -->
 	</div>
+	<!-- 此处加载各位开发者的JSP[End] -->
 	
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<!-- Right Content Top Area[Start] -->
+		<!-- 网站的动作模式介绍[Start] -->
 		<div style="padding-top:1px;">
 			<span class="badge">
 			当前动作模式
@@ -128,12 +135,16 @@
 		<div style="padding-top:5px;padding-left:15px" data-toggle="tooltip" data-placement="bottom" title="请点击不同按钮来体验不一样的功能吧!">
 			<span class="label label-success" id="actionMode">初始化</span>
 		</div>
+		<!-- 网站的动作模式介绍[End] -->	
 		<!-- Right Content Top Area[End] -->
+		
 		<!-- Bottom Button Area[Start] -->
+		<!-- 网站的返回按钮[Start] -->
 		<div style="padding-left: 15px; padding-bottom: 5px;position: fixed;bottom: 0px">
 			<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
 				title="点击返回" >Back</button>
 		</div>
+		<!-- 网站的返回按钮[End] -->
 		<!-- Bottom Button Area[End] -->
 	</div>
 	<!-- Content Area[End] -->

@@ -43,6 +43,7 @@ public class Sys0501Service {
 					from.setMultipleData(dataRepeatSet(dto.getUserId(), resultList));
 				}
 				from.setUserAccount(dto.getUserAccount());
+				from.setUserAccountId(dto.getUserAccountId());
 				from.setAuthorityName(dto.getAuthorityName());
 				from.setMenuGroupName(dto.getMenuGroupName());
 				from.setRoleName(dto.getRoleName());
@@ -52,7 +53,7 @@ public class Sys0501Service {
 				from = new Sys0501From();
 			}
 		}
-		
+
 	}
 
 	private List<Sys0501ResultDto> dataRepeatSet(String userId, List<Sys0501ResultDto> resultList) {
@@ -84,6 +85,6 @@ public class Sys0501Service {
 		List<Sys0501From> fromList = new ArrayList<Sys0501From>();
 		setResultData(resultList, fromList);
 		return fromList;
-	} 
-	
+	}
+
 }

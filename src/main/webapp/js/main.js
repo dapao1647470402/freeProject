@@ -21,6 +21,7 @@ function enableTooltip(){
 
 /**
  * fuction : set to Search Button Disabled
+ * 功能 : 禁用导航部的查询按钮
  * [20180826 Cao]
  */
 function setSearchDisabled() {
@@ -29,14 +30,19 @@ function setSearchDisabled() {
 
 /**
  * fuction : set to Search Button Enabled
+ * 功能 : 启用导航部的查询按钮
  * [20180826 Cao]
  */
-function setSearchEnabled() {
+function setSearchEnabled(btnName) {
 	$("#search").attr("style", "display");
+	if (typeof(btnName) != "underfine") {
+		$("#search").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}
 }
 
 /**
  * fuction : set to Update Button Disabled
+ * 功能 : 禁用导航部的更新按钮
  * [20180826 Cao]
  */
 function setUpdateDisabled() {
@@ -45,14 +51,19 @@ function setUpdateDisabled() {
 
 /**
  * fuction : set to Update Button Enabled
+ * 功能 : 启用导航部的查询按钮
  * [20180826 Cao]
  */
-function setUpdateEnabled() {
+function setUpdateEnabled(btnName) {
 	$("#update").attr("style", "display");
+	if (typeof(btnName) != "underfine") {
+		$("#update").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}
 }
 
 /**
  * fuction : set to Registered Button Disabled
+ * 功能 : 禁用导航部的注册按钮
  * [20180826 Cao]
  */
 function setRegisteredDisabled() {
@@ -61,10 +72,14 @@ function setRegisteredDisabled() {
 
 /**
  * fuction : set to Registered Button Enabled
+ * 功能 : 启用导航部的查询按钮
  * [20180826 Cao]
  */
-function setRegisteredEnabled() {
+function setRegisteredEnabled(btnName) {
 	$("#registered").attr("style", "display");
+	if (typeof(btnName) != "underfine") {
+		$("#registered").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}
 }
 
 /**
@@ -167,6 +182,11 @@ function loadDateComponent(){
 	 }
  }
  
+ /***
+  * 功能 ： 清楚form的内容
+  * @param id(form的ID)
+  * @returns
+  */
  function ClearForm(id) {
 	    var objId = document.getElementById(id);
 	    if (objId == undefined) {

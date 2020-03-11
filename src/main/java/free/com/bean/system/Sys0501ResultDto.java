@@ -8,6 +8,7 @@ public class Sys0501ResultDto {
 
 	private String userId;
 	private String userAccount;
+	private String userAccountId;
 	private String roleName;
 	private String authorityName;
 	private Date userInsertDate;
@@ -117,6 +118,20 @@ public class Sys0501ResultDto {
 	 */
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+
+	/**
+	 * @return the userAccountId
+	 */
+	public String getUserAccountId() {
+		return userAccountId;
+	}
+
+	/**
+	 * @param userAccountId the userAccountId to set
+	 */
+	public void setUserAccountId(String userAccountId) {
+		this.userAccountId = userAccountId;
 	}
 
 }
