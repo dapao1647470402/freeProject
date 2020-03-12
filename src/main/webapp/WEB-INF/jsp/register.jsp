@@ -368,6 +368,7 @@
 				<input type="button" class="btn btn-default" value="Clear" onclick="clearAction(this)">
 				<c:if test="${backPageId != null and backPageId != '' }">
 					<input type="button" class="btn btn-primary" value="Back" onclick="goBack('${backPageId }')">
+					<input type="hidden" value="${backPageId }" name="backPageId"/>
 				</c:if>
 			</div>
 			<!-- Button modal Templet [End]-->

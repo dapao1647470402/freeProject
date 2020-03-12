@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import free.com.bean.User;
 import free.com.common.CommonUtil;
 import free.com.service.RegisterService;
+import free.com.utils.StringUtils;
 import free.com.utils.UserEnum;
 
 @Controller
@@ -27,7 +28,7 @@ public class RegisterController {
 	}
 
 	@RequestMapping("doRegister")
-	public String doRegister(User user){
+	public String doRegister(User user, HttpServletRequest request, Model model){
 		String userId = UserEnum.USER_PREFIX_U.getVal() + CommonUtil.getTimestamp();
 		user.setUserId(userId);
 		user.setUserRole(UserEnum.USER_ROLE_DEFAULT.getVal());
@@ -39,7 +40,13 @@ public class RegisterController {
 		user.setInsUserId(userId);
 		user.setInsDate(CommonUtil.getSysDate());
 		registerService.doRegister(user);
-		return "login";
+		Object attribute = request.getParameter("backPageId");
+		model.addAttribute("backPageId", attribute);
+		if (!StringUtils.isEmpty(attribute)) {
+			return "main";
+		}else {
+			return "login";
+		}
 	}
 
 }
