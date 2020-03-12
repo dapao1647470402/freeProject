@@ -51,6 +51,7 @@ window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 								// if dyration is 3
 								if (parseInt(hourDefference) >= 3) {
 									$("#loginDurationWarn").attr("style", "display");
+									$("#loginDuration").attr("style", "color:red");
 								}
 							}
 									,1);
