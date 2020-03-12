@@ -7,7 +7,6 @@ window.STRING_SUCCESS = "success";
 window.STRING_FAULT = "fault";
 window.currentPageId = "";
 window.SYSTIME = "";
-window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 window.LOGOUT_TIME = "";
 window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
 window.CURRENT_ACTION_ID = "";

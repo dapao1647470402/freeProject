@@ -11,6 +11,7 @@
 
 <!-- Define Myself JS [Start] -->
 <script type="text/javascript">
+window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 	$(function() {
 		 enableTooltip();
 		 setSearchDisabled();
@@ -31,13 +32,12 @@
 								var secondDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000);
 								console.log(minDefference);
 								// minute
-								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/ 1000 / 60);
+								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME) / 1000 / 60);
 								// hour
-								var hourDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/ 1000 / 60 / 60);
+								var hourDefference = parseInt((window.SYSTIME - window.LOGIN_TIME) / 1000 / 60 / 60);
 								// progress
 								var duration = parseInt((minDefference*100 / 180));
 								$("#loginDurationForProgress").attr("style", "width:" + duration + "%");
-								
 								if (hourDefference == 0 && minDefference > 0) {
 									$("#loginDuration").html(minDefference + "min-" + parseInt(secondDefference - (minDefference * 60)) + "s");
 									$("#loginDurationFormat").html("minute-seconds");
