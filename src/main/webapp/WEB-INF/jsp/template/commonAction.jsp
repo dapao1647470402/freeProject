@@ -18,7 +18,9 @@
 		Action <span class="caret"></span>
 	</button>
 	<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background: #1d2744;">
-		<li><a data-target="#" href="./login_model.html">网站建设意见收集</a></li>
+		<li><a data-target="#" href="#" onclick="transitionHtml('sys0302','init')">网站建设意见收集</a></li>
+		<li class="divider"></li>
+		<li><a data-target="#" href="<%=request.getContextPath()%>/register/init" onclick="">添加用户</a></li>
 		<li class="divider"></li>
 		<li><a data-target="#" href="<%=request.getContextPath()%>/login/logout">
 			<label>退出</label>

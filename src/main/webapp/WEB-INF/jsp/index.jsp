@@ -12,6 +12,11 @@
 <!-- Define Myself JS [Start] -->
 <script type="text/javascript">
 	$(function() {
+		 enableTooltip();
+		 setSearchDisabled();
+		 setUpdateDisabled();
+		 setRegisteredDisabled();
+		 setBackBtnDisabled();
 		var sysTimeByIndexInterval;
 		var getTimeDifferenceByIndexInterval;
 		$('#showNetTime')

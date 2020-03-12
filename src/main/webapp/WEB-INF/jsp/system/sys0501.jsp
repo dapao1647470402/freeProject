@@ -181,6 +181,8 @@
 		setSearchEnabled();
 		setUpdateDisabled();
 		setRegisteredDisabled();
+		setBackBtnEnabled("返回首页");
+		setBackUrl('<%=request.getContextPath()%>/index/init');
 	});
 
 	/**
@@ -238,7 +240,7 @@
 					<!-- Change background of panel (Area-[Panel Body Start]) -->
 					<div class="panel-body">
 						<!-- Search Area for Form [Start] -->
-						<form action="" role="form" class="form-horizontal" id="commonForm" method="post">
+						<form action="<%=request.getContextPath()%>/register/init" role="form" class="form-horizontal" id="commonForm" method="post">
 							<div class="form-group">
 								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
 									<label for="name">账&nbsp;户&nbsp;名&nbsp;</label>
@@ -334,7 +336,13 @@
 								</div>
 							</div>
 							<!-- Help Text [End] -->
-							<!-- Clear Button [Start] -->
+								<!-- Add User Button [Start] -->
+								<div style="float:left;padding-right:20px">
+								<input type="hidden" name="backPageId" value="sys0501">
+								<input type="submit" onclick="" class="btn btn-primary" value="添加用户">
+								</div>
+								<!-- Add User Button [End] -->
+								<!-- Clear Button [Start] -->
 								<div style="float:right;padding-right:20px">
 									<input type="button" onclick="ClearForm('commonForm')" class="btn btn-default" value="清空输入条件">
 								</div>

@@ -1,5 +1,7 @@
 package free.com.controller.system;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import free.com.bean.Opinion;
 import free.com.bean.system.Sys0302From;
+import free.com.bean.system.Sys0302SearchDto;
 import free.com.common.CommonUtil;
 import free.com.service.system.Sys0302Service;
 import free.com.utils.CommonConstants;
-import free.com.utils.UserEnum;
 
 /**
  * User Information Configure
@@ -41,12 +43,20 @@ public class Sys0302Controller {
 	public String registered(HttpServletRequest request, HttpServletResponse response, Model model) {
 		Sys0302From from = CommonUtil.getBean(Sys0302From.class, request);
 		opinion.setOpinionContent(from.getOpinionText());
-		opinion.setUpdUserId(UserEnum.ME.getVal());
+		opinion.setUpdUserId(CommonUtil.getUserInfo().getInsUserId());
 		opinion.setUpdDate(CommonUtil.getSysDate());
-		opinion.setInsUserId(UserEnum.ME.getVal());
+		opinion.setInsUserId(CommonUtil.getUserInfo().getInsUserId());
 		opinion.setInsDate(CommonUtil.getSysDate());
 		service.registered(opinion);
 		model.addAttribute("submitMark", CommonConstants.SUCCESS);
 		return CommonConstants.FOLDER_SYS + "sys0302";
+	}
+
+	@RequestMapping("result")
+	public String getResult(HttpServletRequest request, HttpServletResponse response, Model model) {
+		Sys0302SearchDto searchDto = CommonUtil.getBean(Sys0302SearchDto.class, request);
+		List<Sys0302From> result = service.getResult(searchDto);
+		model.addAttribute("sys0302From", result);
+		return CommonConstants.FOLDER_SYS + "sys030201";
 	}
 }

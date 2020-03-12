@@ -11,7 +11,9 @@ window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 window.LOGOUT_TIME = "";
 window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
 window.CURRENT_ACTION_ID = "";
-
+/** 返回按钮使用参数 */
+window.COMMON_BACK_BTN_PRE_URL = "";
+window.BAKE_PAGE_ID = "";
 /**
  * 启用提示框
  */
@@ -35,8 +37,10 @@ function setSearchDisabled() {
  */
 function setSearchEnabled(btnName) {
 	$("#search").attr("style", "display");
-	if (typeof(btnName) != "underfine") {
+	if (typeof(btnName) != "undefined") {
 		$("#search").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}else {
+		$("#search").html("<label for='name' style='color: #e4ff00'>查询模式</label><label style='color: #09f7d6b3'>(Search)</label>");
 	}
 }
 
@@ -56,8 +60,10 @@ function setUpdateDisabled() {
  */
 function setUpdateEnabled(btnName) {
 	$("#update").attr("style", "display");
-	if (typeof(btnName) != "underfine") {
+	if (typeof(btnName) != "undefined") {
 		$("#update").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}else{
+		$("#update").html("<label for='name' style='color: #e4ff00'>更新模式</label><label style='color: #09f7d6b3'>(Update)</label>");
 	}
 }
 
@@ -76,12 +82,36 @@ function setRegisteredDisabled() {
  * [20180826 Cao]
  */
 function setRegisteredEnabled(btnName) {
+	
 	$("#registered").attr("style", "display");
-	if (typeof(btnName) != "underfine") {
+	if (typeof(btnName) != "undefined") {
 		$("#registered").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
+	}else {
+		$("#registered").html("<label for='name' style='color: #e4ff00'>注册模式</label><label style='color: #09f7d6b3'>(Insert)</label>");
 	}
 }
+/**
+ * fuction : set to Registered Button Disabled
+ * 功能 : 禁用Back按钮
+ * [20180826 Cao]
+ */
+function setBackBtnDisabled() {
+	$("#commonBackBtn").attr("style", "display:none");
+}
 
+/**
+ * fuction : set to Registered Button Enabled
+ * 功能 : 启用Back按钮
+ * [20180826 Cao]
+ */
+function setBackBtnEnabled(btnName) {
+	$("#commonBackBtn").attr("style", "display");
+	if (typeof(btnName) != "undefined") {
+		$("#commonBackBtn").text(btnName);
+	}else {
+		$("#commonBackBtn").text("Back");
+	}
+}
 /**
  * function : set to action mode at the page 
  * clickElement : current button name of element
@@ -230,4 +260,30 @@ function loadDateComponent(){
 	    }
 	}
  
+ function setBackUrl(obj){
+	 window.COMMON_BACK_BTN_PRE_URL = obj;
+ }
+ 
+ /**
+  * function : go Back
+  * [20200312 Cao]
+  */
+ function commonGoBack() {
+	$('.underNavBar').load(window.COMMON_BACK_BTN_PRE_URL);
+ }
+ 
+ function getInputSizeByMaxLength(element, displayElement){
+	 var doc = $('#'+ element);
+	 var docDis = $('#'+ displayElement);
+	 var maxLength = document.getElementById(element).getAttribute("maxlength");
+	 docDis.text(maxLength);
+	 if (!doc) {
+		 return;
+	 }
+	 doc.bind("keydown",function(){
+		 var inputSize = doc.val().length;
+		 var docDisText = parseInt(maxLength) - parseInt(inputSize);
+		docDis.text(docDisText);
+	 });
+ }
  

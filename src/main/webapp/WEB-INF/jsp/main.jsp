@@ -29,6 +29,10 @@
 <!-- inclued JS and Css at Local [Start] -->
 <script type="text/javascript" src="../js/main.js"></script>
 <script type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
 /**
  * function : Login After Join to default Page
  * [20180818 Cao]
@@ -40,6 +44,8 @@
 	 setSearchDisabled();
 	 setUpdateDisabled();
 	 setRegisteredDisabled();
+	 setBackBtnDisabled();
+	 transitionHtml('${backPageId}');
 });
 
  /**
@@ -53,16 +59,22 @@
  	if (!confirmTransitionHtml()) {
  		 return;
  	 }
- 	if (actionId) {
+ 	if (actionId && !pageId) {
  		var formData = $("#commonForm").serialize();
  		console.log(formData);
  		$('.underNavBar').load('<%=request.getContextPath()%>/'+ window.currentPageId + '/' + actionId,{'formData' : formData});
  		setActionMode(actionId);
- 	} else {
+ 	} else if (!actionId && pageId) {
  		window.currentPageId = pageId;
  		$('.underNavBar').load('<%=request.getContextPath()%>/'+ pageId + '/init');
+ 	} else {
+ 		var formData = $("#commonForm").serialize();
+ 		window.currentPageId = pageId;
+ 		$('.underNavBar').load('<%=request.getContextPath()%>/'+ pageId + '/' + actionId,{'formData' : formData});
  	}
+ 	
  }
+ 
 </script>
 
 <link rel="styleSheet" href="../css/main.css" type="text/css">
@@ -92,18 +104,9 @@
 				</div>
 				<div class="collapse navbar-collapse" id="link-under-html">
 					<ul class="nav nav-justified">
-						<li class="active"><a onclick="transitionHtml(null,'search')" href="javascript:void(0)" id="search">
-							<label for="name" style="color: #e4ff00" id="commonSearchLab">查询模式</label>
-							<label style="color: #09f7d6b3">(Search)</label>
-						</a></li>
-						<li><a onclick="transitionHtml(null,'update')" href="#" id="update">
-							<label for="name" style="color: #e4ff00" id="commonUpdLab">更新模式</label>
-							<label style="color: #bc09f7b0">(Update)</label>
-						</a></li>
-						<li><a onclick="transitionHtml(null,'registered')" href="#" id="registered">
-							<label for="name" style="color: #e4ff00" id="commonRegLab">注册模式</label>
-							<label style="color: #ff9900b3">(Registered)</label>
-						</a></li>
+						<li class="active"><a onclick="transitionHtml(null,'search')" href="javascript:void(0)" id="search"></a></li>
+						<li><a onclick="transitionHtml(null,'update')" href="javascript:void(0)" id="update"></a></li>
+						<li><a onclick="transitionHtml(null,'registered')" href="javascript:void(0)" id="registered"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -141,8 +144,8 @@
 		<!-- Bottom Button Area[Start] -->
 		<!-- 网站的返回按钮[Start] -->
 		<div style="padding-left: 15px; padding-bottom: 5px;position: fixed;bottom: 0px">
-			<button id="backBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
-				title="点击返回" >Back</button>
+			<button id="commonBackBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+				title="点击返回" onclick="commonGoBack()">Back</button>
 		</div>
 		<!-- 网站的返回按钮[End] -->
 		<!-- Bottom Button Area[End] -->

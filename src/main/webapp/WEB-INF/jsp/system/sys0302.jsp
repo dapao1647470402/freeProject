@@ -54,6 +54,9 @@
 		setSearchDisabled();
 		setUpdateDisabled();
 		setRegisteredEnabled("提交意见");
+		setBackBtnEnabled("返回首页");
+		setBackUrl('<%=request.getContextPath()%>/index/init');
+		getInputSizeByMaxLength("opinionText","opinionInputText");
 	});
 </script>
 <!-- Myself define JS [End] -->
@@ -61,6 +64,7 @@
 	<c:if test="${submitMark == 1 }">
 		<div class="alert alert-success">
 			您已成功完成提交。
+			<a href="#" onclick="transitionHtml(null,'result')">点击查看 <span class="badge">☞</span></a>
 			<button type="button" class="close" data-dismiss="alert"
 				aria-hidden="true">&times;</button>
 		</div>
@@ -71,10 +75,18 @@
 			<div class="form-group">
 				<label for="name">意见收集处</label>
 				<textarea class="form-control" rows="5" placeholder="请输入您需要解决的问题"
-					name="opinionText"></textarea>
-				<p class="help-block">感谢您提出的意见，我们将会对其进行分析并修正。</p>
+					name="opinionText" maxlength="1000" id="opinionText"></textarea>
+				<p class="help-block">感谢您提出的意见，我们将会对其进行分析并修正。
+				<span class="help-block" style="float:right">还可以输入
+				<span  id="opinionInputText"></span>
+				字
+				</span>
+				</p>
+				
 			</div>
 		</form>
+		
+		<button type="button" class="btn btn-default" onclick="transitionHtml(null,'result')">意见箱</button>
 	</div>
 	<!-- 意见收集[End] -->
 

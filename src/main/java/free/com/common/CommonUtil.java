@@ -1,6 +1,7 @@
 package free.com.common;
 
 import java.lang.reflect.Field;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,12 +11,19 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import free.com.bean.User;
+import free.com.utils.CommonConstants;
 import free.com.utils.SystemEnum;
 
 public class CommonUtil {
+	private static HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+	private static HttpSession session = request.getSession();
 
 	public CommonUtil() {
 	}
@@ -43,7 +51,7 @@ public class CommonUtil {
 						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())
 						&& StringUtils.equals("String", attributeData.getClass().getSimpleName())) {
 					if (StringUtils.equals("String", attributeType)) {
-						field.set(newInstance, attributeData);
+						field.set(newInstance, URLDecoder.decode(String.valueOf(attributeData)));
 					} else if (StringUtils.equals("Integer", attributeType)) {
 						field.set(newInstance, Integer.parseInt(String.valueOf(attributeData)));
 					} else if (StringUtils.equals("Date", attributeType)
@@ -139,4 +147,11 @@ public class CommonUtil {
 		return new Date();
 	}
 
+	/**
+	 * 获取session中的用户信息
+	 */
+	public static User getUserInfo() {
+		User user = (User)(session.getAttribute(CommonConstants.USER));
+		return user;
+	}
 }

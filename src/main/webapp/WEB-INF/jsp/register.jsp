@@ -8,7 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Welcome to Free Project!</title>
 </head>
-
+<!-- inclued JS and Css at Local [Start] -->
+<script type="text/javascript" src="../js/main.js"></script>
 <!-- include Js and Css and so on of BootStrap file [Start]-->
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
@@ -35,6 +36,7 @@
 	window.EMPTY = "";
 
 	$(function(){
+		
 		/**
 		 * Common: Date component
 		 * 时间控件
@@ -124,11 +126,27 @@
 	 * check input information[1-1]
 	 */
 	function checkInputInfo(){
+		window.errorMark = false;
 		accountNameCheck();
+		if(window.errorMark){
+			return false;
+		};
 		accountNumberCheck();
+		if(window.errorMark){
+			return false;
+		};
 		accountPasswordCheck();
+		if(window.errorMark){
+			return false;
+		};
 		accountPassword2Check();
+		if(window.errorMark){
+			return false;
+		};
 		modifyPdsTimeCheck();
+		if(window.errorMark){
+			return false;
+		};
 	}
 
 	function accountNameCheck() {
@@ -249,6 +267,10 @@
 		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime").attr("style", window.successStyle);
 	}
 	
+	
+	function goBack(obj) {
+		window.location.href = "<%=request.getContextPath()%>"+"/main/init?backPageId=" + obj;
+	}
 </script>
 <!-- Myself define JS [End] -->
 </head>
@@ -291,7 +313,7 @@
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户名:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountName" id="accountName" required="required" maxlength="20">
+					<input type="text" class="form-control" name="accountName" id="accountName" required="required" maxlength="50">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountName" style="display:none"></div>
 			</div>
@@ -311,7 +333,7 @@
 			<div class="panel panel-danger panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="password" id="accountPassword" maxlength="20">
+					<input type="password" class="form-control" name="password" id="accountPassword" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword" style="display:none"></div>
 			</div>
@@ -321,7 +343,7 @@
 			<div class="panel panel-warning panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">请再次输入密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
-					<input type="text" class="form-control" name="accountPassword2" id="accountPassword2" maxlength="20">
+					<input type="password" class="form-control" name="accountPassword2" id="accountPassword2" maxlength="20">
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword2" style="display:none"></div>
 			</div>
@@ -344,6 +366,9 @@
 			<div class="panel panel-info panel-body" style="text-align:center;">
 				<input type="button" class="btn btn-loading" data-toggle="modal" value="Register" onclick="confirmInputOfInfo(this)">
 				<input type="button" class="btn btn-default" value="Clear" onclick="clearAction(this)">
+				<c:if test="${backPageId != null and backPageId != '' }">
+					<input type="button" class="btn btn-primary" value="Back" onclick="goBack('${backPageId }')">
+				</c:if>
 			</div>
 			<!-- Button modal Templet [End]-->
 			<!-- Modal Box [Start] -->
