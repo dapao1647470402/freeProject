@@ -11,7 +11,13 @@
 
 <!-- Define Myself JS [Start] -->
 <script type="text/javascript">
-window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
+/** 用户登录时间取得[Start] */
+var dataT = '<%=session.getAttribute("loginTime")%>';
+dataT = dataT.substring(0,19);    
+dataT = dataT.replace(/-/g,'/'); 
+var timestamp = new Date(dataT).getTime();
+window.LOGIN_TIME = new Date(timestamp);
+/** 用户登录时间取得[End] */
 	$(function() {
 		 enableTooltip();
 		 setSearchDisabled();
@@ -30,7 +36,6 @@ window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 							getTimeDifferenceByIndexInterval = setInterval(function(){
 								// second
 								var secondDefference = parseInt((window.SYSTIME - window.LOGIN_TIME)/1000);
-								console.log(minDefference);
 								// minute
 								var minDefference = parseInt((window.SYSTIME - window.LOGIN_TIME) / 1000 / 60);
 								// hour
@@ -51,6 +56,7 @@ window.LOGIN_TIME = new Date('<%=session.getAttribute("loginTime")%>');
 								// if dyration is 3
 								if (parseInt(hourDefference) >= 3) {
 									$("#loginDurationWarn").attr("style", "display");
+									$("#loginDuration").attr("style", "color:red");
 								}
 							}
 									,1);
