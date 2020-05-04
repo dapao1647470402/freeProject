@@ -18,9 +18,15 @@ public class CommonConstants {
 
 	public static final String FAILURE = "0";
 
+	/** On/Off */
+	public static final String ON_STR = "1";
+
+	public static final String OFF_STR = "0";
+
 	public static final String LOGIN_STATUS = "loginStatus";
 
 	public static final String FOLDER_SYS = "system/";
+	public static final String FOLDER_STY = "studenty/";
 
 	public static final int MAX_COUNT = 500;
 
@@ -30,6 +36,9 @@ public class CommonConstants {
 	public static final String MD_NO = "meun_detail_no";
 
 	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy/MM/dd HH:mm:ss";
+
+	/** Solr Url */
+	public static final String SORL_URL = "http://127.0.0.1:8983/solr/fp_datasource";
 
 	private CommonConstants() {
 

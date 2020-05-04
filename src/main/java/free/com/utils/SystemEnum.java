@@ -2,10 +2,11 @@ package free.com.utils;
 
 public enum SystemEnum {
 
-	LOG_LEVEL_INFO(0, "info"), LOG_LEVEL_DEBUG(1, "debug");
-
+	LOG_LEVEL_INFO(0, "info"), LOG_LEVEL_DEBUG(1, "debug"),
+	COMMON_PREFIX_I("I");
 	private int id;
 	private String content;
+	private String val;
 
 	private SystemEnum() {
 	}
@@ -19,6 +20,12 @@ public enum SystemEnum {
 		this.content = content;
 	}
 
+	/**
+	 * @param content
+	 */
+	private SystemEnum(String val) {
+		this.val = val;
+	}
 	/**
 	 * @return the id
 	 */
@@ -47,6 +54,20 @@ public enum SystemEnum {
 	 */
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	/**
+	 * @return the val
+	 */
+	public String getVal() {
+		return val;
+	}
+
+	/**
+	 * @param val the val to set
+	 */
+	public void setVal(String val) {
+		this.val = val;
 	}
 
 }

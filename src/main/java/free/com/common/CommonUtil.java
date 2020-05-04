@@ -2,6 +2,7 @@ package free.com.common;
 
 import java.lang.reflect.Field;
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -22,8 +25,13 @@ import free.com.utils.CommonConstants;
 import free.com.utils.SystemEnum;
 
 public class CommonUtil {
-	private static HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-	private static HttpSession session = request.getSession();
+	//获取到ServletRequestAttributes 里面有
+	static ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+	//获取到Request对象
+	static HttpServletRequest request = attrs.getRequest();
+	//获取到Session对象
+	static HttpSession session = request.getSession();
+	private static Logger log = LoggerFactory.getLogger( UrlInterceptor.class);
 
 	public CommonUtil() {
 	}
@@ -148,10 +156,26 @@ public class CommonUtil {
 	}
 
 	/**
+	 * 获取时间
+	 *
+	 * @return
+	 */
+	public static String getSysDateText() {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(CommonConstants.YYYY_MM_DD_HH_MM_SS);
+		String format = simpleDateFormat.format(getSysDate());
+		return format;
+	}
+
+	/**
 	 * 获取session中的用户信息
 	 */
 	public static User getUserInfo() {
-		User user = (User)(session.getAttribute(CommonConstants.USER));
+		User user = new User();
+		try {
+			user = (User)(session.getAttribute(CommonConstants.USER));
+		}catch(Exception e) {
+			log.error("******User Infomation Error******" + e.getMessage());
+		}
 		return user;
 	}
 }
