@@ -55,6 +55,10 @@
   * [20180818 Cao]
   */
  function transitionHtml(pageId, actionId) {
+	// 表单中含有必须入力但是未填写输入框
+	if (checkSubmitRequired() == 1) {
+		return;
+	}
  	window.CURRENT_ACTION_ID = "#" + actionId;
  	if (!confirmTransitionHtml()) {
  		 return;

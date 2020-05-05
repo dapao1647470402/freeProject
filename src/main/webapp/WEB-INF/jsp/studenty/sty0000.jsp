@@ -35,6 +35,8 @@
 	box-shadow: 0 6px 12px rgba(243, 16, 16, 0.175);
 	width: auto;
 }
+
+
 </style>
 <!-- Myself define Css[End] -->
 
@@ -58,7 +60,6 @@
 		setBackUrl('<%=request.getContextPath()%>/index/init');
 		getInputSizeByMaxLength("resumeText","resumeInputText");
 		getInputSizeByMaxLength("title","titleInputText");
-		getInputSizeByMaxLength("searchKey","searchKeyInputText");
 		if($("#searchAreaShow").val() == "1") {
 			setSearchDisabled();
 		}
@@ -79,7 +80,7 @@
 		<form role="form" id="commonForm" method="post">
 			<div class="form-group">
 				<label for="name">请输入标题：</label>
-				<input name="title" id="title" maxlength="60" size="60" value="${sty0000From.title}"/>
+				<input name="title" id="title" maxlength="60" size="60" value="${sty0000From.title}" required/>
 				<span class="help-block" style="float:right">还可以输入
 				<span  id="titleInputText"></span>
 				字
@@ -100,7 +101,7 @@
 			</div>
 			<div class="form-group">
 				<label for="name">请创建(选择)分类：</label>
-				<input name="selfOfType" id="selfOfType" maxlength="10"  value="${sty0000From.selfOfType}"/>
+				<input name="selfOfType" id="selfOfType" maxlength="10"  value="${sty0000From.selfOfType}" required/>
 				<button type="button" id="selfCreateTypeListBtn" class="btn btn-default" onclick="transitionHtml(null,'result')">自己创建的分类</button>
 				<button type="button" id="elseCreateTypeListBtn" class="btn btn-default" onclick="transitionHtml(null,'result')">参照别人的分类</button>
 			</div>
@@ -124,7 +125,18 @@
 					<button type="button" id="searchKeyBtn" class="btn btn-primary" onclick="transitionHtml(null,'resultByMe')">检索(自身)</button>
 				</c:if>
 			</div>
-			<table class="table table-bordered table-condensed table-hover" style="word-break:break-all; word-wrap:break-all;table-layout: fixed;" >
+			<!-- Myself define JS [Start] -->
+			<script type="text/javascript">
+				/**
+				 * auto-create button of division page
+				 */
+				$(function() {
+					getInputSizeByMaxLength("searchKey","searchKeyInputText");
+				});
+			</script>
+			<!-- Myself define JS [End] -->
+			
+			<table class="table table-hover" style="word-break:break-all; word-wrap:break-all;table-layout: fixed;" >
 				<thead>
 					<tr>
 						<th class="text-right">No.</th>
@@ -140,7 +152,16 @@
 				<c:forEach items="${sty0000Result }" var="sty0000Result" varStatus="sty0000ResultIndex">
 					<tr>
 						<td class="text-right">${ sty0000ResultIndex.index + 1 }</td>
-						<td class="text-center"><a href="${sty0000Result.aboutUrl }">${sty0000Result.title }</a> </td>
+						<td class="text-center">
+							<c:choose >
+								<c:when test="${sty0000Result.aboutUrl ne null and sty0000Result.aboutUrl ne ''}">
+									<a href="${sty0000Result.aboutUrl }">${sty0000Result.title }<span class="badge pull-right">点我</span></a> 
+								</c:when>
+								<c:otherwise>
+									${sty0000Result.title }
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td class="text-center">${sty0000Result.resume }</td>
 						<td class="text-center">${sty0000Result.selfOfType }</td>
 						<td class="text-center">${sty0000Result.insUserId }</td>

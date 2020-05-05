@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,12 +24,7 @@ import free.com.utils.CommonConstants;
 import free.com.utils.SystemEnum;
 
 public class CommonUtil {
-	//获取到ServletRequestAttributes 里面有
-	static ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-	//获取到Request对象
-	static HttpServletRequest request = attrs.getRequest();
-	//获取到Session对象
-	static HttpSession session = request.getSession();
+
 	private static Logger log = LoggerFactory.getLogger( UrlInterceptor.class);
 
 	public CommonUtil() {
@@ -170,9 +164,14 @@ public class CommonUtil {
 	 * 获取session中的用户信息
 	 */
 	public static User getUserInfo() {
+		//获取到ServletRequestAttributes 里面有
+		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		//获取到Request对象
+		HttpServletRequest request = attrs.getRequest();
+		//获取到Session对象
 		User user = new User();
 		try {
-			user = (User)(session.getAttribute(CommonConstants.USER));
+			user = (User)(request.getSession().getAttribute(CommonConstants.USER));
 		}catch(Exception e) {
 			log.error("******User Infomation Error******" + e.getMessage());
 		}

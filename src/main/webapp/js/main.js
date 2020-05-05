@@ -286,3 +286,16 @@ function loadDateComponent(){
 	 });
  }
  
+
+ function checkSubmitRequired(){  
+	 var flag = 0;
+	 $('#commonForm :input:visible[required="required"]').each(function(){
+	 if(!this.validity.valid) {
+	 $(this).focus();
+	 // break
+	 flag = 1;
+	 alert("提交失败")
+	 }
+	 });
+	 return flag;
+ }
