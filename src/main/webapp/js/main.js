@@ -10,6 +10,8 @@ window.SYSTIME = "";
 window.LOGOUT_TIME = "";
 window.DATE_FROMAT_YYYYMMDDHHMMSS = "yyyy/MM/dd hh:mm:ss";
 window.CURRENT_ACTION_ID = "";
+/** 规定什么动作的Form会被Check */
+window.CHECK_ACTION_ID = [];
 /** 返回按钮使用参数 */
 window.COMMON_BACK_BTN_PRE_URL = "";
 window.BAKE_PAGE_ID = "";
@@ -286,16 +288,53 @@ function loadDateComponent(){
 	 });
  }
  
-
+/**
+ * 共同方法：执行commonForm的必须属性的Check
+ * @returns
+ */
  function checkSubmitRequired(){  
+	 
 	 var flag = 0;
-	 $('#commonForm :input:visible[required="required"]').each(function(){
-	 if(!this.validity.valid) {
-	 $(this).focus();
-	 // break
-	 flag = 1;
-	 alert("提交失败")
+	 if(!beginFormCheck()){
+		return flag;
 	 }
-	 });
-	 return flag;
+     $("#commonForm .required").each(function(){
+         var val=$(this).val();
+         var message=$(this).attr("message");
+         var type=$(this).attr("type");
+         if(!val){
+        	 var mes_span = "<span style='color:red;'>&nbsp;&nbsp;<strong>※</strong>" + message + "</span>";
+             //判断隐藏域
+             if(type=="hidden")
+             {
+                 $(this).next().focus();
+                 $(this).next().next().html(mes_span);
+             }
+             else{
+                 $(this).focus();
+                 var idName = $(this).attr("id");
+                 document.getElementById(idName).insertAdjacentHTML("afterEnd",mes_span);
+             }
+             flag=1;
+             return false;
+         }
+
+     });
+     return flag;
+	 
+ }
+
+ /**
+  * 限制必须属性Check的场合
+  * @param enableAction
+  *         必须Check的场合：例：检索(#search)
+  * @returns
+  */
+ function beginFormCheck(){
+	 for (var i = 0; i < window.CHECK_ACTION_ID.length; i++) {
+         if (window.CURRENT_ACTION_ID == window.CHECK_ACTION_ID[i]){
+        	 return true;
+         }
+     }  
+	 return false;
  }

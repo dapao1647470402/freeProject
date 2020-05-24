@@ -63,6 +63,8 @@
 		if($("#searchAreaShow").val() == "1") {
 			setSearchDisabled();
 		}
+		
+		window.CHECK_ACTION_ID[0]="#registered";
 	});
 </script>
 <!-- Myself define JS [End] -->
@@ -80,7 +82,7 @@
 		<form role="form" id="commonForm" method="post">
 			<div class="form-group">
 				<label for="name">请输入标题：</label>
-				<input name="title" id="title" maxlength="60" size="60" value="${sty0000From.title}" required/>
+				<input class="required" type="text" message="请输入标题" name="title" id="title" maxlength="60" size="60" value="${sty0000From.title}" />
 				<span class="help-block" style="float:right">还可以输入
 				<span  id="titleInputText"></span>
 				字
@@ -101,7 +103,7 @@
 			</div>
 			<div class="form-group">
 				<label for="name">请创建(选择)分类：</label>
-				<input name="selfOfType" id="selfOfType" maxlength="10"  value="${sty0000From.selfOfType}" required/>
+				<input name="selfOfType" class="required" type="text" message="请创建(选择)分类" id="selfOfType" maxlength="10"  value="${sty0000From.selfOfType}" required/>
 				<button type="button" id="selfCreateTypeListBtn" class="btn btn-default" onclick="transitionHtml(null,'result')">自己创建的分类</button>
 				<button type="button" id="elseCreateTypeListBtn" class="btn btn-default" onclick="transitionHtml(null,'result')">参照别人的分类</button>
 			</div>
