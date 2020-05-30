@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import free.com.utils.SystemEnum;
 
 public class LoggerCommon {
-	private static Logger log = LoggerFactory.getLogger(LoggerCommon.class);
+	private static Logger log = null;
 
 	/**
 	 * print Logger Information
@@ -16,6 +16,11 @@ public class LoggerCommon {
 	 *            1.debug Level
 	 */
 	public static final void printLog(String logInfo, SystemEnum... extra) {
+		// 只执行一次，节省JVM资源
+		if(log == null) {
+			log = LoggerFactory.getLogger(LoggerCommon.class);
+		}
+
 		if (extra != null && extra.length > 0) {
 			if (SystemEnum.LOG_LEVEL_DEBUG == extra[0]) {
 				log.debug("☆☆☆☆☆" + logInfo + "☆☆☆☆☆");

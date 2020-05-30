@@ -3,6 +3,7 @@ package free.com.utils;
 public enum SystemEnum {
 
 	LOG_LEVEL_INFO(0, "info"), LOG_LEVEL_DEBUG(1, "debug"),
+	LOG_LEVEL_ERROR(3, "error"),
 	COMMON_PREFIX_I("I");
 	private int id;
 	private String content;
