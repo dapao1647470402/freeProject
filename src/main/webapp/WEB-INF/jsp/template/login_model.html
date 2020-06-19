@@ -5,7 +5,7 @@
 <title>Login Templet(bootstrap) </title>
 </head>
 
-<!-- Myself Define Js Section [Start]-->
+<%-- Myself Define Js Section [Start]--%>
 <script type="text/javascript">
 function inputBlur(Obj){
 	// Get input account
@@ -54,15 +54,15 @@ function inputBlur(Obj){
 		}
 }
 </script>
-<!-- Myself Define Js Section [End]-->
+<%-- Myself Define Js Section [End]--%>
 
 <body>
 	<div>
-	<!-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)-->
-		<!-- Company Show Of Content [Start]-->
+	<%-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)--%>
+		<%-- Company Show Of Content [Start]--%>
 		<div class="col-lg-3 col-md-3 col-sm-3">
 			<div class="panel panel-group panel-primary ">
-				<!-- Advice Bar [Start] -->
+				<%-- Advice Bar [Start] --%>
 				<div class="panel-heading">Advice</div>
 				<ul class="list-group">
 					<li class="list-group-item"><a href="#">Advice Content One</a></li>
@@ -71,23 +71,23 @@ function inputBlur(Obj){
 					<li class="list-group-item"><a href="#">Advice Content Four</a></li>
 					<li class="list-group-item"><a href="#">Advice Content Five</a></li>
 				</ul>
-				<!-- Advice Bar [End] -->
+				<%-- Advice Bar [End] --%>
 			</div>
 			<div class="panel panel-group panel-info">
-				<!-- Company Resume Bar [Start] -->
+				<%-- Company Resume Bar [Start] --%>
 				<div class="panel-heading">
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Company Resume</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
 					Company Resume Content
 				</div>
-				<!-- Company Resume Bar [End] -->
+				<%-- Company Resume Bar [End] --%>
 			</div>
 			
 		</div>
-		<!-- Company Show Of Content [End]-->
+		<%-- Company Show Of Content [End]--%>
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-		<!-- Image Area [Start] -->
+		<%-- Image Area [Start] --%>
 		<div class="col-lg-4 col-md-4 col-sm-4">
 		<div class="panel panel-primary">
 		The Picture Show Area
@@ -95,12 +95,12 @@ function inputBlur(Obj){
 		<img alt="" src="" height="400px">
 		
 		</div>
-		<!-- Image Area [End] -->
+		<%-- Image Area [End] --%>
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		</div>
-		<!-- HTML Right Layout [Start] -->
+		<%-- HTML Right Layout [Start] --%>
 		<div class="col-lg-3 col-md-3 col-sm-3 ">
-		<!-- Templet Area [Start] -->
+		<%-- Templet Area [Start] --%>
 			<div class="dropdown dropdown-info" style="float:right">
 				<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
 					Templet Url
@@ -114,42 +114,42 @@ function inputBlur(Obj){
 					<li><a data-target="#" href="./registered_model.html">Registered</a></li>
 				</ul>
 			</div>
-			<!-- Templet Area [End] -->
+			<%-- Templet Area [End] --%>
 			<div style="padding-top:100px;padding-right:0px;">
-				<!-- From [Start]-->
+				<%-- From [Start]--%>
 				<form class="bs-example bs-example-form form-group" action="" role="form">
-					<!-- Login Mark Start-->
+					<%-- Login Mark Start--%>
 					<div style="padding:0px 0px 10px 80px;">
 						<h2><strong>Login</strong></h2>
 					</div>
-					<!-- Login Mark End-->
-					<!-- Input Account [Start]-->
+					<%-- Login Mark End--%>
+					<%-- Input Account [Start]--%>
 					<div class="input-group row input-group-lg from-group" id="div_account">
 						<span class="input-group-addon" style="width:115px;">Account</span>
 						<input type="text" class="form-control" onblur="inputBlur(1)" id="account">
 					</div>
-					<!-- Input Account [End]-->
+					<%-- Input Account [End]--%>
 					<br/>
-					<!-- Input Password [Start] -->
+					<%-- Input Password [Start] --%>
 					<div class="input-group row input-group-lg" id="div_psd">
 						<span class="input-group-addon" style="width:115px;">Password</span>
 						<input type="password" class="form-control" onblur="inputBlur(2)" id="psd">
 					</div>
-					<!-- Input Password [End] -->
+					<%-- Input Password [End] --%>
 					<br/>
-									<!-- Login Button [Start] -->
+									<%-- Login Button [Start] --%>
 					<div class="btn-group btn-group-lg row">
 						<button type="submit" class="btn btn-primary" data-toggle="submit">Login</button>
-					<!-- Login Button [End] -->
-					<!-- Reset Button [Start] -->
+					<%-- Login Button [End] --%>
+					<%-- Reset Button [Start] --%>
 						<button type="reset" class="btn btn-default" data-toggle="reset">Reset</button>
 					</div>
-					<!-- Reset Button [End] -->
+					<%-- Reset Button [End] --%>
 				</form>
-				<!-- From [End] -->
+				<%-- From [End] --%>
 			</div>
 		</div>
-		<!-- HTML Right Layout [End] -->
+		<%-- HTML Right Layout [End] --%>
 	</div>
 </body>
 </html>

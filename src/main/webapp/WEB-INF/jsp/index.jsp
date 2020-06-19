@@ -3,13 +3,13 @@
 <meta charset="UTF-8">
 <title>首页</title>
 
-<!-- JSP Configure[Start] -->
+<%-- JSP Configure[Start] --%>
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- JSP Configure[End] -->
+<%-- JSP Configure[End] --%>
 
-<!-- Define Myself JS [Start] -->
+<%-- Define Myself JS [Start] --%>
 <script type="text/javascript">
 /** 用户登录时间取得[Start] */
 var dataT = '<%=session.getAttribute("loginTime")%>';
@@ -67,9 +67,9 @@ window.LOGIN_TIME = new Date(timestamp);
 		});
 	});
 </script>
-<!-- Define Myself JS [End] -->
+<%-- Define Myself JS [End] --%>
 
-<!-- Myself define Css[Start] -->
+<%-- Myself define Css[Start] --%>
 <style type="text/css">
 .dropdown-menu {
 	top: 100%;
@@ -94,17 +94,17 @@ window.LOGIN_TIME = new Date(timestamp);
 	width: auto;
 }
 </style>
-<!-- Myself define Css[End] -->
+<%-- Myself define Css[End] --%>
 
-<!-- Myself define JS [Start] -->
+<%-- Myself define JS [Start] --%>
 <script type="text/javascript">
 	
 </script>
-<!-- Myself define JS [End] -->
+<%-- Myself define JS [End] --%>
 <div style="padding: 10px;">
 
 	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 container">
-		<!-- index welcome information [Start] -->
+		<%-- index welcome information [Start] --%>
 		<div class="jumbotron">
 			<h3>
 				欢迎登陆Free Project！ <small>这是一个放飞自由的地方。</small>
@@ -113,7 +113,7 @@ window.LOGIN_TIME = new Date(timestamp);
 				<a class="btn btn-primary btn-lg" role="button"> 更多功能敬请期待!</a>
 			</p>
 		</div>
-		<!-- index welcome information [End] -->
+		<%-- index welcome information [End] --%>
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -138,7 +138,7 @@ window.LOGIN_TIME = new Date(timestamp);
 				</div>
 			</div>
 		</div>
-		<!-- Internet Web Plugs [Start]  -->
+		<%-- Internet Web Plugs [Start]  --%>
 		<div class="well">
 			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#showNetTime">查看上网时长</button>
 			<div class="modal fade" id="showNetTime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -177,14 +177,14 @@ window.LOGIN_TIME = new Date(timestamp);
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
-					<!-- /.modal-content -->
+					<%-- /.modal-content --%>
 				</div>
-				<!-- /.modal -->
+				<%-- /.modal --%>
 			</div>
 		</div>
-		<!-- Internet Web Plugs [End]  -->
+		<%-- Internet Web Plugs [End]  --%>
 	</div>
-	<!-- Search result area [End] -->
+	<%-- Search result area [End] --%>
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-right: 20px">
 		<c:import url="template/commonAction.jsp" />
 	</div>

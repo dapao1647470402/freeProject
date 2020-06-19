@@ -12,6 +12,7 @@ public class Sys0302SearchDto implements Serializable {
 	public Sys0302SearchDto() {
 	}
 
+	private String dataId;
 	private String opinionText;
 	private Date insDate;
 	private String insUserId;
@@ -22,6 +23,20 @@ public class Sys0302SearchDto implements Serializable {
 	private String lockVersion;
 	private String insUserName;
 	private String updUserName;
+
+	/**
+	 * @return the dataId
+	 */
+	public String getDataId() {
+		return dataId;
+	}
+
+	/**
+	 * @param dataId the dataId to set
+	 */
+	public void setDataId(String dataId) {
+		this.dataId = dataId;
+	}
 
 	/**
 	 * @return the insUserName

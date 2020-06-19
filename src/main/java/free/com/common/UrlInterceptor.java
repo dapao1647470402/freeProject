@@ -16,7 +16,6 @@ public class UrlInterceptor implements HandlerInterceptor{
 
 	private Logger log = LoggerFactory.getLogger( UrlInterceptor.class);
 
-	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		request.getRequestURI();
@@ -33,13 +32,11 @@ public class UrlInterceptor implements HandlerInterceptor{
 		return true;
 	}
 
-	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		log.info("******Current Action:postHandle******");
 	}
 
-	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		log.info("******Current Action:afterCompletion******");

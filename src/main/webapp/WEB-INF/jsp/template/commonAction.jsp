@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!-- Myself define Css[Start] -->
+<%-- Myself define Css[Start] --%>
 <style type="text/css">
 	
 </style>
-<!-- Myself define Css[End] -->
+<%-- Myself define Css[End] --%>
 
-<!-- Myself define Js [Start] -->
+<%-- Myself define Js [Start] --%>
 <script type="text/javascript">
 </script>
-<!-- Myself define Js [End] -->
+<%-- Myself define Js [End] --%>
 
-<!-- Template Url [Start] -->
+<%-- Template Url [Start] --%>
 <div class="dropdown dropdown-info">
 	<button type="button" class="btn btn-info" data-toggle="dropdown"
 			data-placement="right" title="请点击了解更多功能" data-animation="true">
@@ -28,4 +28,4 @@
 		</a></li>
 	</ul>
 </div>
-<!-- Template Url [End] -->
+<%-- Template Url [End] --%>

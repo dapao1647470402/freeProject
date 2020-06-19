@@ -8,9 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Welcome to Free Project!</title>
 </head>
-<!-- inclued JS and Css at Local [Start] -->
+<%-- inclued JS and Css at Local [Start] --%>
 <script type="text/javascript" src="../js/main.js"></script>
-<!-- include Js and Css and so on of BootStrap file [Start]-->
+<%-- include Js and Css and so on of BootStrap file [Start]--%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript"
@@ -23,9 +23,9 @@
 	href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/style/style.css">
-<!-- include Js and Css and so on of BootStrap file [End]-->
+<%-- include Js and Css and so on of BootStrap file [End]--%>
 
-<!-- Myself define JS [Start] -->
+<%-- Myself define JS [Start] --%>
 <script type="text/javascript">
 	/**
 	 *
@@ -272,20 +272,20 @@
 		window.location.href = "<%=request.getContextPath()%>"+"/main/init?backPageId=" + obj;
 	}
 </script>
-<!-- Myself define JS [End] -->
+<%-- Myself define JS [End] --%>
 </head>
 <body class="body">
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-	<!-- Registered Form Templet [Start] -->
+	<%-- Registered Form Templet [Start] --%>
 	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 panel panel-primary panel-body">
-		<!-- Carousel component [Start]-->
+		<%-- Carousel component [Start]--%>
 		<div class="panel-heading" style="background:#784511">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-wrap="ture">
-				<!-- <ol class="carousel-indicators">
+				<%-- <ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#myCarousel" data-slide-to="1"></li>
 					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol> -->
+				</ol> --%>
 				<div class="carousel-inner">
 					<div class="item active">
 						<input type="button" class="form-control" value="Welcome to Free Project."/>
@@ -296,7 +296,7 @@
 					<div class="item">
 						<input type="button" class="form-control" value="Wish you have a happy life."/>
 					</div>
-					<!-- 轮播（Carousel）导航 -->
+					<%-- 轮播（Carousel）导航 --%>
 				    <a class="carousel-control left" href="#myCarousel"
 				        data-slide="prev">&lsaquo;
 				    </a>
@@ -306,10 +306,10 @@
 				</div>
 			</div>
 		</div>
-		<!-- Carousel component [End]-->
+		<%-- Carousel component [End]--%>
 		<form action="<%=request.getContextPath()%>/register/doRegister" role="form" class="" method="post">
 
-			<!-- Input Templet [Start] -->
+			<%-- Input Templet [Start] --%>
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户名:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -317,9 +317,9 @@
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountName" style="display:none"></div>
 			</div>
-			<!-- Input Templet [End] -->
+			<%-- Input Templet [End] --%>
 
-			<!-- Input Templet [Start] -->
+			<%-- Input Templet [Start] --%>
 			<div class="panel panel-info panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">用户ID:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -327,9 +327,9 @@
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountNumber" style="display:none"></div>
 			</div>
-			<!-- Input Templet [End] -->
+			<%-- Input Templet [End] --%>
 
-			<!-- Input Templet [Start] -->
+			<%-- Input Templet [Start] --%>
 			<div class="panel panel-danger panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -337,9 +337,9 @@
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword" style="display:none"></div>
 			</div>
-			<!-- Input Templet [End] -->
+			<%-- Input Templet [End] --%>
 
-			<!-- Input Templet [Start] -->
+			<%-- Input Templet [Start] --%>
 			<div class="panel panel-warning panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right;margin-top:10px;"><label for="name">请再次输入密码:</label></div>
 				<div class="form-group col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -347,9 +347,9 @@
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByAccountPassword2" style="display:none"></div>
 			</div>
-			<!-- Input Templet [End] -->
+			<%-- Input Templet [End] --%>
 
-			<!-- Date Templet Of Div [Start] -->
+			<%-- Date Templet Of Div [Start] --%>
 			<div class=" panel panel-success panel-body">
 				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right"><label for="name">更改密码时间:</label></div>
 				<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
@@ -360,9 +360,9 @@
 				</div>
 				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByModifyPsdTime" style="display:none"></div>
 			</div>
-			<!-- Date Templet Of Div [End] -->
+			<%-- Date Templet Of Div [End] --%>
 
-			<!-- Button modal Templet [Start]-->
+			<%-- Button modal Templet [Start]--%>
 			<div class="panel panel-info panel-body" style="text-align:center;">
 				<input type="button" class="btn btn-loading" data-toggle="modal" value="Register" onclick="confirmInputOfInfo(this)">
 				<input type="button" class="btn btn-default" value="Clear" onclick="clearAction(this)">
@@ -371,8 +371,8 @@
 					<input type="hidden" value="${backPageId }" name="backPageId"/>
 				</c:if>
 			</div>
-			<!-- Button modal Templet [End]-->
-			<!-- Modal Box [Start] -->
+			<%-- Button modal Templet [End]--%>
+			<%-- Modal Box [Start] --%>
 			<div class="modal fade" id="confirmInfomodal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -390,10 +390,10 @@
 					</div>
 				</div>
 			</div>
-			<!-- Modal Box [End] -->
+			<%-- Modal Box [End] --%>
 		</form>
 	</div>
-	<!-- Registered Form Templet [End] -->
+	<%-- Registered Form Templet [End] --%>
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<div class="dropdown dropdown-info">
 			<button type="button" class="btn btn-info" data-toggle="dropdown" value="">

@@ -3,14 +3,14 @@
 <meta charset="UTF-8">
 <title>Scial For News</title>
 
-<!-- JSP Configure[Start] -->
+<%-- JSP Configure[Start] --%>
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- JSP Configure[End] -->
+<%-- JSP Configure[End] --%>
 
-<!-- Myself define Css[Start] -->
+<%-- Myself define Css[Start] --%>
 <style type="text/css">
 .dropdown-menu {
 	top: 100%;
@@ -35,9 +35,9 @@
 	width: auto;
 }
 </style>
-<!-- Myself define Css[End] -->
+<%-- Myself define Css[End] --%>
 
-<!-- Myself define JS [Start] -->
+<%-- Myself define JS [Start] --%>
 <script type="text/javascript">
 	/**
 	 * Common:Set display division page of numbers
@@ -228,18 +228,18 @@
 		return true;
 	}
 </script>
-<!-- Myself define JS [End] -->
+<%-- Myself define JS [End] --%>
 	<div style="padding: 10px;">
 		
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-			<!-- Search condition area [Start] -->
+			<%-- Search condition area [Start] --%>
 			<div>
-				<!-- Change background of panel (Area-[Panel Start]) -->
+				<%-- Change background of panel (Area-[Panel Start]) --%>
 				<div class="panel panel-primary" style="border-color: black;">
 					<div class="panel-heading" style="background: #784214">Search Condition Area</div>
-					<!-- Change background of panel (Area-[Panel Body Start]) -->
+					<%-- Change background of panel (Area-[Panel Body Start]) --%>
 					<div class="panel-body">
-						<!-- Search Area for Form [Start] -->
+						<%-- Search Area for Form [Start] --%>
 						<form action="<%=request.getContextPath()%>/register/init" role="form" class="form-horizontal" id="commonForm" method="post">
 							<div class="form-group">
 								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
@@ -253,7 +253,7 @@
 						
 						
 							<div class="form-group">
-								<!-- Date format of Search Condition Area [Start]-->
+								<%-- Date format of Search Condition Area [Start]--%>
 								<div>
 									<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4" style="padding: 5px 0px 0px 10px;">
 										<label for="name" class="font-16">注册时间</label>
@@ -266,11 +266,11 @@
 										<input name="registerTime" type="hidden" value="${sys0501SearchDto.registerTimeTimestamp }">
 									</div>
 									
-									<!-- Date format of Search Condition Area [End]-->
+									<%-- Date format of Search Condition Area [End]--%>
 								</div>
 							</div>
 
-							<!-- Model of select box Version one [Start]-->
+							<%-- Model of select box Version one [Start]--%>
 
 							<div class="form-group">
 								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4 ">
@@ -320,9 +320,9 @@
 									</select>
 								</div>
 							</div>
-							<!-- Model of select box Version one [End]-->
+							<%-- Model of select box Version one [End]--%>
 
-							<!-- Help Text [Start] -->
+							<%-- Help Text [Start] --%>
 							<div class="form-group">
 								<div class="col-lg-3 col-md-1 col-sm-2 col-xs-4 ">
 									<label for="name">Help Document:</label> 
@@ -335,27 +335,27 @@
 									</span>
 								</div>
 							</div>
-							<!-- Help Text [End] -->
-								<!-- Add User Button [Start] -->
+							<%-- Help Text [End] --%>
+								<%-- Add User Button [Start] --%>
 								<div style="float:left;padding-right:20px">
 								<input type="hidden" name="backPageId" value="sys0501">
 								<input type="submit" onclick="" class="btn btn-primary" value="添加用户">
 								</div>
-								<!-- Add User Button [End] -->
-								<!-- Clear Button [Start] -->
+								<%-- Add User Button [End] --%>
+								<%-- Clear Button [Start] --%>
 								<div style="float:right;padding-right:20px">
 									<input type="button" onclick="ClearForm('commonForm')" class="btn btn-default" value="清空输入条件">
 								</div>
-								<!-- Clear Button [End] -->
+								<%-- Clear Button [End] --%>
 						</form>
-						<!-- Search Area for Form [End] -->
+						<%-- Search Area for Form [End] --%>
 					</div>
-					<!-- (Area-[Panel Body End]) -->
+					<%-- (Area-[Panel Body End]) --%>
 				</div>
-				<!-- (Area-[Panel End]) -->
+				<%-- (Area-[Panel End]) --%>
 			</div>
-			<!-- Search condition area [End] -->
-			<!-- Search result area [Start] -->
+			<%-- Search condition area [End] --%>
+			<%-- Search result area [Start] --%>
 			<div style="padding-top: 20px;">
 				<div class="panel panel-primary table-responsive">
 					<div class="panel-heading">Search Content Display</div>
@@ -397,14 +397,14 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- Button Area [Start] -->
+				<%-- Button Area [Start] --%>
 				<nav style="text-align: center">
 				<ul class="pagination pagination-lg" style="float: center" id="swichNums"></ul>
 				</nav>
-				<!-- Button Area [End] -->
+				<%-- Button Area [End] --%>
 			</div>
 		</div>
-		<!-- Search result area [End] -->
+		<%-- Search result area [End] --%>
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-right:20px">
 			<c:import url="../template/commonAction.jsp"/>
 		</div>

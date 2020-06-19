@@ -9,7 +9,7 @@
 <title>Welcome to Free Project!</title>
 </head>
 
-<!-- include Js and Css and so on of BootStrap file [Start]-->  
+<%-- include Js and Css and so on of BootStrap file [Start]--%>  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/bootstrap-js/jquery-3.2.1.min.js"></script>
@@ -23,9 +23,9 @@
 	href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/style/style.css">
-<!-- include Js and Css and so on of BootStrap file [End]-->
+<%-- include Js and Css and so on of BootStrap file [End]--%>
 
-<!-- Myself Define Js Section [Start]-->
+<%-- Myself Define Js Section [Start]--%>
 <script type="text/javascript">
 	var userId = "${userId}";
 	var loginStatus = "${loginStatus}";
@@ -101,15 +101,15 @@
 		}
 	}
 </script>
-<!-- Myself Define Js Section [End]-->
+<%-- Myself Define Js Section [End]--%>
 
 <body>
 	<div>
-		<!-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)-->
-		<!-- Company Show Of Content [Start]-->
+		<%-- About screen size use:col-xs(Phone use) col-sm(ipaid use) col-md(>=970px device) col-lg(>=1170px device)--%>
+		<%-- Company Show Of Content [Start]--%>
 		<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 20px">
 			<div class="panel panel-group panel-primary ">
-				<!-- Advice Bar [Start] -->
+				<%-- Advice Bar [Start] --%>
 				<div class="panel-heading">Advice</div>
 				<ul class="list-group">
 					<c:forEach items="${initContent.adviceResult}" var="advice"
@@ -118,29 +118,29 @@
 					</c:forEach>
 
 				</ul>
-				<!-- Advice Bar [End] -->
+				<%-- Advice Bar [End] --%>
 			</div>
 			<div class="panel panel-group panel-info">
-				<!-- Company Resume Bar [Start] -->
+				<%-- Company Resume Bar [Start] --%>
 				<div class="panel-heading">
 					<a data-toggle="collapse" data-parent="#accordion"
 						href="#collapseOne">Free Project(Resume)</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
 					${initContent.pjResume.get(0).resumeContent}</div>
-				<!-- Company Resume Bar [End] -->
+				<%-- Company Resume Bar [End] --%>
 			</div>
 
 		</div>
-		<!-- Company Show Of Content [End]-->
+		<%-- Company Show Of Content [End]--%>
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-		<!-- Image Area [Start] -->
+		<%-- Image Area [Start] --%>
 		<div class="col-lg-4 col-md-4 col-sm-4"
 			style="padding-top: 20px; border-color: black; border-weight:">
 			<div class="panel panel-primary">The Picture Show Area</div>
 			<div id="pictureShowArea" class="carousel slide"
 				style="border-color: #575f5b; border-style: outset; border-style: solid dotted; border-width: thick;dashed double;">
-				<!-- 轮播（Carousel）指标 -->
+				<%-- 轮播（Carousel）指标 --%>
 				<ol class="carousel-indicators">
 					<c:forEach items="${initContent.imageResult}"
 						varStatus="imageIndex">
@@ -157,7 +157,7 @@
 
 					</c:forEach>
 				</ol>
-				<!-- 轮播（Carousel）项目 -->
+				<%-- 轮播（Carousel）项目 --%>
 				<div class="carousel-inner">
 					<c:forEach items="${initContent.imageResult}" var="image"
 						varStatus="imageIndex">
@@ -179,7 +179,7 @@
 						</c:choose>
 					</c:forEach>
 				</div>
-				<!-- 轮播（Carousel）导航 -->
+				<%-- 轮播（Carousel）导航 --%>
 				<a class="left carousel-control" href="#pictureShowArea"
 					role="button" data-slide="prev"> <span
 					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -192,11 +192,11 @@
 			</div>
 
 		</div>
-		<!-- Image Area [End] -->
+		<%-- Image Area [End] --%>
 		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
-		<!-- HTML Right Layout [Start] -->
+		<%-- HTML Right Layout [Start] --%>
 		<div class="col-lg-3 col-md-3 col-sm-3 ">
-			<!-- Templet Area [Start] -->
+			<%-- Templet Area [Start] --%>
 			<div class="dropdown dropdown-info" style="float: right">
 				<button type="button" class="btn btn-info" data-toggle="dropdown"
 					value="">
@@ -209,7 +209,7 @@
 					<li><a data-target="#" href="<%=request.getContextPath()%>/register/init">Registered</a></li>
 				</ul>
 			</div>
-			<!-- Templet Area [End] -->
+			<%-- Templet Area [End] --%>
 			<div style="padding-top: 100px; padding-right: 0px;">
 				<div class="alert alert-warning alert-dismissable"
 					style="background-color: #ffd6009c;display:<c:if test="${loginFailure != 0 }">none</c:if>">
@@ -218,47 +218,47 @@
 						<span aria-hidden="true" data-dismiss="alert">&times;</span>
 					</span>
 				</div>
-				<!-- From [Start]-->
+				<%-- From [Start]--%>
 				<form class="bs-example bs-example-form form-group"
 					action="<%=request.getContextPath()%>/login/login" method="post"
 					role="form">
-					<!-- Login Mark Start-->
+					<%-- Login Mark Start--%>
 					<div style="padding: 0px 0px 10px 80px;">
 						<h2>
 							<strong>Login</strong>
 						</h2>
 					</div>
-					<!-- Login Mark End-->
-					<!-- Input Account [Start]-->
+					<%-- Login Mark End--%>
+					<%-- Input Account [Start]--%>
 					<div class="input-group row input-group-lg from-group"
 						id="div_account">
 						<span class="input-group-addon" style="width: 115px;">Account</span>
 						<input type="text" class="form-control" onblur="inputBlur(1)"
 							id="account" name="accountId">
 					</div>
-					<!-- Input Account [End]-->
+					<%-- Input Account [End]--%>
 					<br />
-					<!-- Input Password [Start] -->
+					<%-- Input Password [Start] --%>
 					<div class="input-group row input-group-lg" id="div_psd">
 						<span class="input-group-addon" style="width: 115px;">Password</span>
 						<input type="password" class="form-control" onblur="inputBlur(2)"
 							id="psd" name="password">
 					</div>
-					<!-- Input Password [End] -->
+					<%-- Input Password [End] --%>
 					<br />
-					<!-- Login Button [Start] -->
+					<%-- Login Button [Start] --%>
 					<div class="btn-group btn-group-lg row">
 						<button type="submit" class="btn btn-primary" data-toggle="submit">Login</button>
-						<!-- Login Button [End] -->
-						<!-- Reset Button [Start] -->
+						<%-- Login Button [End] --%>
+						<%-- Reset Button [Start] --%>
 						<button type="reset" class="btn btn-default" data-toggle="reset">Reset</button>
 					</div>
-					<!-- Reset Button [End] -->
+					<%-- Reset Button [End] --%>
 				</form>
-				<!-- From [End] -->
+				<%-- From [End] --%>
 			</div>
 		</div>
-		<!-- HTML Right Layout [End] -->
+		<%-- HTML Right Layout [End] --%>
 	</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!-- Define Myself JS [Start] -->
+<%-- Define Myself JS [Start] --%>
 <script type="text/javascript">
 	/**
 	  * 加载菜单	
@@ -47,9 +47,9 @@
 		
 	}
 </script>
-<!-- Define Myself JS [End] -->
+<%-- Define Myself JS [End] --%>
 
-<!-- Define Style Css [Start]-->
+<%-- Define Style Css [Start]--%>
 <style type="text/css">
 .dropdown-menu {
 	top: 100%;
@@ -93,24 +93,24 @@
 	white-space: nowrap;
 }
 </style>
-<!-- Define Style Css [End]-->
+<%-- Define Style Css [End]--%>
 <meta charset="UTF-8">
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <div class="dropdown " style="width: 100%;">
-	<!-- 菜单上部图片 -->
+	<%-- 菜单上部图片 --%>
 	<div style="padding-top:1px">
 		<a href="./login_model.html">
 			<img alt="" src="<%=request.getContextPath() %>/image/1.jpg" width="100" height="22">
 		</a>
 	</div>
-	<!-- 菜单按钮 -->
+	<%-- 菜单按钮 --%>
 	<button type="button" class="btn dropdown-toggle btn-primary" id="dropdownMenu1" data-toggle="dropdown"
 		style="width: 100px;margin-top:3px;">
 		<span class="create">Menu</span>
 	</button>
 	<div style="height:10px"></div>
-	<!-- 菜单 -->
+	<%-- 菜单 --%>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="menu"></ul>
 </div>
 

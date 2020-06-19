@@ -6,6 +6,7 @@ public class Sys0302ResultDto {
 	public Sys0302ResultDto() {
 	}
 
+	private int dataId;
 	private String opinionText;
 	private Date insDate;
 	private String insUserId;
@@ -16,6 +17,22 @@ public class Sys0302ResultDto {
 	private String lockVersion;
 	private String insUserName;
 	private String updUserName;
+
+
+
+	/**
+	 * @return the dataId
+	 */
+	public int getDataId() {
+		return dataId;
+	}
+
+	/**
+	 * @param dataId the dataId to set
+	 */
+	public void setDataId(int dataId) {
+		this.dataId = dataId;
+	}
 
 	/**
 	 * @return the insUserName

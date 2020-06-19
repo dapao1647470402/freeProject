@@ -33,4 +33,11 @@ public class Sys0302Service {
 		}
 		return fromList;
 	}
+
+	public void delete(Opinion opinion) {
+		dao.delete(opinion);
+	}
+	public void update(Opinion opinion) {
+		dao.update(opinion);
+	}
 }

@@ -11,7 +11,6 @@ import free.com.utils.SystemEnum;
 @Service
 public class StartServerListener implements ApplicationListener<ContextRefreshedEvent> {
 
-	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		try {
 			// 在web项目中（spring mvc），系统会存在两个容器，一个是root application context

@@ -15,6 +15,9 @@ window.CHECK_ACTION_ID = [];
 /** 返回按钮使用参数 */
 window.COMMON_BACK_BTN_PRE_URL = "";
 window.BAKE_PAGE_ID = "";
+/** 弹出框要显示的Html内容 */
+Window.COMMON_DIALOGS1_HTML="";
+Window.AJAX_JSON_DATA="";
 /**
  * 启用提示框
  */
@@ -338,3 +341,14 @@ function loadDateComponent(){
      }  
 	 return false;
  }
+ /**
+ * 弹出框
+ */
+function commonDialogs1confirm(subtnNm,subtnEventNm) {
+	$("#common_dialogs_1_confirm_info").html(Window.COMMON_DIALOGS1_HTML);
+	// display dialog
+	$('#common_dialogs1').modal('show');
+	$('#common_modallabel_1').html('请确认'+ subtnNm + "信息：");
+	$('#common_dialogs1_subit_btn').html(subtnNm);
+	$('#common_dialogs1_subit_btn').attr('onclick',"transitionHtml(null,'"+subtnEventNm+"','commonDialogs1Ajax')");
+}

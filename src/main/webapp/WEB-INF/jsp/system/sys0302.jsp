@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <title>意见采集</title>
 
-<!-- JSP Configure[Start] -->
+<%-- JSP Configure[Start] --%>
 <%@ page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!-- JSP Configure[End] -->
+<%-- JSP Configure[End] --%>
 
-<!-- Myself define Css[Start] -->
+<%-- Myself define Css[Start] --%>
 <style type="text/css">
 .dropdown-menu {
 	top: 100%;
@@ -36,9 +36,9 @@
 	width: auto;
 }
 </style>
-<!-- Myself define Css[End] -->
+<%-- Myself define Css[End] --%>
 
-<!-- Myself define JS [Start] -->
+<%-- Myself define JS [Start] --%>
 <script type="text/javascript">
 	/**
 	 * auto-create button of division page
@@ -59,7 +59,7 @@
 		getInputSizeByMaxLength("opinionText","opinionInputText");
 	});
 </script>
-<!-- Myself define JS [End] -->
+<%-- Myself define JS [End] --%>
 <div style="padding: 10px;">
 	<c:if test="${submitMark == 1 }">
 		<div class="alert alert-success">
@@ -69,7 +69,7 @@
 				aria-hidden="true">&times;</button>
 		</div>
 	</c:if>
-	<!-- 意见收集[Start] -->
+	<%-- 意见收集[Start] --%>
 	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 		<form role="form" id="commonForm" method="post">
 			<div class="form-group">
@@ -88,7 +88,7 @@
 		
 		<button type="button" class="btn btn-default" onclick="transitionHtml(null,'result')">意见箱</button>
 	</div>
-	<!-- 意见收集[End] -->
+	<%-- 意见收集[End] --%>
 
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
 		style="padding-right: 20px">

@@ -51,33 +51,35 @@ public class CommonUtil {
 				Object attributeData = formMap.get(attributeName);
 				if (!free.com.utils.StringUtils.isEmpty(attributeData)
 						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())
-						&& StringUtils.equals("String", attributeData.getClass().getSimpleName())) {
-					if (StringUtils.equals("String", attributeType)) {
+						&& StringUtils.equals("string", attributeData.getClass().getSimpleName().toLowerCase())) {
+					if (StringUtils.equals("string", attributeType.toLowerCase())) {
 						field.set(newInstance, URLDecoder.decode(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("Integer", attributeType)) {
+					} else if (StringUtils.equals("integer", attributeType.toLowerCase())) {
 						field.set(newInstance, Integer.parseInt(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("Date", attributeType)
+					} else if (StringUtils.equals("date", attributeType.toLowerCase())
 							&& !StringUtils.equals("0", String.valueOf(attributeData).trim())) {
 						Long longTime = new Long(String.valueOf(attributeData));
 						Date date = new Date(longTime);
 						field.set(newInstance, date);
-					} else if (StringUtils.equals("Double", attributeType)) {
+					} else if (StringUtils.equals("double", attributeType.toLowerCase())) {
 						field.set(newInstance, Double.parseDouble(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("Float", attributeType)) {
+					} else if (StringUtils.equals("long", attributeType.toLowerCase())) {
+						field.set(newInstance, Long.parseLong(String.valueOf(attributeData)));
+					} else if (StringUtils.equals("float", attributeType.toLowerCase())) {
 						field.set(newInstance, Float.parseFloat(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("Short", attributeType)) {
+					} else if (StringUtils.equals("short", attributeType.toLowerCase())) {
 						field.set(newInstance, Short.parseShort(String.valueOf(attributeData)));
-					} else if (StringUtils.equals("List", attributeType)) {
+					} else if (StringUtils.equals("list", attributeType.toLowerCase())) {
 						List<String> list = new ArrayList<String>();
 						list.add(attributeData.toString());
 						field.set(newInstance, list);
 					}
 				} else if (attributeData != null
-						&& StringUtils.equals("ArrayList", attributeData.getClass().getSimpleName())) {
-					if (StringUtils.equals("List", attributeType)) {
+						&& StringUtils.equals("arrayList", attributeData.getClass().getSimpleName().toLowerCase())) {
+					if (StringUtils.equals("list", attributeType.toLowerCase())) {
 						field.set(newInstance, attributeData);
 					}
-				} else if (StringUtils.endsWith(attributeName, "Timestamp")
+				} else if (StringUtils.endsWith(attributeName.toLowerCase(), "timestamp")
 						&& !StringUtils.equals("nan", String.valueOf(attributeData).toLowerCase())) {
 					String timestamp = attributeName.replace("Timestamp", StringUtils.EMPTY);
 					// 20190824 Mr.cao 非空判断追加 Start
@@ -93,6 +95,20 @@ public class CommonUtil {
 		}
 
 		return newInstance;
+	}
+
+	public static Map<String, Object> getBean(HttpServletRequest request) {
+		// Form Data
+		Map<String, Object> formMap = new HashMap<String, Object>();
+		String parameter = request.getParameter("formData");
+		if (StringUtils.isEmpty(parameter)) {
+			LoggerCommon.printLog("Bean无数据", SystemEnum.LOG_LEVEL_DEBUG);
+			return formMap;
+		}
+		// 页面数据转换为Map
+		setFormMap(formMap, parameter);
+
+		return formMap;
 	}
 
 	/**
