@@ -42,6 +42,7 @@ public class Sys0501Service {
 				} else {
 					from.setMultipleData(dataRepeatSet(dto.getUserId(), resultList));
 				}
+				from.setUserId(dto.getUserId());
 				from.setUserAccount(dto.getUserAccount());
 				from.setUserAccountId(dto.getUserAccountId());
 				from.setAuthorityName(dto.getAuthorityName());

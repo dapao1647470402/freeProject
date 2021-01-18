@@ -42,13 +42,13 @@ public class MenuService {
 			Menu val = valIterator.next();
 			repeatMark.add(val.getMenuGroupId());
 			if (repeatMark.size() != repeatMarkSize) {
-				menuMap.put(CommonConstants.MH, val.getMenuGroupName());
+				menuMap.put(CommonConstants.MENU_GROUP_NM, val.getMenuGroupName());
 				repeatMarkSize = repeatMark.size();
 				aftMeunList.add(menuMap);
 				menuMap = new HashMap<String, Object>();
 			}
-			menuMap.put(CommonConstants.MD, val.getMenuName());
-			menuMap.put(CommonConstants.MD_NO, val.getMenuId());
+			menuMap.put(CommonConstants.MENU_NM, val.getMenuName());
+			menuMap.put(CommonConstants.MENU_ID, val.getMenuId());
 			aftMeunList.add(menuMap);
 			menuMap = new HashMap<String, Object>();
 		}

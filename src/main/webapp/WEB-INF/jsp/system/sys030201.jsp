@@ -16,7 +16,7 @@
 	z-index: 1000;
 	display: none;
 	float: left;
-	min-width: 160px;
+	min-width: 130px;
 	padding: 5px 0;
 	margin: 2px 0 0;
 	font-size: 14px;
@@ -31,6 +31,10 @@
 	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 	box-shadow: 0 6px 12px rgba(243, 16, 16, 0.175);
 	width: auto;
+}
+.scrollbar {
+	width: 98%;
+	height: 720px;
 }
 </style>
 <%-- Myself define Css[End] --%>
@@ -90,55 +94,65 @@ function showSys30201DelDialog(dataId){
 function executeSys30201Upd(dataId){
 	Window.AJAX_JSON_DATA='flg=upd&dataId='+dataId
 	transitionHtml(null,'result','commonDialogs1Ajax');
+	setActionMode("更新")
 }
 </script>
 <%-- Myself define Js[End] --%>
 
 
 <div style="padding: 10px;">
-<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-<div class="panel panel-primary table-responsive">
-<div class="panel-heading">意见箱</div>
-	<table class="table table-bordered table-condensed table-hover" style="word-break:break-all; word-wrap:break-all;table-layout: fixed;" >
-		<thead>
-			<tr>
-				<th class="text-right">No.</th>
-				<th align="center" valign="middle" width="50%">建议内容</th>
-				<th align="center" valign="middle" width="9%">提出时间</th>
-				<th align="center" valign="middle" >提出者</th>
-				<th align="center" valign="middle" width="9%">更新时间</th>
-				<th align="center" valign="middle" >更新者</th>
-				<th align="center" valign="middle" width="10%">修正/删除</th>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items="${sys0302From }" var="sys0302Result" varStatus="sys0302ResultIndex">
-			<tr>
-				<td class="text-right">${ sys0302ResultIndex.index + 1 }</td>
-				<td>${sys0302Result.opinionText }</td>
-				<td align="center" valign="middle"><fmt:formatDate value="${sys0302Result.insDate }" pattern="yyyy/MM/dd hh:mm:ss"/> </td>
-				<td align="center" valign="middle">${sys0302Result.insUserName }</td>
-				<td align="center" valign="middle"><fmt:formatDate value="${sys0302Result.updDate }" pattern="yyyy/MM/dd hh:mm:ss"/></td>
-				<td align="center" valign="middle">${sys0302Result.updUserName }</td>
-				<td align="center" valign="middle">
-					<span class="label label-default" >
-					<a href="javascript:(0)" style="color:#ffffff" onclick="executeSys30201Upd(${sys0302Result.dataId })">修正</a>
-					</span>
-					<span class="label label-primary" style="front-color:whrite">
-					<a href="javascript:(0)" style="color:#ffffff" onclick="showSys30201DelDialog(${sys0302Result.dataId })">删除</a>
-					</span>
-				</td>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	<c:import url="../template/dialogs_1.jsp" />
-</div>
-</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+		<div class="panel panel-primary table-responsive">
+			<div class="panel-heading">意见箱</div>
+			<table class="table table-bordered table-condensed table-hover" style="word-break:break-all; word-wrap:break-all;table-layout: fixed;" >
+				<thead>
+					<tr>
+						<th class="text-right">No.</th>
+						<th class ="text-center" valign="middle" width="50%">建议内容</th>
+						<th class ="text-center" valign="middle" width="9%">提出时间</th>
+						<th class ="text-center" valign="middle" >提出者</th>
+						<th class ="text-center" valign="middle" width="9%">更新时间</th>
+						<th class ="text-center" valign="middle" >更新者</th>
+						<th class ="text-center" valign="middle" width="14%">修正/删除</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach items="${sys0302From }" var="sys0302Result" varStatus="sys0302ResultIndex">
+					<tr>
+						<td class="text-right">${ sys0302ResultIndex.index + 1 }</td>
+						<td>
+							<pre class="bg-info">${sys0302Result.opinionText }</pre>
+						</td>
+						<td class ="text-center" valign="middle"><fmt:formatDate value="${sys0302Result.insDate }" pattern="yyyy/MM/dd hh:mm:ss"/> </td>
+						<td class ="text-center" valign="middle">${sys0302Result.insUserName }</td>
+						<td class ="text-center" valign="middle"><fmt:formatDate value="${sys0302Result.updDate }" pattern="yyyy/MM/dd hh:mm:ss"/></td>
+						<td class ="text-center" valign="middle">${sys0302Result.updUserName }</td>
+						<td class ="text-center" valign="middle">
+							<c:choose>
+								<%-- 该条建议的所有者时，可以更新和删除 --%>
+								<c:when test="${sessionScope.userId eq sys0302Result.insUserId}">
+									<button type="button" class="btn btn-default" onclick="executeSys30201Upd(${sys0302Result.dataId })">修正</button>
+									<button type="button" class="btn btn-primary"  onclick="showSys30201DelDialog(${sys0302Result.dataId })">删除</button>
+								</c:when>
+								<%-- 管理员时，可以更新和删除 --%>
+								<c:when test="${sessionScope.userAuthor eq 5}">
+									<button type="button" class="btn btn-default" onclick="executeSys30201Upd(${sys0302Result.dataId })">修正</button>
+									<button type="button" class="btn btn-primary"  onclick="showSys30201DelDialog(${sys0302Result.dataId })">删除</button>
+								</c:when>
+								<c:otherwise>
+									<span style="font-size:10px">他人提出的意见，您只能查看</span>
+								</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+			<c:import url="../template/dialogs_1.jsp" />
+		</div>
+	</div>
 </div>
 
-	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"
-		style="padding-right: 20px">
-		<c:import url="../template/commonAction.jsp" />
-	</div>
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+	<c:import url="../template/commonAction.jsp" />
 </div>

@@ -42,7 +42,7 @@
 		 * 时间控件
 		 */
 		$(".bootstrap-date-input").datetimepicker({//选择年月日
-			format: 'yyyy-mm-dd hh:mm:ss',
+			format: 'yyyy/mm/dd',
 			language: 'zh-CN',
 			weekStart: 1,
 			todayBtn: 1,//显示‘今日’按钮
@@ -67,33 +67,32 @@
 		$("#accountPassword2").bind("blur", function() {
 			accountPassword2Check();
 		});
-		var timeJq = $("#modifyPsdTime");
-		$("#modifyPsdTime").bind("keyup", function() {
+		var timeJq = $("#birthday");
+		$("#birthday").bind("keyup", function() {
 			var timeBackUp = timeJq.val().replace(/[^0-9]/g, window.EMPTY).trim();
 			timeJq.val(timeBackUp);
-			$("#errorByModifyPsdTime").attr("style", window.successStyle);
+			$("#errorByBirthday").attr("style", window.successStyle);
 		});
-		$("#modifyPsdTime").bind("focus", function() {
+		$("#birthday").bind("focus", function() {
 			var timeBackUp = timeJq.val().replace(/[^0-9]/g, window.EMPTY).trim();
 			timeJq.val(timeBackUp);
-			$("#errorByModifyPsdTime").attr("style", window.successStyle);
+			$("#errorByBirthday").attr("style", window.successStyle);
 		});
-		$("#modifyPsdTime").bind("blur", function() {
+		$("#birthday").bind("blur", function() {
 			var year = window.EMPTY;
 			if (timeJq.val() == window.EMPTY) {
 				return;
 			}
 			if (timeJq.val().length != 14 ) {
-				$("#errorByModifyPsdTime").attr("style", window.errorStyle);
-				$("#errorByModifyPsdTime").html("Please input to right update to password Time.");
-				$("#errorByModifyPsdTime").attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
+				$("#errorByBirthday").attr("style", window.errorStyle);
+				$("#errorByBirthday").html("请检查您输入的日期。");
+				$("#errorByBirthday").attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
 				timeJq.val(window.EMPTY);
 				window.errorMark = true;
 			} else {
 				window.errorMark = false;
-				$("#errorByModifyPsdTime").attr("style", window.successStyle);
-				var timeBackUp = timeJq.val().substring(0, 4) + "-" + timeJq.val().substring(4, 6) + "-" + timeJq.val().substring(6, 8) + " "
-					+ timeJq.val().substring(8, 10) + ":" + timeJq.val().substring(10, 12) + ":" + timeJq.val().substring(12, 14);
+				$("#errorByBirthday").attr("style", window.successStyle);
+				var timeBackUp = timeJq.val().substring(0, 4) + "-" + timeJq.val().substring(4, 6) + "-" + timeJq.val().substring(6, 8);
 				timeJq.val(timeBackUp);
 			}
 		});
@@ -114,7 +113,7 @@
 			+ "<li class='list-group-item'>用户名: "+$("#accountName").val()+"</li>"
 			+ "<li class='list-group-item'>用户ID: "+$("#accountNumber").val()+"</li>"
 			+ "<li class='list-group-item'>密码: "+$("#accountPassword").val()+"</li>"
-			+ "<li class='list-group-item'>更改密码时间: "+$("#modifyPsdTime").val()+"</li>"
+			+ "<li class='list-group-item'>生日: "+$("#birthday").val()+"</li>"
 			+ "</ul>"
 			+ "</div>";
 			$("#confirmInfoBodyId").html(accountNmConfirm);
@@ -232,17 +231,17 @@
 
 	function modifyPdsTimeCheck() {
 		// Modefy Password Time
-		var modifyPsdTimeJq = $("#modifyPsdTime").val();
-		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime");
-		if (modifyPsdTimeJq == null
-				|| modifyPsdTimeJq == window.EMPTY) {
-			modifyPsdTimeErrorJq.attr("style", window.errorStyle);
-			modifyPsdTimeErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
-			modifyPsdTimeErrorJq.html("请输入下次更改密码的时间。");
+		var birthdayJq = $("#birthday").val();
+		var birthdayErrorJq = $("#errorByBirthday");
+		if (birthdayJq == null
+				|| birthdayJq == window.EMPTY) {
+			birthdayErrorJq.attr("style", window.errorStyle);
+			birthdayErrorJq.attr("class", "alert alert-danger form-group col-lg-4 col-md-4 col-sm-5 col-xs-6");
+			birthdayErrorJq.html("请输入下次更改密码的时间。");
 			window.errorMark = true;
 		} else {
 			window.errorMark = false;
-			modifyPsdTimeErrorJq.attr("style", window.successStyle);
+			birthdayErrorJq.attr("style", window.successStyle);
 		}
 	}
 
@@ -263,8 +262,8 @@
 		$("#accountPassword2").val(window.EMPTY);
 		$("#errorByAccountPassword2").attr("style", window.successStyle);
 		// Modefy Password Time
-		var modifyPsdTimeJq = $("#modifyPsdTime").val(window.EMPTY);
-		var modifyPsdTimeErrorJq = $("#errorByModifyPsdTime").attr("style", window.successStyle);
+		var birthdayJq = $("#birthday").val(window.EMPTY);
+		var birthdayErrorJq = $("#errorByBirthday").attr("style", window.successStyle);
 	}
 	
 	
@@ -288,13 +287,13 @@
 				</ol> --%>
 				<div class="carousel-inner">
 					<div class="item active">
-						<input type="button" class="form-control" value="Welcome to Free Project."/>
+						<input type="button" class="form-control" value="欢迎您注册本网站。"/>
 					</div>
 					<div class="item">
-						<input type="button" class="form-control" value="You can declare to all thinks at there."/>
+						<input type="button" class="form-control" value="本网站属于自由开发项目。"/>
 					</div>
 					<div class="item">
-						<input type="button" class="form-control" value="Wish you have a happy life."/>
+						<input type="button" class="form-control" value="期待您的开发及使用。"/>
 					</div>
 					<%-- 轮播（Carousel）导航 --%>
 				    <a class="carousel-control left" href="#myCarousel"
@@ -351,21 +350,21 @@
 
 			<%-- Date Templet Of Div [Start] --%>
 			<div class=" panel panel-success panel-body">
-				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right"><label for="name">更改密码时间:</label></div>
+				<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4" style="text-align:right"><label for="name">生日:</label></div>
 				<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6">
 					<div class="input-group date bootstrap-date-input form-group">
 						<span class="input-group-addon trigger-date-icon"><i class="glyphicon glyphicon-calendar"></i></span>
-						<input type="text" class="form-control risk-form-control-regular" name="updatePsdTime" id="modifyPsdTime" data-bv-notempty-message="请输入触发时间！">
+						<input type="text" class="form-control risk-form-control-regular" name="birthday" id="birthday" data-bv-notempty-message="请输入您的生日！">
 					</div>
 				</div>
-				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByModifyPsdTime" style="display:none"></div>
+				<div class="alert alert-danger form-group col-lg-3 col-md-4 col-sm-5 col-xs-6"  id="errorByBirthday" style="display:none"></div>
 			</div>
 			<%-- Date Templet Of Div [End] --%>
 
 			<%-- Button modal Templet [Start]--%>
 			<div class="panel panel-info panel-body" style="text-align:center;">
-				<input type="button" class="btn btn-loading" data-toggle="modal" value="Register" onclick="confirmInputOfInfo(this)">
-				<input type="button" class="btn btn-default" value="Clear" onclick="clearAction(this)">
+				<input type="button" class="btn btn-loading" data-toggle="modal" value="注册" onclick="confirmInputOfInfo(this)">
+				<input type="button" class="btn btn-default" value="重置" onclick="clearAction(this)">
 				<c:if test="${backPageId != null and backPageId != '' }">
 					<input type="button" class="btn btn-primary" value="Back" onclick="goBack('${backPageId }')">
 					<input type="hidden" value="${backPageId }" name="backPageId"/>
@@ -385,7 +384,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="submit" class="btn btn-primary">提交更改</button>
+							<button type="submit" class="btn btn-primary">确认注册</button>
 					</div>
 					</div>
 				</div>
@@ -397,14 +396,11 @@
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<div class="dropdown dropdown-info">
 			<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
-				More
+				更多
 				<span class="caret"></span>
 			</button>
 			<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background:yellow;">
-				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">Login</a></li>
-				<li class="divider"></li>
-				<li class="divider"></li>
-				<li><a data-target="#" href="<%=request.getContextPath() %>/register/init">Registered</a></li>
+				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">登录</a></li>
 			</ul>
 		</div>
 	</div>

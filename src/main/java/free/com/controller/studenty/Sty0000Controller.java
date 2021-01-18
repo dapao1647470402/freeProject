@@ -23,7 +23,7 @@ import free.com.utils.SystemEnum;
 import free.com.utils.UserEnum;
 
 /**
- * User Information Configure
+ * User Information Configure（向DB里面迁移功能还在完善中）
  *
  * @author cao
  *

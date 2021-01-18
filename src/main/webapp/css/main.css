@@ -1,8 +1,9 @@
-<style type="text/css" ><
-.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover,
-	.btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover,
-	.open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus,
-	.open>.dropdown-toggle.btn-primary:hover {
+<
+style type ="text/css" > < .btn-primary.active.focus, .btn-primary.active:focus,
+	.btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus,
+	.btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus,
+	.open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover
+	{
 	color: #000;
 	background-color: #d2d2d2;
 	border-color: #204d74;
@@ -45,8 +46,16 @@
 	border-radius: 10px;
 	background: #EDEDED;
 }
+
 .nav>li>a:focus, .nav>li>a:hover {
 	text-decoration: none;
 	background-color: #82878ed9;
 }
-</style>
+
+.text-center {
+	text-align: center !important;
+	vertical-align: middle !important;
+}
+</
+style
+>

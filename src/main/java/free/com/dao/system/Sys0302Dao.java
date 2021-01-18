@@ -29,6 +29,7 @@ public class Sys0302Dao {
 				+ "t1.ID AS dataId"
 				+ ",t1.OPINION_CONTENT AS opinionText "
 				+ ",t1.INS_DATE AS insDate "
+				+ ",t1.INS_USER_ID AS insUserId "
 				+ ",t2.ACCOUNT_NAME AS insUserName "
 				+ ",t1.UPD_DATE AS updDate"
 				+ ",t3.ACCOUNT_NAME AS updUserName"

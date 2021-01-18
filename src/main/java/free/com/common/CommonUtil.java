@@ -25,17 +25,25 @@ import free.com.utils.SystemEnum;
 
 public class CommonUtil {
 
-	private static Logger log = LoggerFactory.getLogger( UrlInterceptor.class);
+	private static Logger log = LoggerFactory.getLogger(UrlInterceptor.class);
 
 	public CommonUtil() {
 	}
 
+	/**
+	 * Copy请求中(formData)的值，放入到自定义类中
+	 *
+	 * @param request
+	 * @return
+	 */
+	@SuppressWarnings("deprecation")
 	public static <T> T getBean(Class<T> cls, HttpServletRequest request) {
 		T newInstance = null;
 		try {
 			newInstance = cls.newInstance();
 			// Form Data
 			Map<String, Object> formMap = new HashMap<String, Object>();
+			request.setCharacterEncoding("utf-8");
 			String parameter = request.getParameter("formData");
 			if (StringUtils.isEmpty(parameter)) {
 				LoggerCommon.printLog("Bean无数据", SystemEnum.LOG_LEVEL_DEBUG);
@@ -97,6 +105,12 @@ public class CommonUtil {
 		return newInstance;
 	}
 
+	/**
+	 * Copy请求中(formData)的值，放入到Map中
+	 *
+	 * @param request
+	 * @return
+	 */
 	public static Map<String, Object> getBean(HttpServletRequest request) {
 		// Form Data
 		Map<String, Object> formMap = new HashMap<String, Object>();
@@ -180,17 +194,35 @@ public class CommonUtil {
 	 * 获取session中的用户信息
 	 */
 	public static User getUserInfo() {
-		//获取到ServletRequestAttributes 里面有
+		// 获取到ServletRequestAttributes 里面有
 		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		//获取到Request对象
+		// 获取到Request对象
 		HttpServletRequest request = attrs.getRequest();
-		//获取到Session对象
+		// 获取到Session对象
 		User user = new User();
 		try {
-			user = (User)(request.getSession().getAttribute(CommonConstants.USER));
-		}catch(Exception e) {
+			user = (User) (request.getSession().getAttribute(CommonConstants.USER));
+		} catch (Exception e) {
 			log.error("******User Infomation Error******" + e.getMessage());
 		}
 		return user;
+	}
+
+	public static String getIp(HttpServletRequest request) {
+		String ip = request.getHeader("X-Forwarded-For");
+		if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+			// 多次反向代理后会有多个ip值，第一个ip才是真实ip
+			int index = ip.indexOf(",");
+			if (index != -1) {
+				return ip.substring(0, index);
+			} else {
+				return ip;
+			}
+		}
+		ip = request.getHeader("X-Real-IP");
+		if (StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)) {
+			return ip;
+		}
+		return request.getRemoteAddr();
 	}
 }

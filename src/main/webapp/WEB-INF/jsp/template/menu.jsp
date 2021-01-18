@@ -27,22 +27,28 @@
 		var htmlContent = window.EMPTY;
 		if (msg && msg.length > 0) {
 			for (var i = 0; i < msg.length; i++) {
-				htmlContent = window.EMPTY;
-				var MH = msg[i]["meun_header"];
-				if (MH) {
+				var menu_group_nm = msg[i]["menu_group_nm"];
+				if (menu_group_nm) {
 					if (i > 0) {
-						$("#menu").append("<li role='presentation' class='divider'></li>");
+						htmlContent = htmlContent + "</ul></li>";
 					}
-					$("#menu").append("<li role='presentation' class='dropdown-header'>"+ MH +"</li>");
+					// <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'> Java <b class='caret'></b></a><ul class='dropdown-menu'>
+					htmlContent = htmlContent + "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>"+ menu_group_nm +"<b class='caret'></b></a><ul class='dropdown-menu'>";
 				} else {
-					var MD = msg[i]["meun_detail"];
-					if (MD) {
-						var MDNO = msg[i]["meun_detail_no"];
-						var MD_NO = 'transitionHtml("'+MDNO+'")';
-						$("#menu").append("<li role='presentation'><a role='menuitem' tabindex='-1' href='#' onclick='" + MD_NO + "'>" + MD + "</a></li>");
+					var menu_nm = msg[i]["menu_nm"];
+					if (menu_nm) {
+						var menu_id = msg[i]["menu_id"];
+						var MENU_EVENT = 'transitionHtml("'+menu_id+'")';
+						// <li><a href="#">jmeter</a></li>
+						htmlContent = htmlContent + "<li><a href='#' onclick='" + MENU_EVENT + "'>" + menu_nm + "</a></li>";
 					}
 				}
+				if (i > (msg.length - 1)) {
+					htmlContent = htmlContent + "</ul></li>";
+				}
 			}
+			// HTML追加
+			$("#menu").append(htmlContent);
 		}
 		
 	}
@@ -98,19 +104,28 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <div class="dropdown " style="width: 100%;">
-	<%-- 菜单上部图片 --%>
-	<div style="padding-top:1px">
-		<a href="./login_model.html">
-			<img alt="" src="<%=request.getContextPath() %>/image/1.jpg" width="100" height="22">
-		</a>
-	</div>
 	<%-- 菜单按钮 --%>
-	<button type="button" class="btn dropdown-toggle btn-primary" id="dropdownMenu1" data-toggle="dropdown"
-		style="width: 100px;margin-top:3px;">
-		<span class="create">Menu</span>
-	</button>
-	<div style="height:10px"></div>
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<div style="padding-top:6px">
+					<a  href="./login_model.html">
+						<img alt="" src="<%=request.getContextPath() %>/image/menu.jpg" width="75" height="35">
+					</a>
+				</div>
+			</div>
+			<div>
+				<ul class="nav navbar-nav" id="menu"></ul>
+			</div>
+			<div class="navbar-header" style="float:right">
+				<div style="padding-top:5px">
+					<span style="color:#ffffff">欢迎您：<%=session.getAttribute("accountNm")%></span>
+					<br>
+					<span style="color:#ffd400">登录时间：<%=session.getAttribute("loginTime_HMS")%></span>
+				</div>
+			</div>
+		</div>
+	</nav>
 	<%-- 菜单 --%>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="menu"></ul>
 </div>
 

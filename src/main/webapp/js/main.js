@@ -43,8 +43,6 @@ function setSearchEnabled(btnName) {
 	$("#search").attr("style", "display");
 	if (typeof(btnName) != "undefined") {
 		$("#search").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
-	}else {
-		$("#search").html("<label for='name' style='color: #e4ff00'>查询模式</label><label style='color: #09f7d6b3'>(Search)</label>");
 	}
 }
 
@@ -66,8 +64,6 @@ function setUpdateEnabled(btnName) {
 	$("#update").attr("style", "display");
 	if (typeof(btnName) != "undefined") {
 		$("#update").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
-	}else{
-		$("#update").html("<label for='name' style='color: #e4ff00'>更新模式</label><label style='color: #09f7d6b3'>(Update)</label>");
 	}
 }
 
@@ -90,8 +86,6 @@ function setRegisteredEnabled(btnName) {
 	$("#registered").attr("style", "display");
 	if (typeof(btnName) != "undefined") {
 		$("#registered").html("<label for='name' style='color: #e4ff00'>"+ btnName +"</label>");
-	}else {
-		$("#registered").html("<label for='name' style='color: #e4ff00'>注册模式</label><label style='color: #09f7d6b3'>(Insert)</label>");
 	}
 }
 /**
@@ -113,7 +107,7 @@ function setBackBtnEnabled(btnName) {
 	if (typeof(btnName) != "undefined") {
 		$("#commonBackBtn").text(btnName);
 	}else {
-		$("#commonBackBtn").text("Back");
+		$("#commonBackBtn").text("返回");
 	}
 }
 /**
@@ -129,8 +123,12 @@ function setActionMode(clickElement) {
 		$("#actionMode").html("查询");
 	} else if (clickElement == "update") {
 		$("#actionMode").html("更新");
-	} else {
+	} else if (clickElement == "registered") {
 		$("#actionMode").html("注册");
+	} else if (clickElement == "result") {
+		$("#actionMode").html("查询结果");
+	} else {
+		$("#actionMode").html(clickElement);
 	}
 }
 
@@ -350,5 +348,6 @@ function commonDialogs1confirm(subtnNm,subtnEventNm) {
 	$('#common_dialogs1').modal('show');
 	$('#common_modallabel_1').html('请确认'+ subtnNm + "信息：");
 	$('#common_dialogs1_subit_btn').html(subtnNm);
+	setActionMode(subtnNm);
 	$('#common_dialogs1_subit_btn').attr('onclick',"transitionHtml(null,'"+subtnEventNm+"','commonDialogs1Ajax')");
 }

@@ -48,7 +48,9 @@ public class Sys0501Dao {
 				+ ",t2.ROLE_NAME AS roleName"
 				+ ",t3.AUTHORITY_NAME AS authorityName"
 				+ ",t1.INS_DATE AS userInsertDate "
+				+ ",t4.MENU_GROUP_ID AS menuGroupId "
 				+ ",t4.MENU_GROUP_NAME AS menuGroupName "
+				+ ",t4.MENU_ID AS menuId "
 				+ ",t4.MENU_NAME AS menuName "
 				+ " FROM "
 				+ " t_user t1 "
@@ -72,6 +74,13 @@ public class Sys0501Dao {
 		if (searchDto.getAuthorityId() != null && !searchDto.getAuthorityId().isEmpty()) {
 			hql.append("AND t3.AUTHORITY_ID IN (:authorityId) ");
 		}
+		// 用户唯一ID
+		if (searchDto.getUserId() != null && !searchDto.getUserId().isEmpty()) {
+			hql.append("AND t1.USER_ID IN (:userId) ");
+		}
+
+		// Order By
+		hql.append(" ORDER BY t4.MENU_GROUP_ID,t4.MENU_ID");
 		SQLQuery sql = SqlCommon.sqlSession
 				.createSQLQuery(hql.toString());
 		if (StringUtils.isNotEmpty(searchDto.getAccountName())) {
@@ -82,6 +91,9 @@ public class Sys0501Dao {
 		}
 		if (StringUtils.isNotEmpty(searchDto.getRoleId())) {
 			sql.setInteger("roleId", Integer.parseInt(searchDto.getRoleId()));
+		}
+		if (searchDto.getUserId() != null && !searchDto.getUserId().isEmpty()) {
+			sql.setString("userId", searchDto.getUserId());
 		}
 		if (searchDto.getAuthorityId() != null && !searchDto.getAuthorityId().isEmpty()) {
 			hql.append("AND t3.AUTHORITY_ID IN (:authorityId) ");

@@ -66,15 +66,18 @@
 			<div class="form-group">
 				<label for="name">意见收集处</label>
 				<input type="hidden" name="id" value="${sys0302Result.dataId }">
-				<textarea class="form-control" rows="5"
-					name="opinionContent" maxlength="1000" id="opinionText">${sys0302Result.opinionText }</textarea>
+				<textarea class="form-control" style="height:350px"
+					name="opinionContent" maxlength="100000" id="opinionText">${sys0302Result.opinionText }</textarea>
 				<span class="help-block" style="float:right">还可以输入
 				<span  id="opinionInputText"></span>
 				字
 				</span>
-				</p>
-				
 			</div>
+			<p class="help-block">
+				如果您要进行回复，请在【-----------------------------------------------------------】下面进行内容的回复。
+				<BR>
+				如果您要需要修改您提出的意见，请删除【-----------------------------------------------------------】。
+			</p>
 		</form>
 	</div>
 	<%-- 意见收集[End] --%>

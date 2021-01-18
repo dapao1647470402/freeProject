@@ -15,7 +15,7 @@
 <div class="dropdown dropdown-info">
 	<button type="button" class="btn btn-info" data-toggle="dropdown"
 			data-placement="right" title="请点击了解更多功能" data-animation="true">
-		Action <span class="caret"></span>
+		帮助及退出登录<span class="caret"></span>
 	</button>
 	<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background: #1d2744;">
 		<li><a data-target="#" href="#" onclick="transitionHtml('sys0302','init')">网站建设意见收集</a></li>

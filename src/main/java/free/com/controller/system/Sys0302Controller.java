@@ -47,10 +47,10 @@ public class Sys0302Controller {
 	@RequestMapping("registered")
 	public String registered(HttpServletRequest request, HttpServletResponse response, Model model) {
 		Sys0302From from = CommonUtil.getBean(Sys0302From.class, request);
-		opinion.setOpinionContent(from.getOpinionText());
-		opinion.setUpdUserId(CommonUtil.getUserInfo().getInsUserId());
+		opinion.setOpinionContent(from.getOpinionText().trim());
+		opinion.setUpdUserId(CommonUtil.getUserInfo().getUserId());
 		opinion.setUpdDate(CommonUtil.getSysDate());
-		opinion.setInsUserId(CommonUtil.getUserInfo().getInsUserId());
+		opinion.setInsUserId(CommonUtil.getUserInfo().getUserId());
 		opinion.setInsDate(CommonUtil.getSysDate());
 		service.registered(opinion);
 		model.addAttribute("submitMark", CommonConstants.SUCCESS);
@@ -65,8 +65,11 @@ public class Sys0302Controller {
 		model.addAttribute("sys0302From", result);
 		//更新或删除前的确认画面
 		if (!StringUtils.isEmpty(searchDto.getDataId())) {
-			model.addAttribute("sys0302Result", result.get(0));
 			if (map.containsKey("flg") && map.get("flg").equals("upd")) {
+				StringBuffer markBuf = new StringBuffer(result.get(0).getOpinionText());
+				markBuf.append("\r\n-----------------------------------------------------------\r\n");
+				result.get(0).setOpinionText(markBuf.toString());
+				model.addAttribute("sys0302Result", result.get(0));
 				return CommonConstants.FOLDER_SYS + "sys030202";
 			}
 			response.setCharacterEncoding("utf-8");
@@ -95,6 +98,12 @@ public class Sys0302Controller {
 	@RequestMapping("update")
 	public String update(HttpServletRequest request, HttpServletResponse response, Model model) {
 		Opinion opinion = CommonUtil.getBean(Opinion.class, request);
+		StringBuffer bf = new StringBuffer(opinion.getOpinionContent());
+		if (opinion.getOpinionContent().contains("-----------------------------------------------------------")) {
+			bf.append("\r\n回复者：" + CommonUtil.getUserInfo().getAccountName());
+			bf.append("    回复时间：" + CommonUtil.getSysDateText());
+		}
+		opinion.setOpinionContent(bf.toString());
 		service.update(opinion);
 		return "redirect:/sys0302/result";
 	}

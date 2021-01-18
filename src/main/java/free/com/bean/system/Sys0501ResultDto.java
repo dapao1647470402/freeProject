@@ -14,6 +14,36 @@ public class Sys0501ResultDto {
 	private Date userInsertDate;
 	private String menuGroupName;
 	private String menuName;
+	private String menuGroupId;
+	private String menuId;
+
+	/**
+	 * @return the menuGroupId
+	 */
+	public String getMenuGroupId() {
+		return menuGroupId;
+	}
+
+	/**
+	 * @param menuGroupId the menuGroupId to set
+	 */
+	public void setMenuGroupId(String menuGroupId) {
+		this.menuGroupId = menuGroupId;
+	}
+
+	/**
+	 * @return the menuId
+	 */
+	public String getMenuId() {
+		return menuId;
+	}
+
+	/**
+	 * @param menuId the menuId to set
+	 */
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
+	}
 
 	/**
 	 * @return the userId
@@ -23,8 +53,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param userId
-	 *            the userId to set
+	 * @param userId the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -38,8 +67,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param userAccount
-	 *            the userAccount to set
+	 * @param userAccount the userAccount to set
 	 */
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
@@ -53,8 +81,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param roleName
-	 *            the roleName to set
+	 * @param roleName the roleName to set
 	 */
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
@@ -68,8 +95,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param authorityName
-	 *            the authorityName to set
+	 * @param authorityName the authorityName to set
 	 */
 	public void setAuthorityName(String authorityName) {
 		this.authorityName = authorityName;
@@ -83,8 +109,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param userInsertDate
-	 *            the userInsertDate to set
+	 * @param userInsertDate the userInsertDate to set
 	 */
 	public void setUserInsertDate(Date userInsertDate) {
 		this.userInsertDate = userInsertDate;
@@ -98,8 +123,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param menuGroupName
-	 *            the menuGroupName to set
+	 * @param menuGroupName the menuGroupName to set
 	 */
 	public void setMenuGroupName(String menuGroupName) {
 		this.menuGroupName = menuGroupName;
@@ -113,8 +137,7 @@ public class Sys0501ResultDto {
 	}
 
 	/**
-	 * @param menuName
-	 *            the menuName to set
+	 * @param menuName the menuName to set
 	 */
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;

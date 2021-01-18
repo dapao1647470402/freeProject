@@ -14,11 +14,41 @@ public class Sys0501SearchDto implements Serializable {
 	public Sys0501SearchDto() {
 	}
 
+	private String userId;
+	private String flg;
 	private String accountName;
 	private Date registerTime;
 	private long registerTimeTimestamp;
 	private String roleId;
 	private List<Integer> authorityId = new ArrayList<Integer>();
+
+	/**
+	 * @return the userId
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @return the flg
+	 */
+	public String getFlg() {
+		return flg;
+	}
+
+	/**
+	 * @param flg the flg to set
+	 */
+	public void setFlg(String flg) {
+		this.flg = flg;
+	}
 
 	/**
 	 * @return the accountName

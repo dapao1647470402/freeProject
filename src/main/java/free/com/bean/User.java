@@ -39,8 +39,8 @@ public class User implements Serializable {
 	@Column(name = "menu_sub_max_authority")
 	private String menuSubMaxAuthority;
 
-	@Column(name = "upd_psd_time")
-	private String updatePsdTime;
+	@Column(name = "birthday")
+	private String birthday;
 
 	@Column(name = "ins_date")
 	private Date insDate;
@@ -85,8 +85,8 @@ public class User implements Serializable {
 	 * @param lockVersion
 	 */
 	public User(String userId, String accountName, String accountId, String password, String userRole,
-			String userAuthority, String menuGroupAuthority, String menuSubMaxAuthority, String updatePsdTime,
-			Date insDate, String insUserId, String insProgram, Date updDate, String updUserId, String updProgram,
+			String userAuthority, String menuGroupAuthority, String menuSubMaxAuthority, String birthday, Date insDate,
+			String insUserId, String insProgram, Date updDate, String updUserId, String updProgram,
 			String lockVersion) {
 		this.userId = userId;
 		this.accountName = accountName;
@@ -96,7 +96,7 @@ public class User implements Serializable {
 		this.userAuthority = userAuthority;
 		this.menuGroupAuthority = menuGroupAuthority;
 		this.menuSubMaxAuthority = menuSubMaxAuthority;
-		this.updatePsdTime = updatePsdTime;
+		this.birthday = birthday;
 		this.insDate = insDate;
 		this.insUserId = insUserId;
 		this.insProgram = insProgram;
@@ -219,17 +219,17 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * @return the updatePsdTime
+	 * @return the birthday
 	 */
-	public String getUpdatePsdTime() {
-		return updatePsdTime;
+	public String getBirthday() {
+		return birthday;
 	}
 
 	/**
-	 * @param updatePsdTime the updatePsdTime to set
+	 * @param birthday the birthday to set
 	 */
-	public void setUpdatePsdTime(String updatePsdTime) {
-		this.updatePsdTime = updatePsdTime;
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 
 	/**

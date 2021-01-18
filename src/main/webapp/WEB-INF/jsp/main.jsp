@@ -10,6 +10,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-theme.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-js/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/style/style.css">
 <%-- include Js and Css and so on of BootStrap file [End]--%>
@@ -65,7 +66,7 @@
  	 }
  	// 数据分歧
  	var formData;
-	if (model== 'commonDialogs1Ajax') {
+	if (model== 'commonDialogs1Ajax' || model== 'definedDataSubmit') {
 		formData = Window.AJAX_JSON_DATA;
 		$(".modal-backdrop").remove();
 	}else if($("#commonForm") != null){
@@ -95,34 +96,8 @@
 	<div>
 		<%-- import common Menu[Start] --%>
 		<%-- 加载网站的菜单部[Start] --%>
-		<div class="col-lg-1" style="background: #fd9e10bf;">
 			<c:import url="template/menu.jsp" />
-		</div>
 		<%-- 加载网站的菜单部[End] --%>
-		<%-- import common Menu[End] --%>
-		<div class="col-lg-11" style="background: #fd9e10bf;">
-			<%-- Navigation Bar Area [Start] --%>
-			<%-- 加载网站的导航部(local:mian.jsp / js:transitionHtml)[Start] --%>
-			<nav class="navbar navbar-inverse" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#link-under-html">
-						<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="link-under-html">
-					<ul class="nav nav-justified">
-						<li class="active"><a onclick="transitionHtml(null,'search')" href="javascript:void(0)" id="search"></a></li>
-						<li><a onclick="transitionHtml(null,'update')" href="javascript:void(0)" id="update"></a></li>
-						<li><a onclick="transitionHtml(null,'registered')" href="javascript:void(0)" id="registered"></a></li>
-					</ul>
-				</div>
-			</div>
-			</nav>
-			<%-- 加载网站的导航部(local:mian.jsp / js:transitionHtml)[End] --%>
-			<%-- Navigation Bar Area [End] --%>
-		</div>
 	</div>
 	<%-- Page Header Area[End] --%>
 	
@@ -151,12 +126,18 @@
 		<%-- Right Content Top Area[End] --%>
 		
 		<%-- Bottom Button Area[Start] --%>
-		<%-- 网站的返回按钮[Start] --%>
+		<%-- 网站的按钮[Start] --%>
 		<div style="padding-left: 15px; padding-bottom: 5px;position: fixed;bottom: 0px">
+			<button id="search" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+				title="点我开始检索" onclick="transitionHtml(null,'search')">点我检索</button>
+			<button id="update" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+				title="点我更新数据" onclick="transitionHtml(null,'update')">点我更新 </button>
+			<button id="registered" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
+				title="点击登录数据" onclick="transitionHtml(null,'registered')">数据登录</button>
 			<button id="commonBackBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
-				title="点击返回" onclick="commonGoBack()">Back</button>
+				title="点击返回" onclick="commonGoBack()">返回</button>
 		</div>
-		<%-- 网站的返回按钮[End] --%>
+		<%-- 网站的按钮[End] --%>
 		<%-- Bottom Button Area[End] --%>
 	</div>
 	<%-- Content Area[End] --%>

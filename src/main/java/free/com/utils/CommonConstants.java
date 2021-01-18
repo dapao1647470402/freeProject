@@ -6,7 +6,13 @@ public class CommonConstants {
 
 	public static final String USER_ID = "userId";
 
+	public static final String ACCOUNT_NM = "accountNm";
+
+	public static final String USER_AUTHOR = "userAuthor";
+
 	public static final String LOGIN_TIME = "loginTime";
+
+	public static final String LOGIN_TIME_HMS = "loginTime_HMS";
 
 	public static final String STR_NULL = "null";
 
@@ -31,9 +37,9 @@ public class CommonConstants {
 	public static final int MAX_COUNT = 500;
 
 	/** Menu Use Only */
-	public static final String MH = "meun_header";
-	public static final String MD = "meun_detail";
-	public static final String MD_NO = "meun_detail_no";
+	public static final String MENU_GROUP_NM = "menu_group_nm";
+	public static final String MENU_NM = "menu_nm";
+	public static final String MENU_ID = "menu_id";
 
 	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy/MM/dd HH:mm:ss";
 
