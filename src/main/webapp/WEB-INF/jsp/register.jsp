@@ -288,13 +288,13 @@
 				</ol> --%>
 				<div class="carousel-inner">
 					<div class="item active">
-						<input type="button" class="form-control" value="Welcome to Free Project."/>
+						<input type="button" class="form-control" value="欢迎您注册本网站。"/>
 					</div>
 					<div class="item">
-						<input type="button" class="form-control" value="You can declare to all thinks at there."/>
+						<input type="button" class="form-control" value="本网站属于自由开发项目。"/>
 					</div>
 					<div class="item">
-						<input type="button" class="form-control" value="Wish you have a happy life."/>
+						<input type="button" class="form-control" value="期待您的开发及使用。"/>
 					</div>
 					<%-- 轮播（Carousel）导航 --%>
 				    <a class="carousel-control left" href="#myCarousel"
@@ -364,8 +364,8 @@
 
 			<%-- Button modal Templet [Start]--%>
 			<div class="panel panel-info panel-body" style="text-align:center;">
-				<input type="button" class="btn btn-loading" data-toggle="modal" value="Register" onclick="confirmInputOfInfo(this)">
-				<input type="button" class="btn btn-default" value="Clear" onclick="clearAction(this)">
+				<input type="button" class="btn btn-loading" data-toggle="modal" value="注册" onclick="confirmInputOfInfo(this)">
+				<input type="button" class="btn btn-default" value="重置" onclick="clearAction(this)">
 				<c:if test="${backPageId != null and backPageId != '' }">
 					<input type="button" class="btn btn-primary" value="Back" onclick="goBack('${backPageId }')">
 					<input type="hidden" value="${backPageId }" name="backPageId"/>
@@ -385,7 +385,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="submit" class="btn btn-primary">提交更改</button>
+							<button type="submit" class="btn btn-primary">确认注册</button>
 					</div>
 					</div>
 				</div>
@@ -397,14 +397,11 @@
 	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 		<div class="dropdown dropdown-info">
 			<button type="button" class="btn btn-info" data-toggle="dropdown" value="">
-				More
+				更多
 				<span class="caret"></span>
 			</button>
 			<ul id="dropdown-selected" class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="background:yellow;">
-				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">Login</a></li>
-				<li class="divider"></li>
-				<li class="divider"></li>
-				<li><a data-target="#" href="<%=request.getContextPath() %>/register/init">Registered</a></li>
+				<li><a data-target="#" href="<%=request.getContextPath() %>/login/init">登录</a></li>
 			</ul>
 		</div>
 	</div>

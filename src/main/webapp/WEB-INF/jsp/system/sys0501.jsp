@@ -227,6 +227,12 @@
 		console.log(window.CURRENT_ACTION_ID);
 		return true;
 	}
+	
+	function showUserDetail(userId){
+		Window.AJAX_JSON_DATA='flg=showUserDetail&userId='+userId
+		transitionHtml(null,'search','definedDataSubmit');
+		setActionMode("用户信息查看")
+	}
 </script>
 <%-- Myself define JS [End] --%>
 	<div style="padding: 10px;">
@@ -236,7 +242,7 @@
 			<div>
 				<%-- Change background of panel (Area-[Panel Start]) --%>
 				<div class="panel panel-primary" style="border-color: black;">
-					<div class="panel-heading" style="background: #784214">Search Condition Area</div>
+					<div class="panel-heading" style="background: #784214">检索条件</div>
 					<%-- Change background of panel (Area-[Panel Body Start]) --%>
 					<div class="panel-body">
 						<%-- Search Area for Form [Start] --%>
@@ -358,7 +364,7 @@
 			<%-- Search result area [Start] --%>
 			<div style="padding-top: 20px;">
 				<div class="panel panel-primary table-responsive">
-					<div class="panel-heading">Search Content Display</div>
+					<div class="panel-heading">用户管理</div>
 					<table class="table table-condensed table-hover table-bordered">
 						<thead>
 							<tr>
@@ -369,16 +375,16 @@
 								<th>注册时间</th>
 							</tr>
 							<tr>
-								<th colspan="2">画面(拥有权)</th>
-								<th colspan="3">子画面(拥有权)</th>
+								<th colspan="2">画面组名</th>
+								<th colspan="3">画面名</th>
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach items="${ sys0501From }" var="list" varStatus="listIndex">
-							<tr class="success">
+							<tr class="info">
 								<td>${ listIndex.index + 1 }</td>
 								<td>
-									<a href="javascript:void(0)">${ list.userAccount }</a>
+									<a href="javascript:void(0)" onclick="showUserDetail('${ list.userId }')">${ list.userAccount }</a>
 									<span class="label label-default">${ list.userAccountId }</span>
 								</td>
 								<td>${ list.roleName }</td>
@@ -388,7 +394,7 @@
 								</td>
 							</tr>
 							<c:forEach items="${ list.multipleData }" var="multipleData" varStatus="multiple">
-								<tr>
+								<tr class="warning">
 									<td colspan="2"  align="center">${ multipleData.menuGroupName }</td>
 									<td colspan="3">${ multipleData.menuName }</td>
 								</tr>

@@ -65,7 +65,7 @@
  	 }
  	// 数据分歧
  	var formData;
-	if (model== 'commonDialogs1Ajax') {
+	if (model== 'commonDialogs1Ajax' || model== 'definedDataSubmit') {
 		formData = Window.AJAX_JSON_DATA;
 		$(".modal-backdrop").remove();
 	}else if($("#commonForm") != null){
@@ -154,7 +154,7 @@
 		<%-- 网站的返回按钮[Start] --%>
 		<div style="padding-left: 15px; padding-bottom: 5px;position: fixed;bottom: 0px">
 			<button id="commonBackBtn" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="top"
-				title="点击返回" onclick="commonGoBack()">Back</button>
+				title="点击返回" onclick="commonGoBack()">返回</button>
 		</div>
 		<%-- 网站的返回按钮[End] --%>
 		<%-- Bottom Button Area[End] --%>

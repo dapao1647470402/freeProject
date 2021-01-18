@@ -110,7 +110,7 @@
 		<div class="col-lg-3 col-md-3 col-sm-3" style="padding-top: 20px">
 			<div class="panel panel-group panel-primary ">
 				<%-- Advice Bar [Start] --%>
-				<div class="panel-heading">Advice</div>
+				<div class="panel-heading">公告及咨询</div>
 				<ul class="list-group">
 					<c:forEach items="${initContent.adviceResult}" var="advice"
 						varStatus="advIndex">
@@ -124,7 +124,7 @@
 				<%-- Company Resume Bar [Start] --%>
 				<div class="panel-heading">
 					<a data-toggle="collapse" data-parent="#accordion"
-						href="#collapseOne">Free Project(Resume)</a>
+						href="#collapseOne">(Free)网站简介</a>
 				</div>
 				<div id="collapseOne" class="panel-body panel-collapse collapse">
 					${initContent.pjResume.get(0).resumeContent}</div>
@@ -137,7 +137,7 @@
 		<%-- Image Area [Start] --%>
 		<div class="col-lg-4 col-md-4 col-sm-4"
 			style="padding-top: 20px; border-color: black; border-weight:">
-			<div class="panel panel-primary">The Picture Show Area</div>
+			<div class="panel panel-primary">动态展示</div>
 			<div id="pictureShowArea" class="carousel slide"
 				style="border-color: #575f5b; border-style: outset; border-style: solid dotted; border-width: thick;dashed double;">
 				<%-- 轮播（Carousel）指标 --%>
@@ -171,7 +171,7 @@
 							</c:when>
 							<c:otherwise>
 								<div class="item">
-									<img alt="" src="${image.imgLocationAft}" height="400"
+									<img alt="" src="${image.imgLocationAft}" height="500"
 										class="col-lg-12 col-md-12 col-sm-12 img-rounded" />
 									<div class="carousel-caption"></div>
 								</div>
@@ -183,11 +183,11 @@
 				<a class="left carousel-control" href="#pictureShowArea"
 					role="button" data-slide="prev"> <span
 					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
+					<span class="sr-only">上一页</span>
 				</a> <a class="right carousel-control" href="#pictureShowArea"
 					role="button" data-slide="next"> <span
 					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
+					<span class="sr-only">下一页</span>
 				</a>
 			</div>
 
@@ -200,21 +200,18 @@
 			<div class="dropdown dropdown-info" style="float: right">
 				<button type="button" class="btn btn-info" data-toggle="dropdown"
 					value="">
-					More<span class="caret"></span>
+					更多<span class="caret"></span>
 				</button>
 				<ul id="dropdown-selected" class="dropdown-menu" role="menu"
 					aria-labelledby="dLabel" style="background: yellow;">
-					<li><a data-target="#" href="<%=request.getContextPath()%>/login/init">Login</a></li>
-					<li class="divider"></li>
-					<li><a data-target="#" href="<%=request.getContextPath()%>/register/init">Registered</a></li>
+					<li><a data-target="#" href="<%=request.getContextPath()%>/login/init">登录</a></li>
 				</ul>
 			</div>
 			<%-- Templet Area [End] --%>
 			<div style="padding-top: 100px; padding-right: 0px;">
 				<div class="alert alert-warning alert-dismissable"
 					style="background-color: #ffd6009c;display:<c:if test="${loginFailure != 0 }">none</c:if>">
-					<span class="label label-warning" >Please check to your
-						account or password!
+					<span class="label label-warning" >请检查输入的用户名和密码。
 						<span aria-hidden="true" data-dismiss="alert">&times;</span>
 					</span>
 				</div>
@@ -225,14 +222,14 @@
 					<%-- Login Mark Start--%>
 					<div style="padding: 0px 0px 10px 80px;">
 						<h2>
-							<strong>Login</strong>
+							<strong>欢迎登录！</strong>
 						</h2>
 					</div>
 					<%-- Login Mark End--%>
 					<%-- Input Account [Start]--%>
 					<div class="input-group row input-group-lg from-group"
 						id="div_account">
-						<span class="input-group-addon" style="width: 115px;">Account</span>
+						<span class="input-group-addon" style="width: 115px;">账户</span>
 						<input type="text" class="form-control" onblur="inputBlur(1)"
 							id="account" name="accountId">
 					</div>
@@ -240,7 +237,7 @@
 					<br />
 					<%-- Input Password [Start] --%>
 					<div class="input-group row input-group-lg" id="div_psd">
-						<span class="input-group-addon" style="width: 115px;">Password</span>
+						<span class="input-group-addon" style="width: 115px;">密码</span>
 						<input type="password" class="form-control" onblur="inputBlur(2)"
 							id="psd" name="password">
 					</div>
@@ -248,10 +245,10 @@
 					<br />
 					<%-- Login Button [Start] --%>
 					<div class="btn-group btn-group-lg row">
-						<button type="submit" class="btn btn-primary" data-toggle="submit">Login</button>
+						<button type="submit" class="btn btn-primary" data-toggle="submit">登录</button>
 						<%-- Login Button [End] --%>
 						<%-- Reset Button [Start] --%>
-						<button type="reset" class="btn btn-default" data-toggle="reset">Reset</button>
+						<button type="reset" class="btn btn-default" data-toggle="reset">重置</button>
 					</div>
 					<%-- Reset Button [End] --%>
 				</form>

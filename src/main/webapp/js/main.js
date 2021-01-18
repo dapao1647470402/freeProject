@@ -113,7 +113,7 @@ function setBackBtnEnabled(btnName) {
 	if (typeof(btnName) != "undefined") {
 		$("#commonBackBtn").text(btnName);
 	}else {
-		$("#commonBackBtn").text("Back");
+		$("#commonBackBtn").text("返回");
 	}
 }
 /**
@@ -129,8 +129,12 @@ function setActionMode(clickElement) {
 		$("#actionMode").html("查询");
 	} else if (clickElement == "update") {
 		$("#actionMode").html("更新");
-	} else {
+	} else if (clickElement == "registered") {
 		$("#actionMode").html("注册");
+	} else if (clickElement == "result") {
+		$("#actionMode").html("查询结果");
+	} else {
+		$("#actionMode").html(clickElement);
 	}
 }
 
@@ -350,5 +354,6 @@ function commonDialogs1confirm(subtnNm,subtnEventNm) {
 	$('#common_dialogs1').modal('show');
 	$('#common_modallabel_1').html('请确认'+ subtnNm + "信息：");
 	$('#common_dialogs1_subit_btn').html(subtnNm);
+	setActionMode(subtnNm);
 	$('#common_dialogs1_subit_btn').attr('onclick',"transitionHtml(null,'"+subtnEventNm+"','commonDialogs1Ajax')");
 }
